@@ -1,8 +1,8 @@
 ﻿using MoonGale.Core;
-using MoonGale.Systems;
+using MoonGale.Runtime.Systems;
 using UnityEngine;
 
-namespace MoonGale
+namespace MoonGale.Runtime
 {
     internal sealed class MoonGaleGameManager : GameManager
     {

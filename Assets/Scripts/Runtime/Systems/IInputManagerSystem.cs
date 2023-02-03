@@ -1,4 +1,4 @@
-﻿namespace MoonGale.Systems
+﻿namespace MoonGale.Runtime.Systems
 {
     internal interface IInputManagerSystem
     {

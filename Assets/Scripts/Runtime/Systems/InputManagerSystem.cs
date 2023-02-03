@@ -3,7 +3,7 @@ using MoonGale.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MoonGale.Systems
+namespace MoonGale.Runtime.Systems
 {
     internal sealed class InputManagerSystem : MonoBehaviour, ISystem, IInputManagerSystem
     {

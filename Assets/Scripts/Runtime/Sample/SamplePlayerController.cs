@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace MoonGale.Sample
+namespace MoonGale.Runtime.Sample
 {
     internal sealed class SamplePlayerController : MonoBehaviour
     {
