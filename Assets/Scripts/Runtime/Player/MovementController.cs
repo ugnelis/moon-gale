@@ -25,6 +25,7 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private UnityEvent onMovementStopped;
 
+        private Vector3 targetPivotLookDirection;
         private Vector3 absoluteMoveDirection;
         private bool isMoveInputActive;
 
@@ -117,8 +118,14 @@ namespace MoonGale.Runtime.Player
             }
 
             var mainCameraTransform = mainCamera.transform;
-            var moveDirection = GetRelativeMoveDirection(mainCameraTransform, absoluteMoveDirection);
-            lookPivot.forward = moveDirection;
+            targetPivotLookDirection = GetRelativeMoveDirection(mainCameraTransform, absoluteMoveDirection);
+
+            var currentPivotLookDirection = lookPivot.forward;
+            lookPivot.forward = Vector3.Lerp(
+                currentPivotLookDirection,
+                targetPivotLookDirection,
+                playerSettings.PivotLookSpeed * Time.deltaTime
+            );
         }
 
         private Vector3 GetRelativeMotion(Transform forwardTransform, Vector3 absoluteDirection)

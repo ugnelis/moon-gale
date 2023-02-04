@@ -22,6 +22,11 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float stopAcceleration = 1f;
 
+        [Header("Animation")]
+        [Min(0f)]
+        [SerializeField]
+        private float pivotLookSpeed = 10f;
+
         [Header("Attacks")]
         [Min(0f)]
         [SerializeField]
@@ -64,5 +69,7 @@ namespace MoonGale.Runtime.Player
         public float MaxDebuffVignette => maxDebuffVignette;
 
         public float MinDebuffPostExposure => minDebuffPostExposure;
+
+        public float PivotLookSpeed => pivotLookSpeed;
     }
 }
