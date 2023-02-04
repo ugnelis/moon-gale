@@ -5,7 +5,7 @@
 			<value>Amb_Netural_Cave</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2eb9f1f2-1bbf-4d52-abb2-556651391737}</destination>
@@ -172,7 +172,6 @@
 	<object class="MixerBusEffectChain" id="{2501d41e-c522-4aaf-bcc2-9515ea4745ec}">
 		<relationship name="effects">
 			<destination>{65e70b7a-2718-4332-839d-2aab7a70a2c9}</destination>
-			<destination>{8b162830-2a0b-4c46-902d-665c2b309f01}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{eacd41d5-4515-46d1-8ead-03c56c8de518}" />
@@ -216,11 +215,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{a3a51514-fb5a-4e83-b130-453c8d8becd7}" />
 	<object class="MixerBusFader" id="{65e70b7a-2718-4332-839d-2aab7a70a2c9}" />
-	<object class="SpatialiserEffect" id="{8b162830-2a0b-4c46-902d-665c2b309f01}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{4e370000-094d-49d2-bda2-f12d26c9ab33}" />
 	<object class="MultibandEqEffect" id="{dca867f7-3825-4660-b414-7f31fbbac419}">
 		<property name="frequencyA">
