@@ -1,5 +1,6 @@
 ﻿using MoonGale.Core;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace MoonGale.Runtime.Player
@@ -22,6 +23,10 @@ namespace MoonGale.Runtime.Player
 
         [SerializeField]
         private InputActionReference attackInputActionReference;
+
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onPlayerDeath;
 
         private void OnEnable()
         {
@@ -63,6 +68,7 @@ namespace MoonGale.Runtime.Player
             movementController.enabled = false;
             attackController.enabled = false;
             debuffController.enabled = false;
+            onPlayerDeath.Invoke();
             GameManager.Publish(new PlayerDeathMessage());
         }
     }
