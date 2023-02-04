@@ -1,5 +1,4 @@
 ﻿using MoonGale.Runtime.Utilities;
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
@@ -11,21 +10,21 @@ namespace MoonGale.Runtime.Levels
     internal sealed class LevelSettings : ScriptableObject
     {
         [Header("General")]
-        [ShowAssetPreview]
+        [Min(0f)]
         [SerializeField]
-        private Texture2D map;
+        private float queryRadius = 10f;
+
+        [Min(0f)]
+        [SerializeField]
+        private float blockSize = 5f;
 
         [SerializeField]
-        private Vector3 blockScale;
+        private LayerMask nodeLayerMask;
 
-        [Header("Prefabs")]
-        [SerializeField]
-        private SolidBlockLevelElement solidBlockPrefab;
+        public float QueryRadius => queryRadius;
 
-        public Texture2D Map => map;
+        public float BlockSize => blockSize;
 
-        public Vector3 BlockScale => blockScale;
-
-        public SolidBlockLevelElement SolidBlockPrefab => solidBlockPrefab;
+        public LayerMask NodeLayerMask => nodeLayerMask;
     }
 }
