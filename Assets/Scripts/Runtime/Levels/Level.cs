@@ -21,7 +21,7 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private int tilesPerTick = 5;
 
-        private int currentTilesCount = 0;
+        private int currentTilesCount;
 
 #if UNITY_EDITOR
         // ReSharper disable once UnusedMember.Local
@@ -63,6 +63,7 @@ namespace MoonGale.Runtime.Levels
 
         private void ConnectNeighbors(IReadOnlyList<Node> nodes)
         {
+            // ReSharper disable once ForCanBeConvertedToForeach
             for (var i = 0; i < nodes.Count; i++)
             {
                 ConnectNeighbors(nodes, nodes[i]);
@@ -74,6 +75,7 @@ namespace MoonGale.Runtime.Levels
             var currentPosition = node.Position;
             var queryRadius = levelSettings.QueryRadius;
 
+            // ReSharper disable once ForCanBeConvertedToForeach
             for (var j = 0; j < nodes.Count; j++)
             {
                 var neighbor = nodes[j];
@@ -199,7 +201,7 @@ namespace MoonGale.Runtime.Levels
 
         private static IEnumerable<Node> Shuffle(IEnumerable<Node> nodes)
         {
-            return nodes.OrderBy(node => Random.value);
+            return nodes.OrderBy(_ => Random.value);
         }
     }
 }
