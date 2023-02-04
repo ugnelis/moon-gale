@@ -8,6 +8,7 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private LevelSettings levelSettings;
 
-        private readonly NodeGraph graph = new();
+        [SerializeField]
+        private NodeGraph graph;
     }
 }
