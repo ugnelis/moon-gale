@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5393563426338247527}
   - component: {fileID: 6729327187679717639}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSettings: {fileID: 11400000, guid: 73c1482631537af499b5cfa8ae994670, type: 2}
-  nodeData: {fileID: 0}
+  nodeObject: {fileID: 0}
   neighbors: []
