@@ -535,8 +535,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6018831066777822263}
-  - component: {fileID: 6018831066777822262}
   - component: {fileID: 6018831066777822257}
+  - component: {fileID: 6018831066777822262}
+  - component: {fileID: 2539360689541506595}
+  - component: {fileID: 8369360334055233864}
   m_Layer: 0
   m_Name: PlayerActor
   m_TagString: Untagged
@@ -563,25 +565,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6018831066777822262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6018831066777822256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe84c54508b14fbea83a186ed4bb406e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 6018831066777822257}
-  playerSettings: {fileID: 11400000, guid: 7a7b0089a1b8a31428151453ea2bf0b8, type: 2}
-  mainCamera: {fileID: 6018831065905993468}
-  moveInputActionReference: {fileID: -1680190386980627800, guid: 630be9b88e972a54f9414ebdea9e7bc7,
-    type: 3}
-  attackInputActionReference: {fileID: 1120369429361536294, guid: 630be9b88e972a54f9414ebdea9e7bc7,
-    type: 3}
 --- !u!143 &6018831066777822257
 CharacterController:
   m_ObjectHideFlags: 0
@@ -600,6 +583,60 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6018831066777822262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018831066777822256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe84c54508b14fbea83a186ed4bb406e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementController: {fileID: 2539360689541506595}
+  attackController: {fileID: 8369360334055233864}
+  moveInputActionReference: {fileID: -1680190386980627800, guid: 630be9b88e972a54f9414ebdea9e7bc7,
+    type: 3}
+  attackInputActionReference: {fileID: 1120369429361536294, guid: 630be9b88e972a54f9414ebdea9e7bc7,
+    type: 3}
+  onMovementInputStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onMovementInputStopped:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttackStarted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2539360689541506595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018831066777822256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31e6d5e942e4d2495d6ac621bbd8baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 6018831066777822257}
+  playerSettings: {fileID: 11400000, guid: 7a7b0089a1b8a31428151453ea2bf0b8, type: 2}
+  mainCamera: {fileID: 6018831065905993468}
+--- !u!114 &8369360334055233864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018831066777822256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01750679d1834f33ae4a240d593e3102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6018831066836303636
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace MoonGale.Runtime.Player
@@ -7,13 +8,10 @@ namespace MoonGale.Runtime.Player
     {
         [Header("General")]
         [SerializeField]
-        private CharacterController characterController;
+        private MovementController movementController;
 
         [SerializeField]
-        private PlayerSettings playerSettings;
-
-        [SerializeField]
-        private Camera mainCamera;
+        private AttackController attackController;
 
         [Header("Inputs")]
         [SerializeField]
@@ -22,35 +20,15 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private InputActionReference attackInputActionReference;
 
-        private bool isMoveInputActive;
-        private Vector3 absoluteMoveDirection;
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onMovementInputStarted;
 
-        [NaughtyAttributes.ShowNonSerializedField]
-        private float currentMoveSpeed;
+        [SerializeField]
+        private UnityEvent onMovementInputStopped;
 
-        private void OnDrawGizmos()
-        {
-            if (mainCamera == false)
-            {
-                return;
-            }
-
-            Gizmos.color = Color.red;
-
-            var mainCameraTransform = mainCamera.transform;
-            var playerPosition = transform.position;
-            var relativeMotion = GetRelativeMotion(mainCameraTransform, absoluteMoveDirection);
-            Gizmos.DrawRay(playerPosition, relativeMotion);
-        }
-
-        private void Awake()
-        {
-            if (mainCamera == false)
-            {
-                Debug.LogError($"{nameof(mainCamera)} is not set", this);
-                enabled = false;
-            }
-        }
+        [SerializeField]
+        private UnityEvent onAttackInputStarted;
 
         private void OnEnable()
         {
@@ -65,70 +43,28 @@ namespace MoonGale.Runtime.Player
             moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
             attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
 
-            absoluteMoveDirection = Vector3.zero;
-            currentMoveSpeed = 0f;
-        }
-
-        private void FixedUpdate()
-        {
-            UpdateCurrentSpeed();
-            UpdateMovement();
-        }
-
-        private void UpdateCurrentSpeed()
-        {
-            var newMoveSpeed = isMoveInputActive
-                ? currentMoveSpeed + playerSettings.MoveAcceleration * Time.deltaTime
-                : currentMoveSpeed - playerSettings.StopAcceleration * Time.deltaTime;
-
-            var clampedMoveSpeed = Mathf.Clamp(
-                newMoveSpeed,
-                min: 0f,
-                max: playerSettings.MaxMoveSpeed
-            );
-
-            currentMoveSpeed = clampedMoveSpeed;
-        }
-
-        private void UpdateMovement()
-        {
-            if (currentMoveSpeed <= 0)
-            {
-                return;
-            }
-
-            var mainCameraTransform = mainCamera.transform;
-            var relativeMotion = GetRelativeMotion(mainCameraTransform, absoluteMoveDirection);
-
-            characterController.Move(relativeMotion);
-        }
-
-        private Vector3 GetRelativeMotion(Transform forwardTransform, Vector3 absoluteDirection)
-        {
-            var direction = forwardTransform.forward;
-            var relativeProjectedDirection = Vector3.ProjectOnPlane(direction, Vector3.up);
-            var relativeDirection = relativeProjectedDirection.normalized;
-            var relativeRotation = Quaternion.LookRotation(relativeDirection);
-            var relativeMotion = relativeRotation * absoluteDirection * currentMoveSpeed;
-
-            return relativeMotion;
+            movementController.AbsoluteMoveDirection = Vector3.zero;
+            movementController.CurrentMoveSpeed = 0f;
         }
 
         private void OnMoveInputActionPerformed(InputAction.CallbackContext context)
         {
             var axis = context.ReadValue<Vector2>();
-            absoluteMoveDirection.x = axis.x;
-            absoluteMoveDirection.z = axis.y;
-            isMoveInputActive = true;
+            movementController.AbsoluteMoveDirection = new Vector3(axis.x, 0f, axis.y);
+            movementController.IsMoveInputActive = true;
+            onMovementInputStarted?.Invoke();
         }
 
         private void OnMoveInputActionCanceled(InputAction.CallbackContext context)
         {
-            isMoveInputActive = false;
+            movementController.IsMoveInputActive = false;
+            onMovementInputStopped.Invoke();
         }
 
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)
         {
+            attackController.Attack();
+            onAttackInputStarted?.Invoke();
         }
     }
 }
