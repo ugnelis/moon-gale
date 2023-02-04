@@ -1,8 +1,10 @@
-﻿using MoonGale.Core;
+﻿using System.Collections.Generic;
+using MoonGale.Core;
 using MoonGale.Runtime.Player;
 using MoonGale.Runtime.Systems;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace MoonGale.Runtime.UI
@@ -14,7 +16,14 @@ namespace MoonGale.Runtime.UI
         private CanvasGroup statsCanvasGroup;
 
         [SerializeField]
+        private CanvasGroup pauseCanvasGroup;
+
+        [SerializeField]
         private CanvasGroup gameOverCanvasGroup;
+
+        [Header("Inputs")]
+        [SerializeField]
+        private InputActionReference pauseInputActionReference;
 
         [Header("Text Mesh Pro")]
         [SerializeField]
@@ -22,14 +31,17 @@ namespace MoonGale.Runtime.UI
 
         [Header("Buttons")]
         [SerializeField]
-        private Button restartGameButton;
+        private List<Button> restartGameButtons;
 
         [SerializeField]
-        private Button mainMenuGameButton;
+        private List<Button> mainMenuGameButtons;
 
         [Header("Text")]
         [SerializeField]
         private string playerDeathMessage = "YOU DIED!";
+
+        private bool isGameOver;
+        private bool isPaused;
 
         private ISceneSystem sceneSystem;
 
@@ -41,30 +53,90 @@ namespace MoonGale.Runtime.UI
         private void Start()
         {
             ActiveCanvasGroup(statsCanvasGroup);
+            DeactivateCanvasGroup(pauseCanvasGroup);
             DeactivateCanvasGroup(gameOverCanvasGroup);
         }
 
         private void OnEnable()
         {
+            pauseInputActionReference.action.performed += OnPausePerformed;
+
+            GameManager.AddListener<MenuSceneLoadedMessage>(OnMenuSceneLoadedMessage);
             GameManager.AddListener<MainSceneLoadedMessage>(OnMainSceneLoadedMessage);
             GameManager.AddListener<PlayerDeathMessage>(OnPlayerDeathMessage);
-            mainMenuGameButton.onClick.AddListener(OnMainMenuButtonClicked);
-            restartGameButton.onClick.AddListener(OnRestartButtonClicked);
+
+            foreach (var button in mainMenuGameButtons)
+            {
+                button.onClick.AddListener(OnMainMenuButtonClicked);
+            }
+
+            foreach (var button in restartGameButtons)
+            {
+                button.onClick.AddListener(OnRestartButtonClicked);
+            }
         }
 
         private void OnDisable()
         {
-            GameManager.RemoveListener<MainSceneLoadedMessage>(OnMainSceneLoadedMessage);
+            pauseInputActionReference.action.performed -= OnPausePerformed;
+
+            GameManager.RemoveListener<MenuSceneLoadedMessage>(OnMenuSceneLoadedMessage);
             GameManager.RemoveListener<MainSceneLoadedMessage>(OnMainSceneLoadedMessage);
             GameManager.RemoveListener<PlayerDeathMessage>(OnPlayerDeathMessage);
-            mainMenuGameButton.onClick.RemoveListener(OnMainMenuButtonClicked);
-            restartGameButton.onClick.RemoveListener(OnRestartButtonClicked);
+
+            foreach (var button in mainMenuGameButtons)
+            {
+                button.onClick.RemoveListener(OnMainMenuButtonClicked);
+            }
+
+            foreach (var button in restartGameButtons)
+            {
+                button.onClick.RemoveListener(OnRestartButtonClicked);
+            }
+
+            isGameOver = false;
+            isPaused = false;
+        }
+
+        private void OnPausePerformed(InputAction.CallbackContext context)
+        {
+            if (isGameOver)
+            {
+                return;
+            }
+
+            if (isPaused)
+            {
+                DeactivateCanvasGroup(pauseCanvasGroup);
+                Time.timeScale = 1f;
+                isPaused = false;
+            }
+            else
+            {
+                ActiveCanvasGroup(pauseCanvasGroup);
+                Time.timeScale = 0f;
+                isPaused = true;
+            }
+        }
+
+        private void OnMenuSceneLoadedMessage(MenuSceneLoadedMessage message)
+        {
+            ActiveCanvasGroup(statsCanvasGroup);
+            DeactivateCanvasGroup(pauseCanvasGroup);
+            DeactivateCanvasGroup(gameOverCanvasGroup);
+
+            Time.timeScale = 1f;
+            isGameOver = false;
         }
 
         private void OnMainSceneLoadedMessage(MainSceneLoadedMessage message)
         {
             ActiveCanvasGroup(statsCanvasGroup);
+            DeactivateCanvasGroup(pauseCanvasGroup);
             DeactivateCanvasGroup(gameOverCanvasGroup);
+
+            Time.timeScale = 1f;
+            isGameOver = false;
         }
 
         private void OnPlayerDeathMessage(PlayerDeathMessage message)
@@ -72,6 +144,9 @@ namespace MoonGale.Runtime.UI
             gameOverText.text = playerDeathMessage;
             DeactivateCanvasGroup(statsCanvasGroup);
             ActiveCanvasGroup(gameOverCanvasGroup);
+
+            Time.timeScale = 1f;
+            isGameOver = true;
         }
 
         private void OnMainMenuButtonClicked()
@@ -81,7 +156,7 @@ namespace MoonGale.Runtime.UI
 
         private void OnRestartButtonClicked()
         {
-            sceneSystem.ReloadScene();
+            sceneSystem.LoadMainScene();
         }
 
         private static void ActiveCanvasGroup(CanvasGroup canvasGroup)
