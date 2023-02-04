@@ -1,4 +1,5 @@
 ﻿using System;
+using FMODUnity;
 using MoonGale.Core;
 using UnityEngine;
 
@@ -9,13 +10,28 @@ namespace MoonGale.Runtime.Systems
         [SerializeField]
         private IntensitySystemSettings settings;
 
+        [SerializeField]
+        private StudioGlobalParameterTrigger globalParameterTrigger;
+
         private IScoreSystem scoreSystem;
 
-        public int SpawnRate { get; private set; }
+        public int IntensityLevel { get; private set; }
+
+        private int previousIntensityLevel;
 
         private void Awake()
         {
             scoreSystem = GameManager.GetSystem<IScoreSystem>();
+        }
+
+        private void OnEnable()
+        {
+            GameManager.AddListener<MainSceneLoadedMessage>(OnMainSceneLoaded);
+        }
+
+        private void OnDisable()
+        {
+            GameManager.RemoveListener<MainSceneLoadedMessage>(OnMainSceneLoaded);
         }
 
         private void Start()
@@ -28,13 +44,31 @@ namespace MoonGale.Runtime.Systems
             UpdateSpawnRate();
         }
 
+        private void OnMainSceneLoaded(MainSceneLoadedMessage message)
+        {
+            UpdateSpawnRate();
+        }
+
         private void UpdateSpawnRate()
         {
-            var survivedTimeSeconds = (int) scoreSystem.SurvivedTimeSeconds;
-            var multiplier = survivedTimeSeconds / settings.SpawnRateIncreaseIntervalSeconds;
-            var spawnRate = multiplier * settings.SpawnRateIncreaseAmount;
+            var survivedTimeSeconds = scoreSystem.SurvivedTimeSeconds;
+            var multiplier = (int) (survivedTimeSeconds / settings.SpawnRateIncreaseIntervalSeconds) + 1;
 
-            SpawnRate = Math.Max(settings.MinSpawnRate, spawnRate);
+            var oldIntensity = IntensityLevel;
+            var newIntensity = multiplier * settings.SpawnRateIncreaseAmount;
+
+            IntensityLevel = Math.Max(settings.MinSpawnRate, newIntensity);
+
+            if (oldIntensity != newIntensity)
+            {
+                OnIntensityLevelChanged(oldIntensity, newIntensity);
+            }
+        }
+
+        private void OnIntensityLevelChanged(int oldIntensity, int newIntensity)
+        {
+            globalParameterTrigger.Value = newIntensity;
+            globalParameterTrigger.TriggerParameters();
         }
     }
 }
