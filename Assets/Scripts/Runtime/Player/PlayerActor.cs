@@ -10,20 +10,10 @@ namespace MoonGale.Runtime.Player
         private CharacterController characterController;
 
         [SerializeField]
+        private PlayerSettings playerSettings;
+
+        [SerializeField]
         private Camera mainCamera;
-
-        [Header("Movement")]
-        [Min(0f)]
-        [SerializeField]
-        private float maxMoveSpeed = 0.1f;
-
-        [Min(0f)]
-        [SerializeField]
-        private float moveAcceleration = 2f;
-
-        [Min(0f)]
-        [SerializeField]
-        private float stopAcceleration = 1f;
 
         [Header("Inputs")]
         [SerializeField]
@@ -88,10 +78,14 @@ namespace MoonGale.Runtime.Player
         private void UpdateCurrentSpeed()
         {
             var newMoveSpeed = isMoveInputActive
-                ? currentMoveSpeed + moveAcceleration * Time.deltaTime
-                : currentMoveSpeed - stopAcceleration * Time.deltaTime;
+                ? currentMoveSpeed + playerSettings.MoveAcceleration * Time.deltaTime
+                : currentMoveSpeed - playerSettings.StopAcceleration * Time.deltaTime;
 
-            var clampedMoveSpeed = Mathf.Clamp(newMoveSpeed, min: 0f, max: maxMoveSpeed);
+            var clampedMoveSpeed = Mathf.Clamp(
+                newMoveSpeed,
+                min: 0f,
+                max: playerSettings.MaxMoveSpeed
+            );
 
             currentMoveSpeed = clampedMoveSpeed;
         }
