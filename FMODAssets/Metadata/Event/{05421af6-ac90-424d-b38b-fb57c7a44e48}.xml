@@ -108,6 +108,9 @@
 		<relationship name="fadeInCurve">
 			<destination>{cfe26127-d0f0-4e83-bd9e-2da8bd613e93}</destination>
 		</relationship>
+		<relationship name="fadeOutCurve">
+			<destination>{0f4def8b-1402-4c43-b268-afded2ae5346}</destination>
+		</relationship>
 		<relationship name="sounds">
 			<destination>{18c4a2c1-5992-4a03-b16d-f03b1250fd31}</destination>
 			<destination>{20bf30c8-2388-43bd-8d10-b8a6db1a2c46}</destination>
@@ -140,6 +143,9 @@
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{57783da5-4cb0-49bf-acd3-1c7f58d33ad2}</destination>
+		</relationship>
+		<relationship name="fadeOutCurve">
+			<destination>{3fcefb76-d9cc-4255-9ce1-5880c2416954}</destination>
 		</relationship>
 		<relationship name="sounds">
 			<destination>{e4dc812b-5b2d-4323-a726-11e0d06c58b2}</destination>
@@ -177,7 +183,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>2</value>
+			<value>0.49632653061224491</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{31946768-b349-44f2-b3b8-67128a31575e}</destination>
@@ -199,6 +205,14 @@
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{7f407355-8c8f-4d9d-b90b-62e758dc0ba4}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{0f4def8b-1402-4c43-b268-afded2ae5346}">
+		<relationship name="startPoint">
+			<destination>{cf8aa214-38a5-463d-aae0-6d0682df6e19}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2ff45285-f248-48ce-8a5f-66e3bd8fc86e}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{18c4a2c1-5992-4a03-b16d-f03b1250fd31}">
@@ -233,7 +247,7 @@
 	</object>
 	<object class="PlayPercentage" id="{a7c424c0-1000-4940-a28a-dc9bf323dcc0}">
 		<property name="percentage">
-			<value>75</value>
+			<value>50</value>
 		</property>
 		<relationship name="sound">
 			<destination>{18c4a2c1-5992-4a03-b16d-f03b1250fd31}</destination>
@@ -244,6 +258,7 @@
 			<destination>{0cd948b7-ba10-4b92-8aef-d7e535dcaed4}</destination>
 			<destination>{0545d027-b46b-4d35-9652-5ee38303e18f}</destination>
 			<destination>{247d2e2e-4d03-43b0-875b-9ee4687d9fa1}</destination>
+			<destination>{9c86daee-b0c3-4313-be21-d9e3d10ed139}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{46f17c47-cb6d-4920-b22c-7fee21ae8c14}" />
@@ -253,6 +268,14 @@
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{e2e66e60-ae42-41c0-976b-87e8e30ccda7}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{3fcefb76-d9cc-4255-9ce1-5880c2416954}">
+		<relationship name="startPoint">
+			<destination>{4fece617-843b-4e4f-8b63-88f7fba34fc2}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2c148f27-cef2-4159-953b-f87a92c56c98}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{e4dc812b-5b2d-4323-a726-11e0d06c58b2}">
@@ -297,7 +320,7 @@
 	</object>
 	<object class="PlayPercentage" id="{4d2e7497-db51-4941-a318-1432ae30ff02}">
 		<property name="percentage">
-			<value>75</value>
+			<value>25</value>
 		</property>
 		<relationship name="sound">
 			<destination>{e4dc812b-5b2d-4323-a726-11e0d06c58b2}</destination>
@@ -308,6 +331,7 @@
 			<destination>{89482ab3-095c-4e60-8c3e-57ddeb7d37ab}</destination>
 			<destination>{7e7773a6-95b9-42fd-926a-494e45892327}</destination>
 			<destination>{7b19143d-608f-4213-b11a-28872b38b20f}</destination>
+			<destination>{9cd0b6c5-cb47-45cb-8045-45cb43dfe941}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e4ae2c47-5e8e-4d29-81fd-6f740f38b383}" />
@@ -331,13 +355,31 @@
 			<value>1</value>
 		</property>
 	</object>
-	<object class="MixerBusFader" id="{0cd948b7-ba10-4b92-8aef-d7e535dcaed4}" />
-	<object class="GainEffect" id="{0545d027-b46b-4d35-9652-5ee38303e18f}">
-		<property name="gain">
-			<value>10</value>
+	<object class="AutomationPoint" id="{cf8aa214-38a5-463d-aae0-6d0682df6e19}">
+		<property name="position">
+			<value>0.12</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.170847386</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{2ff45285-f248-48ce-8a5f-66e3bd8fc86e}">
+		<property name="position">
+			<value>0.49632653061224491</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="MixerBusFader" id="{0cd948b7-ba10-4b92-8aef-d7e535dcaed4}" />
+	<object class="GainEffect" id="{0545d027-b46b-4d35-9652-5ee38303e18f}" />
 	<object class="DelayEffect" id="{247d2e2e-4d03-43b0-875b-9ee4687d9fa1}">
+		<property name="delay">
+			<value>16</value>
+		</property>
 		<property name="feedback">
 			<value>0</value>
 		</property>
@@ -347,6 +389,11 @@
 		<relationship name="modulators">
 			<destination>{9e026dcc-f13a-4cd3-a04d-bcafa6ce0f94}</destination>
 		</relationship>
+	</object>
+	<object class="MultibandEqEffect" id="{9c86daee-b0c3-4313-be21-d9e3d10ed139}">
+		<property name="frequencyA">
+			<value>2000</value>
+		</property>
 	</object>
 	<object class="AutomationPoint" id="{c6f08b80-1ed6-4eb6-8e2f-9a06b37f1ddf}">
 		<property name="position">
@@ -367,6 +414,25 @@
 			<value>1</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{4fece617-843b-4e4f-8b63-88f7fba34fc2}">
+		<property name="position">
+			<value>0.22</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.271312386</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2c148f27-cef2-4159-953b-f87a92c56c98}">
+		<property name="position">
+			<value>0.49632653061224491</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{89482ab3-095c-4e60-8c3e-57ddeb7d37ab}" />
 	<object class="MultibandEqEffect" id="{7e7773a6-95b9-42fd-926a-494e45892327}">
 		<property name="filterTypeA">
@@ -380,6 +446,9 @@
 		</property>
 	</object>
 	<object class="DelayEffect" id="{7b19143d-608f-4213-b11a-28872b38b20f}">
+		<property name="delay">
+			<value>6.5999999</value>
+		</property>
 		<property name="feedback">
 			<value>0</value>
 		</property>
@@ -390,12 +459,17 @@
 			<destination>{1a79de8f-000f-44c2-8b1c-2d564daa78b0}</destination>
 		</relationship>
 	</object>
+	<object class="MultibandEqEffect" id="{9cd0b6c5-cb47-45cb-8045-45cb43dfe941}">
+		<property name="frequencyA">
+			<value>2500</value>
+		</property>
+	</object>
 	<object class="RandomizerModulator" id="{9e026dcc-f13a-4cd3-a04d-bcafa6ce0f94}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>delay</value>
 		</property>
 		<property name="amount">
-			<value>51.5</value>
+			<value>18.5</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{1a79de8f-000f-44c2-8b1c-2d564daa78b0}">
@@ -403,7 +477,7 @@
 			<value>delay</value>
 		</property>
 		<property name="amount">
-			<value>51.5</value>
+			<value>22.5</value>
 		</property>
 	</object>
 </objects>
