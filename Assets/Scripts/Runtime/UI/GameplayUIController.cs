@@ -5,6 +5,7 @@ using MoonGale.Runtime.Player;
 using MoonGale.Runtime.Systems;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -65,6 +66,13 @@ namespace MoonGale.Runtime.UI
 
         [SerializeField]
         private string newBestTimeSuffix = " (New Best)";
+
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onGameResumed;
+
+        [SerializeField]
+        private UnityEvent onGamePaused;
 
         private bool isGameOver;
         private bool isPaused;
@@ -141,12 +149,14 @@ namespace MoonGale.Runtime.UI
                 DeactivateCanvasGroup(pauseCanvasGroup);
                 Time.timeScale = 1f;
                 isPaused = false;
+                onGameResumed?.Invoke();
             }
             else
             {
                 ActiveCanvasGroup(pauseCanvasGroup);
                 Time.timeScale = 0f;
                 isPaused = true;
+                onGamePaused?.Invoke();
             }
         }
 

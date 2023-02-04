@@ -139,7 +139,7 @@ namespace MoonGale.Runtime.Levels
         [Button("Propagate")]
         private void PropagateOneStepEditor()
         {
-            if (Application.isPlaying)
+            if (Application.isPlaying == false)
             {
                 Debug.LogWarning("Only works in play-mode");
                 return;
