@@ -22,10 +22,28 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float stopAcceleration = 1f;
 
+        [Header("Attacks")]
+        [Min(0f)]
+        [SerializeField]
+        private float attackDurationSeconds = 0.3f;
+
+        [Min(0f)]
+        [SerializeField]
+        private float attackCooldownSeconds = 0.3f;
+
+        [SerializeField]
+        private LayerMask attackLayerMask;
+
         public float MaxMoveSpeed => maxMoveSpeed;
 
         public float MoveAcceleration => moveAcceleration;
 
         public float StopAcceleration => stopAcceleration;
+
+        public float AttackDurationSeconds => attackDurationSeconds;
+
+        public float AttackCooldownSeconds => attackCooldownSeconds;
+
+        public LayerMask AttackLayerMask => attackLayerMask;
     }
 }

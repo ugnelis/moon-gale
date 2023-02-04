@@ -15,3 +15,5 @@ MonoBehaviour:
   maxMoveSpeed: 0.1
   moveAcceleration: 2
   stopAcceleration: 1
+  attackDurationSeconds: 0.1
+  attackCooldownSeconds: 0.3
