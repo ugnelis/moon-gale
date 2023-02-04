@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GrassTransi2
+  m_Shader: {fileID: -6465566751694194690, guid: 3d2ed417dca706442bdc0edf7b1b663a,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_66111ad94f7a4d5db13264f7d832a044_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 5183b7a1855a65a428c791790c682c09, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaTransition: 1
+    - _Alpha_Texture_Color: 0
+    - _MainTex_Scale: 1
+    - _NoiseScale: 0.01
+    - _Object_Texture_Color: 1
+    - _Origin: -0.07
+    - _Progress: 0.229
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ScrollSpeed: 4
+    - _ShadowFalloff: 1.27
+    - _ShadowIntensity: 0
+    - _Spread: 0
+    - _WorldSpace: 0
+    m_Colors:
+    - _ColorA: {r: 0.24014232, g: 0.24528301, b: 0.12611249, a: 0}
+    - _ColorB: {r: 1, g: 0.0922598, b: 0, a: 0}
+    - _ColorDown: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0}
+    - _ColorTint: {r: 0.3647059, g: 0.59607846, b: 0.30980393, a: 1}
+    - _ColorUp: {r: 1, g: 1, b: 1, a: 0}
+    - _Scroll: {r: 0.005, g: 0.0025, b: 0.005, a: 0}
+    - _ShadowTilling: {r: 2, g: 5, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &3404389930806526309
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
