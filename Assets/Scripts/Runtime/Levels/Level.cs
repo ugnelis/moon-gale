@@ -13,6 +13,9 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private NodeGraph graph;
 
+        [SerializeField]
+        private Transform nodeParent;
+
 #if UNITY_EDITOR
         // ReSharper disable once UnusedMember.Local
         [Button("Connect Graph")]
@@ -20,13 +23,13 @@ namespace MoonGale.Runtime.Levels
         {
             graph.ClearNodes();
 
-            var childCount = transform.childCount;
+            var childCount = nodeParent.childCount;
             var nodes = new List<Node>();
 
             // Collect candidates
             for (var index = 0; index < childCount; index++)
             {
-                var child = transform.GetChild(index);
+                var child = nodeParent.GetChild(index);
 
                 if (child.TryGetComponent<Node>(out var node))
                 {
