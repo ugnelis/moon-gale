@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CartoonishShaderV3
+  m_Name: CartoonishShaderV4
   m_Shader: {fileID: -6465566751694194690, guid: f60772ef3da9ce94886feaad3e97c36f,
     type: 3}
   m_ValidKeywords: []
@@ -56,14 +56,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Drawing_Streanght: 0.32
-    - _MainTextureScale: 2
+    - _Drawing_Streanght: 0.52
+    - _MainTextureScale: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smuged_Streanght: 0.005
     - _Speed: 8
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 3, g: 3, b: 0, a: 0}
-    - _Tint: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tint: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
   m_BuildTextureStacks: []
