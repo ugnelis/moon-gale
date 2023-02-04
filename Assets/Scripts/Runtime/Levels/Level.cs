@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MoonGale.Core;
+using MoonGale.Runtime.Levels.Nodes;
 using MoonGale.Runtime.Player;
 using NaughtyAttributes;
 using UnityEngine;
@@ -98,6 +99,7 @@ namespace MoonGale.Runtime.Levels
         {
             var nodePosition = oldNode.Position;
             var nodeGameObject = oldNode.gameObject;
+            var neighbors = oldNode.Neighbors;
 
             // Destroy old node.
             Destroy(nodeGameObject);
@@ -109,9 +111,58 @@ namespace MoonGale.Runtime.Levels
                 Quaternion.identity,
                 nodeParent
             );
+            newNode.SetNeighbors(neighbors);
 
-            ConnectNeighbors(graph.Nodes, newNode);
-            graph.AddNode(newNode);
+            graph.ReplaceNode(oldNode, newNode);
+        }
+
+#if UNITY_EDITOR
+        // ReSharper disable once UnusedMember.Local
+        [Button("Propagate 1 step")]
+        private void PropagateOneStepEditor()
+        {
+            // var childCount = nodeParent.childCount;
+            // var rootNodes = new List<Node>();
+
+            var rootNodes = new List<Node>();
+
+            foreach (var node in graph.Nodes)
+            {
+                if (node.NodeObject is RootNodeObject)
+                {
+                    rootNodes.Add(node);
+                }
+            }
+
+            foreach (var node in rootNodes)
+            {
+                PerformBreadthFirstSearch(node);
+            }
+        }
+#endif
+
+        private void PerformBreadthFirstSearch(Node root, int steps = 1)
+        {
+            if (root.NodeObject is not RootNodeObject)
+            {
+                return;
+            }
+
+            var queue = new Queue<Node>();
+            queue.Enqueue(root);
+
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+
+                foreach (var neighborNode in node.Neighbors)
+                {
+                    if (neighborNode.NodeObject is not AirNodeObject) continue;
+
+                    ReplaceNode(neighborNode, levelSettings.RootNodePrefab);
+                    queue.Enqueue(neighborNode);
+                }
+            }
         }
     }
 }

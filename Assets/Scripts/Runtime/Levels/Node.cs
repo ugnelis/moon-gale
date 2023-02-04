@@ -127,6 +127,23 @@ namespace MoonGale.Runtime.Levels
             neighbors.Remove(node);
         }
 
+        public void ReplaceNeighbor(Node oldNode, Node newNode)
+        {
+            var index = neighbors.IndexOf(oldNode);
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            neighbors[index] = newNode;
+        }
+
+        public void SetNeighbors(IEnumerable<Node> newNeighbors)
+        {
+            neighbors.AddRange(newNeighbors);
+        }
+
         public void ClearNeighbors()
         {
             neighbors.Clear();
