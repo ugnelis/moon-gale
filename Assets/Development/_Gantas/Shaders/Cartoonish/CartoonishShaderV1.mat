@@ -59,10 +59,10 @@ Material:
     - _Drawing_Streanght: 0.7
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smuged_Streanght: 0.002
+    - _Smuged_Streanght: 0.008
     - _Speed: 2.5
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 10, g: 10, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
