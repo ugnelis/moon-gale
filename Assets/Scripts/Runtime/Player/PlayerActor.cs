@@ -1,4 +1,6 @@
 ﻿using MoonGale.Core;
+using MoonGale.Runtime.Systems;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -27,6 +29,18 @@ namespace MoonGale.Runtime.Player
         [Header("Events")]
         [SerializeField]
         private UnityEvent onPlayerDeath;
+
+        private IScoreSystem scoreSystem;
+
+        private void Awake()
+        {
+            scoreSystem = GameManager.GetSystem<IScoreSystem>();
+        }
+
+        private void Start()
+        {
+            scoreSystem.StartTimer();
+        }
 
         private void OnEnable()
         {
@@ -65,9 +79,16 @@ namespace MoonGale.Runtime.Player
 
         private void OnDebuffDurationExceeded()
         {
+            GameOver();
+        }
+
+        [Button("Kill Player")]
+        private void GameOver()
+        {
             movementController.enabled = false;
             attackController.enabled = false;
             debuffController.enabled = false;
+            scoreSystem.StopTimer();
             onPlayerDeath.Invoke();
             GameManager.Publish(new PlayerDeathMessage());
         }

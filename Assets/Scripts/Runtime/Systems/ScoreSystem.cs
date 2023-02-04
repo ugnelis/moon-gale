@@ -1,5 +1,4 @@
 ﻿using MoonGale.Core;
-using MoonGale.Runtime.Player;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Systems
@@ -11,35 +10,6 @@ namespace MoonGale.Runtime.Systems
 
         public float SurvivedTimeSeconds { get; private set; }
 
-        private void OnEnable()
-        {
-            GameManager.AddListener<MenuSceneLoadedMessage>(OnMenuSceneLoaded);
-            GameManager.AddListener<MainSceneLoadedMessage>(OnMainSceneLoaded);
-            GameManager.AddListener<PlayerDeathMessage>(OnPlayerDeath);
-        }
-
-        private void OnDisable()
-        {
-            GameManager.RemoveListener<MenuSceneLoadedMessage>(OnMenuSceneLoaded);
-            GameManager.RemoveListener<MainSceneLoadedMessage>(OnMainSceneLoaded);
-            GameManager.RemoveListener<PlayerDeathMessage>(OnPlayerDeath);
-        }
-
-        private void OnMenuSceneLoaded(MenuSceneLoadedMessage message)
-        {
-            StopTimer();
-        }
-
-        private void OnMainSceneLoaded(MainSceneLoadedMessage message)
-        {
-            StartTimer();
-        }
-
-        private void OnPlayerDeath(PlayerDeathMessage message)
-        {
-            StopTimer();
-        }
-
         private void Update()
         {
             if (isTimerStarted == false)
@@ -50,10 +20,24 @@ namespace MoonGale.Runtime.Systems
             SurvivedTimeSeconds += Time.deltaTime;
         }
 
+        public void StartTimer()
+        {
+            SurvivedTimeSeconds = 0f;
+            isTimerStarted = true;
+        }
+
+        public void StopTimer()
+        {
+            SaveScore(new ScoreData(SurvivedTimeSeconds));
+            isTimerStarted = false;
+        }
+
         public void SaveScore(ScoreData data)
         {
             if (TryGetBestScore(out var bestScore) == false)
             {
+                var initialJson = JsonUtility.ToJson(data);
+                PlayerPrefs.SetString(PlayerPrefsKey, initialJson);
                 return;
             }
 
@@ -84,18 +68,6 @@ namespace MoonGale.Runtime.Systems
 
             data = scoreData;
             return true;
-        }
-
-        private void StartTimer()
-        {
-            SurvivedTimeSeconds = 0f;
-            isTimerStarted = true;
-        }
-
-        private void StopTimer()
-        {
-            SaveScore(new ScoreData(SurvivedTimeSeconds));
-            isTimerStarted = false;
         }
     }
 }

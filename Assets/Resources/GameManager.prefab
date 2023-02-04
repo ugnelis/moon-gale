@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5454664048035183429
 Transform:
   m_ObjectHideFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   sceneSystem: {fileID: 9220059646660000287}
   scoreSystem: {fileID: 3248427926781671804}
   controllerParentTransform: {fileID: 9177332152614552389}
+  systemsParentTransform: {fileID: 5454664048035183429}
 --- !u!1 &8783124767785746548
 GameObject:
   m_ObjectHideFlags: 0

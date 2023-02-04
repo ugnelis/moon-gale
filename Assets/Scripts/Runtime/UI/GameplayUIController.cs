@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MoonGale.Core;
 using MoonGale.Runtime.Player;
 using MoonGale.Runtime.Systems;
@@ -30,6 +31,15 @@ namespace MoonGale.Runtime.UI
         [SerializeField]
         private TMP_Text gameOverText;
 
+        [SerializeField]
+        private TMP_Text gameOverSurvivedTimeText;
+
+        [SerializeField]
+        private TMP_Text gameOverBestSurvivedTimeText;
+
+        [SerializeField]
+        private TMP_Text survivedTimeText;
+
         [Header("Buttons")]
         [SerializeField]
         private List<Button> restartGameButtons;
@@ -45,15 +55,23 @@ namespace MoonGale.Runtime.UI
 
         [Header("Text")]
         [SerializeField]
-        private string playerDeathMessage = "YOU DIED!";
+        private string timerTextFormat = "mm':'ss";
+
+        [SerializeField]
+        private string playerDeathMessage = "Game Over!";
+
+        [SerializeField]
+        private string newBestTimeSuffix = " (New Best)";
 
         private bool isGameOver;
         private bool isPaused;
 
+        private IScoreSystem scoreSystem;
         private ISceneSystem sceneSystem;
 
         private void Awake()
         {
+            scoreSystem = GameManager.GetSystem<IScoreSystem>();
             sceneSystem = GameManager.GetSystem<ISceneSystem>();
         }
 
@@ -64,12 +82,14 @@ namespace MoonGale.Runtime.UI
             DeactivateCanvasGroup(gameOverCanvasGroup);
         }
 
+        private void Update()
+        {
+            survivedTimeText.text = GetSurvivedTimeText();
+        }
+
         private void OnEnable()
         {
             pauseInputActionReference.action.performed += OnPausePerformed;
-
-            GameManager.AddListener<MenuSceneLoadedMessage>(OnMenuSceneLoadedMessage);
-            GameManager.AddListener<MainSceneLoadedMessage>(OnMainSceneLoadedMessage);
             GameManager.AddListener<PlayerDeathMessage>(OnPlayerDeathMessage);
 
             foreach (var button in mainMenuGameButtons)
@@ -86,9 +106,6 @@ namespace MoonGale.Runtime.UI
         private void OnDisable()
         {
             pauseInputActionReference.action.performed -= OnPausePerformed;
-
-            GameManager.RemoveListener<MenuSceneLoadedMessage>(OnMenuSceneLoadedMessage);
-            GameManager.RemoveListener<MainSceneLoadedMessage>(OnMainSceneLoadedMessage);
             GameManager.RemoveListener<PlayerDeathMessage>(OnPlayerDeathMessage);
 
             foreach (var button in mainMenuGameButtons)
@@ -127,26 +144,6 @@ namespace MoonGale.Runtime.UI
             }
         }
 
-        private void OnMenuSceneLoadedMessage(MenuSceneLoadedMessage message)
-        {
-            ActiveCanvasGroup(statsCanvasGroup);
-            DeactivateCanvasGroup(pauseCanvasGroup);
-            DeactivateCanvasGroup(gameOverCanvasGroup);
-
-            Time.timeScale = 1f;
-            isGameOver = false;
-        }
-
-        private void OnMainSceneLoadedMessage(MainSceneLoadedMessage message)
-        {
-            ActiveCanvasGroup(statsCanvasGroup);
-            DeactivateCanvasGroup(pauseCanvasGroup);
-            DeactivateCanvasGroup(gameOverCanvasGroup);
-
-            Time.timeScale = 1f;
-            isGameOver = false;
-        }
-
         private void OnPlayerDeathMessage(PlayerDeathMessage message)
         {
             gameOverText.text = playerDeathMessage;
@@ -158,6 +155,22 @@ namespace MoonGale.Runtime.UI
             EventSystem.current.SetSelectedGameObject(gameOverFocusButton.gameObject);
 
             Time.timeScale = 1f;
+            var survivedTime = GetSurvivedTimeText();
+            gameOverSurvivedTimeText.text = survivedTime;
+
+            if (scoreSystem.TryGetBestScore(out var bestScore))
+            {
+                var bestSurvivedTime = GetSurvivedTimeText(bestScore.SurvivedTimeSeconds);
+                if (Mathf.Approximately(bestScore.SurvivedTimeSeconds, scoreSystem.SurvivedTimeSeconds))
+                {
+                    gameOverBestSurvivedTimeText.text = bestSurvivedTime + newBestTimeSuffix;
+                }
+                else
+                {
+                    gameOverBestSurvivedTimeText.text = bestSurvivedTime;
+                }
+            }
+
             isGameOver = true;
         }
 
@@ -183,6 +196,19 @@ namespace MoonGale.Runtime.UI
             canvasGroup.alpha = 0f;
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
+        }
+
+        private string GetSurvivedTimeText()
+        {
+            return GetSurvivedTimeText(scoreSystem.SurvivedTimeSeconds);
+        }
+
+        private string GetSurvivedTimeText(float seconds)
+        {
+            var timeSpan = TimeSpan.FromSeconds(seconds);
+            var timeText = timeSpan.ToString(timerTextFormat);
+
+            return timeText;
         }
     }
 }

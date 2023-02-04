@@ -20,6 +20,9 @@ namespace MoonGale.Runtime
         [SerializeField]
         private Transform controllerParentTransform;
 
+        [SerializeField]
+        private Transform systemsParentTransform;
+
         protected override string GetApplicationName()
         {
             return nameof(MoonGaleGameManager);
@@ -30,7 +33,9 @@ namespace MoonGale.Runtime
             AddSystem<InputManagerSystem, IInputManagerSystem>(inputManagerSystem);
             AddSystem<SceneSystem, ISceneSystem>(sceneSystem);
             AddSystem<ScoreSystem, IScoreSystem>(scoreSystem);
+
             controllerParentTransform.gameObject.SetActive(true);
+            systemsParentTransform.gameObject.SetActive(true);
         }
     }
 }
