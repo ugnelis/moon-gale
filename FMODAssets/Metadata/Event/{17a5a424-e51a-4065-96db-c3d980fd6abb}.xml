@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{17a5a424-e51a-4065-96db-c3d980fd6abb}">
 		<property name="name">
-			<value>Amb_Cave</value>
+			<value>Amb_Netural_Cave</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -31,6 +31,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{b09f431a-145e-4d4b-bba0-4cf9c5cd116e}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{7bc627eb-b156-4d7f-84db-a28a32fb6de3}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{585a7ed8-a042-4bb3-b107-412c1e6da550}">
