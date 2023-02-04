@@ -5,7 +5,7 @@
 			<value>Roots_Appear</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2eb9f1f2-1bbf-4d52-abb2-556651391737}</destination>
@@ -115,7 +115,6 @@
 	<object class="MixerBusEffectChain" id="{bbd44c4a-cdec-4d80-bbad-6b89cefa5eea}">
 		<relationship name="effects">
 			<destination>{eaa6b5f7-f13c-493a-8245-e3d29c6e664f}</destination>
-			<destination>{dd81a733-db83-4250-967a-c14719646776}</destination>
 			<destination>{2b1a8db6-913f-4957-867c-634899ad9d54}</destination>
 		</relationship>
 	</object>
@@ -145,11 +144,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{bbb1fdd8-dabb-4824-b44f-263cb96386b6}" />
 	<object class="MixerBusFader" id="{eaa6b5f7-f13c-493a-8245-e3d29c6e664f}" />
-	<object class="SpatialiserEffect" id="{dd81a733-db83-4250-967a-c14719646776}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
-	</object>
 	<object class="GainEffect" id="{2b1a8db6-913f-4957-867c-634899ad9d54}">
 		<property name="gain">
 			<value>10</value>
