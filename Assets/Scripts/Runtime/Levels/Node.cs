@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ namespace MoonGale.Runtime.Levels
         [Header("Graph")]
         [SerializeField]
         private NodeObject nodeObject;
+
+        [SerializeField]
+        private Level ownerLevel;
 
         [SerializeField]
         private NodeGraph owner;
@@ -43,11 +47,19 @@ namespace MoonGale.Runtime.Levels
             }
         }
 
+        public Level OwnerLevel
+        {
+            get => ownerLevel;
+            set => ownerLevel = value;
+        }
+
         public NodeGraph Owner
         {
             get => owner;
             set => owner = value;
         }
+
+        private bool isQuitting;
 
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
@@ -66,6 +78,21 @@ namespace MoonGale.Runtime.Levels
             var color = Color.white;
             color.a = 0.5f;
             DrawNodeConnections(color);
+        }
+
+        private void OnEnable()
+        {
+            Application.quitting += OnQuitting;
+        }
+
+        private void OnDisable()
+        {
+            Application.quitting -= OnQuitting;
+        }
+
+        private void OnQuitting()
+        {
+            isQuitting = true;
         }
 
         private void DrawNodeRadius()
@@ -104,12 +131,20 @@ namespace MoonGale.Runtime.Levels
 
         private void OnDestroy()
         {
-            if (owner == false)
+            if (isQuitting)
             {
                 return;
             }
 
-            owner.RemoveNode(this);
+            if (ownerLevel && Application.isPlaying)
+            {
+                ownerLevel.ReplaceNode(this);
+            }
+
+            if (owner)
+            {
+                owner.RemoveNode(this);
+            }
         }
 
         public void AddNeighbor(Node node)
@@ -147,6 +182,11 @@ namespace MoonGale.Runtime.Levels
         public void ClearNeighbors()
         {
             neighbors.Clear();
+        }
+
+        public void DestroyNode()
+        {
+            Destroy(gameObject);
         }
     }
 }

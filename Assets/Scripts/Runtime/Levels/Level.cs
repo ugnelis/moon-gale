@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MoonGale.Core;
 using MoonGale.Runtime.Levels.Nodes;
-using MoonGale.Runtime.Player;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -24,23 +22,6 @@ namespace MoonGale.Runtime.Levels
         private int tilesPerTick = 5;
 
         private int currentTilesCount = 0;
-
-
-        private void OnEnable()
-        {
-            GameManager.AddListener<NodeAttackedMessage>(OnNodeAttackedMessage);
-        }
-
-        private void OnDisable()
-        {
-            GameManager.RemoveListener<NodeAttackedMessage>(OnNodeAttackedMessage);
-        }
-
-        private void OnNodeAttackedMessage(NodeAttackedMessage message)
-        {
-            var node = message.Node;
-            ReplaceNode(node, levelSettings.AirNodePrefab);
-        }
 
 #if UNITY_EDITOR
         // ReSharper disable once UnusedMember.Local
@@ -64,12 +45,21 @@ namespace MoonGale.Runtime.Levels
             }
 
             // Connect nodes
+            InitializeNodes(nodes);
             ConnectNeighbors(nodes);
             graph.AddNodes(nodes);
 
             UnityEditor.EditorUtility.SetDirty(graph);
         }
 #endif
+
+        private void InitializeNodes(IEnumerable<Node> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                node.OwnerLevel = this;
+            }
+        }
 
         private void ConnectNeighbors(IReadOnlyList<Node> nodes)
         {
@@ -102,6 +92,24 @@ namespace MoonGale.Runtime.Levels
             }
         }
 
+        /// <summary>
+        /// Replace given <paramref name="node"/> with an appropriate counterpart.
+        /// </summary>
+        public void ReplaceNode(Node node)
+        {
+            var nodeObject = node.NodeObject;
+            if (nodeObject is RootNodeObject)
+            {
+                ReplaceNode(node, levelSettings.AirNodePrefab);
+                return;
+            }
+
+            if (nodeObject is AirNodeObject)
+            {
+                ReplaceNode(node, levelSettings.RootNodePrefab);
+            }
+        }
+
         private void ReplaceNode(Node oldNode, Node newNodePrefab)
         {
             var nodePosition = oldNode.Position;
@@ -118,6 +126,7 @@ namespace MoonGale.Runtime.Levels
                 Quaternion.identity,
                 nodeParent
             );
+            newNode.OwnerLevel = this;
             newNode.SetNeighbors(neighbors);
 
             graph.ReplaceNode(oldNode, newNode);
@@ -128,6 +137,12 @@ namespace MoonGale.Runtime.Levels
         [Button("Propagate")]
         private void PropagateOneStepEditor()
         {
+            if (Application.isPlaying)
+            {
+                Debug.LogWarning("Only works in play-mode");
+                return;
+            }
+
             currentTilesCount = 0;
 
             var rootNodes = new List<Node>();
@@ -140,9 +155,8 @@ namespace MoonGale.Runtime.Levels
                 }
             }
 
-            var shuffledRootNodes = Shuffle(rootNodes);
-
-            for (var i = 0; i < shuffledRootNodes.Count(); i++)
+            var shuffledRootNodes = Shuffle(rootNodes).ToList();
+            for (var i = 0; i < shuffledRootNodes.Count; i++)
             {
                 PerformBreadthFirstSearch(shuffledRootNodes.ElementAt(i));
             }
@@ -166,10 +180,12 @@ namespace MoonGale.Runtime.Levels
                 for (var i = 0; i < node.Neighbors.Count(); i++)
                 {
                     var neighborNode = node.Neighbors.ElementAt(i);
+                    if (neighborNode.NodeObject is not AirNodeObject)
+                    {
+                        continue;
+                    }
 
-                    if (neighborNode.NodeObject is not AirNodeObject) continue;
-
-                    ReplaceNode(neighborNode, levelSettings.RootNodePrefab);
+                    neighborNode.DestroyNode();
                     queue.Enqueue(neighborNode);
 
                     currentTilesCount++;
@@ -183,7 +199,7 @@ namespace MoonGale.Runtime.Levels
 
         private static IEnumerable<Node> Shuffle(IEnumerable<Node> nodes)
         {
-            return nodes.OrderBy(node => UnityEngine.Random.value);
+            return nodes.OrderBy(node => Random.value);
         }
     }
 }

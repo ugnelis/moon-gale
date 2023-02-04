@@ -14,7 +14,12 @@ namespace MoonGale.Runtime.Levels
         private UnityEvent onEnabled;
 
         [SerializeField]
+        private UnityEvent onDisabled;
+
+        [SerializeField]
         private UnityEvent onDestroyed;
+
+        private bool isQuitting;
 
         public Node Owner
         {
@@ -29,13 +34,30 @@ namespace MoonGale.Runtime.Levels
         }
 #endif
 
+        private void OnQuitting()
+        {
+            isQuitting = true;
+        }
+
         private void OnEnable()
         {
+            Application.quitting += OnQuitting;
             onEnabled?.Invoke();
         }
 
         private void OnDisable()
         {
+            Application.quitting -= OnQuitting;
+            onDisabled?.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            if (isQuitting)
+            {
+                return;
+            }
+
             onDestroyed?.Invoke();
         }
     }
