@@ -1,6 +1,7 @@
 ﻿using MoonGale.Core;
 using MoonGale.Runtime.Systems;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace MoonGale.Runtime.UI
@@ -23,6 +24,7 @@ namespace MoonGale.Runtime.UI
 
         private void OnEnable()
         {
+            EventSystem.current.SetSelectedGameObject(startGameButton.gameObject);
             startGameButton.onClick.AddListener(OnStartGameButtonClicked);
             exitGameButton.onClick.AddListener(OnExitGameButtonClicked);
         }

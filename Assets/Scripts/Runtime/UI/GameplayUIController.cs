@@ -4,6 +4,7 @@ using MoonGale.Runtime.Player;
 using MoonGale.Runtime.Systems;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -35,6 +36,12 @@ namespace MoonGale.Runtime.UI
 
         [SerializeField]
         private List<Button> mainMenuGameButtons;
+
+        [SerializeField]
+        private Button pauseFocusButton;
+
+        [SerializeField]
+        private Button gameOverFocusButton;
 
         [Header("Text")]
         [SerializeField]
@@ -107,6 +114,7 @@ namespace MoonGale.Runtime.UI
 
             if (isPaused)
             {
+                EventSystem.current.SetSelectedGameObject(pauseFocusButton.gameObject);
                 DeactivateCanvasGroup(pauseCanvasGroup);
                 Time.timeScale = 1f;
                 isPaused = false;
@@ -144,6 +152,10 @@ namespace MoonGale.Runtime.UI
             gameOverText.text = playerDeathMessage;
             DeactivateCanvasGroup(statsCanvasGroup);
             ActiveCanvasGroup(gameOverCanvasGroup);
+
+            // TODO: doesn't work, only triggers the second time
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(gameOverFocusButton.gameObject);
 
             Time.timeScale = 1f;
             isGameOver = true;

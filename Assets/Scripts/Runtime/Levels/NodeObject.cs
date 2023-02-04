@@ -13,6 +13,9 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private UnityEvent onEnabled;
 
+        [SerializeField]
+        private UnityEvent onDestroyed;
+
         public Node Owner
         {
             get => owner;
@@ -29,6 +32,11 @@ namespace MoonGale.Runtime.Levels
         private void OnEnable()
         {
             onEnabled?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            onDestroyed?.Invoke();
         }
     }
 }
