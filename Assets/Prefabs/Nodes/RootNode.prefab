@@ -158,6 +158,21 @@ PrefabInstance:
       propertyPath: nodeObject
       value: 
       objectReference: {fileID: 1535503961225236227}
+    - target: {fileID: 6729327187679717639, guid: 96e564bc9395b324ca05d0410736640b,
+        type: 3}
+      propertyPath: nodeSizeColor.b
+      value: 0.8307333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729327187679717639, guid: 96e564bc9395b324ca05d0410736640b,
+        type: 3}
+      propertyPath: nodeSizeColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729327187679717639, guid: 96e564bc9395b324ca05d0410736640b,
+        type: 3}
+      propertyPath: nodeSizeColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96e564bc9395b324ca05d0410736640b, type: 3}
 --- !u!4 &524013518098626893 stripped

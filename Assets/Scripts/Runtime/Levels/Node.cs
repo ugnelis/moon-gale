@@ -1,20 +1,31 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
 {
+    [ExecuteInEditMode] // Need to execute OnDestroy.
     internal sealed class Node : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField]
         private LevelSettings levelSettings;
 
+        [Header("Graph")]
         [SerializeField]
         private NodeObject nodeObject;
 
         [SerializeField]
+        private NodeGraph owner;
+
+        [SerializeField]
         private List<Node> neighbors;
 
-        public IReadOnlyList<Node> Neighbors => neighbors;
+        [Header("Debug")]
+        [SerializeField]
+        private Color nodeSizeColor = Color.green;
+
+        public IEnumerable<Node> Neighbors => neighbors.Where(neighbor => neighbor);
 
         public Vector3 Position => transform.position;
 
@@ -32,14 +43,10 @@ namespace MoonGale.Runtime.Levels
             }
         }
 
-        private void Awake()
+        public NodeGraph Owner
         {
-            if (nodeObject == false)
-            {
-                return;
-            }
-
-            nodeObject.Owner = this;
+            get => owner;
+            set => owner = value;
         }
 
 #if UNITY_EDITOR
@@ -77,7 +84,7 @@ namespace MoonGale.Runtime.Levels
         {
             var position = transform.position;
 
-            Gizmos.color = Color.green;
+            Gizmos.color = nodeSizeColor;
             Gizmos.DrawWireCube(position, levelSettings.BlockSize * Vector3.one);
 
             Gizmos.color = Color.red;
@@ -95,9 +102,29 @@ namespace MoonGale.Runtime.Levels
         }
 #endif
 
+        private void OnDestroy()
+        {
+            if (owner == false)
+            {
+                return;
+            }
+
+            owner.RemoveNode(this);
+        }
+
         public void AddNeighbor(Node node)
         {
+            if (neighbors.Contains(node))
+            {
+                return;
+            }
+
             neighbors.Add(node);
+        }
+
+        public void RemoveNeighbor(Node node)
+        {
+            neighbors.Remove(node);
         }
 
         public void ClearNeighbors()

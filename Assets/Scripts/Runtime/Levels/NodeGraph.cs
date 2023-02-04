@@ -12,7 +12,21 @@ namespace MoonGale.Runtime.Levels
 
         public void AddNodes(IEnumerable<Node> newNodes)
         {
-            nodes.AddRange(newNodes);
+            foreach (var newNode in newNodes)
+            {
+                newNode.Owner = this;
+                nodes.Add(newNode);
+            }
+        }
+
+        public void RemoveNode(Node node)
+        {
+            foreach (var otherNode in nodes)
+            {
+                otherNode.RemoveNeighbor(node);
+            }
+
+            nodes.Remove(node);
         }
 
         public void ClearNodes()

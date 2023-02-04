@@ -4,6 +4,13 @@ namespace MoonGale.Runtime.Levels
 {
     internal abstract class NodeObject : MonoBehaviour
     {
-        public Node Owner { get; set; }
+        [SerializeField]
+        private Node owner;
+
+        public Node Owner
+        {
+            get => owner;
+            set => owner = value;
+        }
     }
 }
