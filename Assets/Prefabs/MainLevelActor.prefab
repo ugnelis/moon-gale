@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSettings: {fileID: 11400000, guid: 73c1482631537af499b5cfa8ae994670, type: 2}
+  groundTransform: {fileID: 0}
+  isGenerateOnAwake: 1

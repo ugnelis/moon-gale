@@ -15,30 +15,17 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private Texture2D map;
 
-        [Header("Block Sizes")]
-        [Min(1)]
         [SerializeField]
-        private int blockWidth = 5;
-
-        [Min(1)]
-        [SerializeField]
-        private int blockHeight = 5;
+        private Vector3 blockScale;
 
         [Header("Prefabs")]
         [SerializeField]
-        private LevelElement solidBlockPrefab;
-
-        [SerializeField]
-        private LevelElement airBlockPrefab;
+        private SolidBlockLevelElement solidBlockPrefab;
 
         public Texture2D Map => map;
 
-        public int BlockWidth => blockWidth;
+        public Vector3 BlockScale => blockScale;
 
-        public int BlockHeight => blockHeight;
-
-        public LevelElement SolidBlockPrefab => solidBlockPrefab;
-
-        public LevelElement AirBlockPrefab => airBlockPrefab;
+        public SolidBlockLevelElement SolidBlockPrefab => solidBlockPrefab;
     }
 }
