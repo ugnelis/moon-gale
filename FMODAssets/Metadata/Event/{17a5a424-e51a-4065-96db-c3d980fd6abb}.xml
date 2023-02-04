@@ -211,11 +211,16 @@
 			<destination>{7bfb147a-93bf-4bd2-8c24-32febee9bf27}</destination>
 			<destination>{160448b9-2693-4631-a603-8d0c576e79ae}</destination>
 			<destination>{325f8a09-fac6-4348-815d-b9d4f09942b4}</destination>
+			<destination>{c62efaa2-eaab-4fd0-9aa5-6eef2617c782}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a3a51514-fb5a-4e83-b130-453c8d8becd7}" />
 	<object class="MixerBusFader" id="{65e70b7a-2718-4332-839d-2aab7a70a2c9}" />
-	<object class="SpatialiserEffect" id="{8b162830-2a0b-4c46-902d-665c2b309f01}" />
+	<object class="SpatialiserEffect" id="{8b162830-2a0b-4c46-902d-665c2b309f01}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{4e370000-094d-49d2-bda2-f12d26c9ab33}" />
 	<object class="MultibandEqEffect" id="{dca867f7-3825-4660-b414-7f31fbbac419}">
 		<property name="frequencyA">
@@ -280,8 +285,16 @@
 			<value>3400</value>
 		</property>
 		<property name="wetLevel">
-			<value>-10</value>
+			<value>0</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{45ef2b30-b763-40bd-8e6b-27e4bd11dd09}</destination>
+		</relationship>
+	</object>
+	<object class="GainEffect" id="{c62efaa2-eaab-4fd0-9aa5-6eef2617c782}">
+		<relationship name="modulators">
+			<destination>{cd452e60-c5db-4700-8789-e9d459103a8c}</destination>
+		</relationship>
 	</object>
 	<object class="LFOModulator" id="{c79e00eb-ffd8-4c18-9e98-4010e10a61b5}">
 		<property name="nameOfPropertyBeingModulated">
@@ -326,6 +339,22 @@
 		</property>
 		<property name="depth">
 			<value>58</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{45ef2b30-b763-40bd-8e6b-27e4bd11dd09}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>wetLevel</value>
+		</property>
+		<property name="amount">
+			<value>33.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{cd452e60-c5db-4700-8789-e9d459103a8c}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>gain</value>
+		</property>
+		<property name="amount">
+			<value>19</value>
 		</property>
 	</object>
 </objects>
