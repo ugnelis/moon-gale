@@ -2,10 +2,8 @@
 
 namespace MoonGale.Runtime.Levels
 {
-    internal abstract class NodeObject : MonoBehaviour, INodeObject
+    internal abstract class NodeObject : MonoBehaviour
     {
-        public Vector3 Position => transform.position;
-
-        public INode Owner { get; set; }
+        public Node Owner { get; set; }
     }
 }

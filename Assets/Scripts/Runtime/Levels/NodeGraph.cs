@@ -4,11 +4,11 @@ namespace MoonGale.Runtime.Levels
 {
     internal sealed class NodeGraph
     {
-        public IReadOnlyList<INode> Nodes => nodes;
+        public IReadOnlyList<Node> Nodes => nodes;
 
-        private readonly List<INode> nodes = new();
+        private readonly List<Node> nodes = new();
 
-        public void AddNode(INode node)
+        public void AddNode(Node node)
         {
             nodes.Add(node);
         }

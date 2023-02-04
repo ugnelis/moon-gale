@@ -3,9 +3,22 @@ using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
 {
-    internal class Node<TNodeObject> : Node, INode<TNodeObject> where TNodeObject : INodeObject
+    internal sealed class Node : MonoBehaviour
     {
-        public TNodeObject NodeObject
+        [SerializeField]
+        private LevelSettings levelSettings;
+
+        [SerializeField]
+        private NodeObject nodeObject;
+
+        [SerializeField]
+        private List<Node> neighbors;
+
+        public IReadOnlyList<Node> Neighbors => neighbors;
+
+        public Vector3 Position => transform.position;
+
+        public NodeObject NodeObject
         {
             get => nodeObject;
             set
@@ -19,18 +32,39 @@ namespace MoonGale.Runtime.Levels
             }
         }
 
-        private TNodeObject nodeObject;
-    }
-
-    internal abstract class Node : MonoBehaviour, INode
-    {
-        public IReadOnlyList<INode> Neighbors => nodes;
-
-        private readonly List<INode> nodes = new();
-
-        public void AddNeighbor(INode node)
+        private void Awake()
         {
-            nodes.Add(node);
+            if (nodeObject == false)
+            {
+                return;
+            }
+
+            nodeObject.Owner = this;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.white;
+
+            var position = transform.position;
+            foreach (var neighbor in Neighbors)
+            {
+                Gizmos.DrawLine(position, neighbor.Position);
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+
+            var position = transform.position;
+            Gizmos.DrawWireCube(position, levelSettings.BlockSize);
+            Gizmos.DrawSphere(position, 0.1f);
+        }
+
+        public void AddNeighbor(Node node)
+        {
+            neighbors.Add(node);
         }
     }
 }
