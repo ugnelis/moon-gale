@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{befc1c48-6bb0-436f-b738-6ef12394d59c}">
+		<property name="assetPath">
+			<value>Music_amb_Sci-Fi_texture_02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d364516c-9544-4bff-9723-029b56adf620}</destination>
+		</relationship>
+	</object>
+</objects>
