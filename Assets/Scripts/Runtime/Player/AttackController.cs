@@ -78,7 +78,7 @@ namespace MoonGale.Runtime.Player
 
             foreach (var node in attackCandidates)
             {
-                GameManager.Publish(new NodeAttackedMessage(node));
+                node.DestroyNode();
             }
 
             attackCandidates.Clear();

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa0947b3c6841faa54cbda70e422a4a, type: 3}
   m_Name: MainLevelSettings
   m_EditorClassIdentifier: 
-  queryRadius: 6
+  destinationNodeQueryRadius: 12
+  destinationNodeBlockSize: 10
+  queryRadius: 7
   blockSize: 5
   nodeLayerMask:
     serializedVersion: 2
