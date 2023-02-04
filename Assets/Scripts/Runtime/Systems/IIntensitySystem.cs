@@ -2,6 +2,6 @@
 {
     internal interface IIntensitySystem
     {
-        public int SpawnRate { get; }
+        public int IntensityLevel { get; }
     }
 }

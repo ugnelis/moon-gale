@@ -40,6 +40,9 @@ namespace MoonGale.Runtime.UI
         [SerializeField]
         private TMP_Text survivedTimeText;
 
+        [SerializeField]
+        private TMP_Text intensityLevelText;
+
         [Header("Buttons")]
         [SerializeField]
         private List<Button> restartGameButtons;
@@ -66,11 +69,13 @@ namespace MoonGale.Runtime.UI
         private bool isGameOver;
         private bool isPaused;
 
+        private IIntensitySystem intensitySystem;
         private IScoreSystem scoreSystem;
         private ISceneSystem sceneSystem;
 
         private void Awake()
         {
+            intensitySystem = GameManager.GetSystem<IIntensitySystem>();
             scoreSystem = GameManager.GetSystem<IScoreSystem>();
             sceneSystem = GameManager.GetSystem<ISceneSystem>();
         }
@@ -85,6 +90,7 @@ namespace MoonGale.Runtime.UI
         private void Update()
         {
             survivedTimeText.text = GetSurvivedTimeText();
+            intensityLevelText.text = intensitySystem.IntensityLevel.ToString();
         }
 
         private void OnEnable()
