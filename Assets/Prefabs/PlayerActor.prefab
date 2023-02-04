@@ -1078,7 +1078,7 @@ MonoBehaviour:
       Data4: -188474577
     Path: event:/Player_Attack
   Event: 
-  PlayEvent: 1
+  PlayEvent: 0
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
