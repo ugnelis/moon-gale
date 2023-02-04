@@ -19,7 +19,7 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private UnityEvent onAttackStopped;
 
-        private readonly List<SourceRootNodeObject> attackCandidates = new();
+        private readonly List<RootNodeObject> attackCandidates = new();
         private float nextAttackTimeSeconds;
         private bool isAttacking;
 
@@ -32,7 +32,7 @@ namespace MoonGale.Runtime.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            var sourceRootNodeObject = other.GetComponentInParent<SourceRootNodeObject>();
+            var sourceRootNodeObject = other.GetComponentInParent<RootNodeObject>();
             if (sourceRootNodeObject == false)
             {
                 return;
@@ -48,7 +48,7 @@ namespace MoonGale.Runtime.Player
 
         private void OnTriggerExit(Collider other)
         {
-            var sourceRootNodeObject = other.GetComponentInParent<SourceRootNodeObject>();
+            var sourceRootNodeObject = other.GetComponentInParent<RootNodeObject>();
             if (sourceRootNodeObject == false)
             {
                 return;
@@ -73,10 +73,10 @@ namespace MoonGale.Runtime.Player
             isAttacking = true;
 
             onAttackStarted.Invoke();
+            attackCandidates.Clear();
 
             yield return new WaitForSeconds(playerSettings.AttackDurationSeconds);
 
-            attackCandidates.Clear();
             isAttacking = false;
             onAttackStopped.Invoke();
         }
