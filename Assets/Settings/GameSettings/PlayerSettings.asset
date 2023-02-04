@@ -17,3 +17,9 @@ MonoBehaviour:
   stopAcceleration: 1
   attackDurationSeconds: 0.1
   attackCooldownSeconds: 0.3
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  maxDebuffDurationSeconds: 3
+  maxDebuffVignette: 1
+  minDebuffPostExposure: -3

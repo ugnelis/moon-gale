@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MoonGale.Core;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace MoonGale.Runtime.Player
@@ -12,6 +13,9 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private AttackController attackController;
 
+        [SerializeField]
+        private DebuffController debuffController;
+
         [Header("Inputs")]
         [SerializeField]
         private InputActionReference moveInputActionReference;
@@ -24,6 +28,7 @@ namespace MoonGale.Runtime.Player
             moveInputActionReference.action.performed += OnMoveInputActionPerformed;
             moveInputActionReference.action.canceled += OnMoveInputActionCanceled;
             attackInputActionReference.action.performed += OnAttackInputActionPerformed;
+            debuffController.OnDebuffDurationExceeded += OnDebuffDurationExceeded;
         }
 
         private void OnDisable()
@@ -31,6 +36,7 @@ namespace MoonGale.Runtime.Player
             moveInputActionReference.action.performed -= OnMoveInputActionPerformed;
             moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
             attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
+            debuffController.OnDebuffDurationExceeded -= OnDebuffDurationExceeded;
 
             movementController.StopMovement();
         }
@@ -50,6 +56,14 @@ namespace MoonGale.Runtime.Player
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)
         {
             attackController.Attack();
+        }
+
+        private void OnDebuffDurationExceeded()
+        {
+            movementController.enabled = false;
+            attackController.enabled = false;
+            debuffController.enabled = false;
+            GameManager.Publish(new PlayerDeathMessage());
         }
     }
 }

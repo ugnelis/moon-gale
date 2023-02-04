@@ -12,4 +12,8 @@ namespace MoonGale.Runtime.Player
             Node = node;
         }
     }
+
+    internal sealed class PlayerDeathMessage : IMessage
+    {
+    }
 }

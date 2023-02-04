@@ -34,6 +34,19 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private LayerMask attackLayerMask;
 
+        [Header("Debuffs")]
+        [Min(0f)]
+        [SerializeField]
+        private float maxDebuffDurationSeconds = 3f;
+
+        [Range(0f, 1f)]
+        [SerializeField]
+        private float maxDebuffVignette = 1f;
+
+        [Range(-5f, 5f)]
+        [SerializeField]
+        private float minDebuffPostExposure = -1f;
+
         public float MaxMoveSpeed => maxMoveSpeed;
 
         public float MoveAcceleration => moveAcceleration;
@@ -45,5 +58,11 @@ namespace MoonGale.Runtime.Player
         public float AttackCooldownSeconds => attackCooldownSeconds;
 
         public LayerMask AttackLayerMask => attackLayerMask;
+
+        public float MaxDebuffDurationSeconds => maxDebuffDurationSeconds;
+
+        public float MaxDebuffVignette => maxDebuffVignette;
+
+        public float MinDebuffPostExposure => minDebuffPostExposure;
     }
 }
