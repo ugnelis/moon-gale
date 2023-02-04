@@ -5,7 +5,7 @@
 			<value>Roots_Destroyed</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2eb9f1f2-1bbf-4d52-abb2-556651391737}</destination>
@@ -122,6 +122,7 @@
 	<object class="MixerBusEffectChain" id="{1170f81b-41a9-4404-bd7b-54c142b7595d}">
 		<relationship name="effects">
 			<destination>{42dcd5db-8fcf-47c8-8db5-a3d5d86f48fe}</destination>
+			<destination>{736a100c-2f96-45e3-9e83-7e5234c56a4b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{76876f24-7724-4925-b267-747ff7887e21}" />
@@ -154,6 +155,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{643fe254-3777-49a8-906e-1ca2b7be7d30}" />
 	<object class="MixerBusFader" id="{42dcd5db-8fcf-47c8-8db5-a3d5d86f48fe}" />
+	<object class="SpatialiserEffect" id="{736a100c-2f96-45e3-9e83-7e5234c56a4b}" />
 	<object class="MixerBusFader" id="{879e0693-ef8d-4b18-a80c-66221fd8f78f}" />
 	<object class="SFXReverbEffect" id="{a92bcd39-aa06-4c08-8ced-e0e6a0bcc195}">
 		<property name="decayTime">
