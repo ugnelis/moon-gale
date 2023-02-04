@@ -18,8 +18,13 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private float blockSize = 5f;
 
+        [SerializeField]
+        private LayerMask nodeLayerMask;
+
         public float QueryRadius => queryRadius;
 
         public float BlockSize => blockSize;
+
+        public LayerMask NodeLayerMask => nodeLayerMask;
     }
 }

@@ -45,13 +45,20 @@ namespace MoonGale.Runtime.Levels
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            DrawNodeRadius();
+            if (Application.isPlaying == false)
+            {
+                DrawNodeRadius();
+            }
+
+            DrawNodeConnections(Color.red);
         }
 
         private void OnDrawGizmos()
         {
             DrawNodeSize();
-            DrawNodeConnections();
+            var color = Color.white;
+            color.a = 0.5f;
+            DrawNodeConnections(color);
         }
 
         private void DrawNodeRadius()
@@ -68,17 +75,18 @@ namespace MoonGale.Runtime.Levels
 
         private void DrawNodeSize()
         {
-            Gizmos.color = Color.green;
-
             var position = transform.position;
+
+            Gizmos.color = Color.green;
             Gizmos.DrawWireCube(position, levelSettings.BlockSize * Vector3.one);
-            Gizmos.DrawSphere(position, 0.1f);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(position, 0.25f);
         }
 
-        private void DrawNodeConnections()
+        private void DrawNodeConnections(Color color)
         {
-            Gizmos.color = Color.white;
-
+            Gizmos.color = color;
             var position = transform.position;
             foreach (var neighbor in Neighbors)
             {
@@ -90,6 +98,11 @@ namespace MoonGale.Runtime.Levels
         public void AddNeighbor(Node node)
         {
             neighbors.Add(node);
+        }
+
+        public void ClearNeighbors()
+        {
+            neighbors.Clear();
         }
     }
 }

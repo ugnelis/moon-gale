@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
@@ -11,16 +10,19 @@ namespace MoonGale.Runtime.Levels
 
         public IReadOnlyList<Node> Nodes => nodes;
 
-        public void AddNode(Node node)
+        public void AddNodes(IEnumerable<Node> newNodes)
         {
-            nodes.Add(node);
+            nodes.AddRange(newNodes);
         }
 
-#if UNITY_EDITOR
-        [Button("Connect Graph")]
-        private void ConnectGraphEditor()
+        public void ClearNodes()
         {
+            foreach (var node in nodes)
+            {
+                node.ClearNeighbors();
+            }
+
+            nodes.Clear();
         }
-#endif
     }
 }

@@ -63,7 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa99f7676b64c01ae13109d93d7e4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 1145075645718654500}
+  - {fileID: 2076641812561494800}
+  - {fileID: 8747808067896643684}
+  - {fileID: 4840033201666534595}
 --- !u!1001 &877791866339180605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,18 +133,23 @@ PrefabInstance:
     - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
         type: 3}
       propertyPath: neighbors.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
         type: 3}
       propertyPath: neighbors.Array.data[0]
       value: 
-      objectReference: {fileID: 8747808067896643684}
+      objectReference: {fileID: 1145075645718654500}
     - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
         type: 3}
       propertyPath: neighbors.Array.data[1]
       value: 
-      objectReference: {fileID: 1145075645718654500}
+      objectReference: {fileID: 8747808067896643684}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.data[2]
+      value: 
+      objectReference: {fileID: 4840033201666534595}
     - target: {fileID: 7773485083994963782, guid: ca94bfbe687de324ca24ddefb488d718,
         type: 3}
       propertyPath: m_Name
@@ -325,6 +334,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2076641812561494800}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.data[1]
+      value: 
+      objectReference: {fileID: 8747808067896643684}
     - target: {fileID: 7773485083994963782, guid: ca94bfbe687de324ca24ddefb488d718,
         type: 3}
       propertyPath: m_Name
@@ -332,6 +356,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca94bfbe687de324ca24ddefb488d718, type: 3}
+--- !u!114 &4840033201666534595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+    type: 3}
+  m_PrefabInstance: {fileID: 6040590685164433390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51e1dee1e0a4f7da2de294cc1523235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6093887882157037219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 524013518098626893, guid: ca94bfbe687de324ca24ddefb488d718,
@@ -400,6 +436,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2076641812561494800}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.data[1]
+      value: 
+      objectReference: {fileID: 4840033201666534595}
+    - target: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
+        type: 3}
+      propertyPath: neighbors.Array.data[2]
+      value: 
+      objectReference: {fileID: 4840033201666534595}
     - target: {fileID: 7773485083994963782, guid: ca94bfbe687de324ca24ddefb488d718,
         type: 3}
       propertyPath: m_Name

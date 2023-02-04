@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa0947b3c6841faa54cbda70e422a4a, type: 3}
   m_Name: MainLevelSettings
   m_EditorClassIdentifier: 
-  map: {fileID: 2800000, guid: e4b3ae50ae66e1d47b54d082cb23c56f, type: 3}
-  blockScale: {x: 5, y: 5, z: 5}
-  solidBlockPrefab: {fileID: -1913643402909281623, guid: 259e62f1578bcba47a88778ecee4a7b3,
-    type: 3}
+  queryRadius: 9
+  blockSize: 5
+  nodeLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
