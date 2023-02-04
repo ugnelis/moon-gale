@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using UnityEngine;
+using UnityEngine.VFX;
 
 namespace MoonGale.Runtime.Utilities
 {
@@ -9,7 +10,16 @@ namespace MoonGale.Runtime.Utilities
 
         public void Spawn()
         {
-            Instantiate(prefab);
+
+
+        }
+
+        private void OnDisable()
+        {
+            Debug.Log("BOOM");
+            GameObject effect = Instantiate(prefab, this.transform.position, Quaternion.identity);
+            effect.GetComponent<VisualEffect>().Play();
+            Destroy(effect, 6f);
         }
     }
 }
