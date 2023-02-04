@@ -20,6 +20,9 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private Transform nodeParent;
 
+        [SerializeField]
+        private int steps = 1;
+
         private void OnEnable()
         {
             GameManager.AddListener<NodeAttackedMessage>(OnNodeAttackedMessage);
@@ -119,7 +122,7 @@ namespace MoonGale.Runtime.Levels
 
 #if UNITY_EDITOR
         // ReSharper disable once UnusedMember.Local
-        [Button("Propagate 1 step")]
+        [Button("Propagate")]
         private void PropagateOneStepEditor()
         {
             for (var i = 0; i < graph.Nodes.Count(); i++)
@@ -127,7 +130,7 @@ namespace MoonGale.Runtime.Levels
                 var node = graph.Nodes.ElementAt(i);
                 if (node.NodeObject is RootNodeObject)
                 {
-                    PerformBreadthFirstSearch(node);
+                    PerformBreadthFirstSearch(node, steps);
                 }
             }
         }
@@ -143,7 +146,9 @@ namespace MoonGale.Runtime.Levels
             var queue = new Queue<Node>();
             queue.Enqueue(root);
 
-            while (queue.Count > 0)
+            var currentStep = 0;
+
+            while (queue.Count > 0 && currentStep < steps)
             {
                 var node = queue.Dequeue();
 
@@ -155,6 +160,12 @@ namespace MoonGale.Runtime.Levels
 
                     ReplaceNode(neighborNode, levelSettings.RootNodePrefab);
                     queue.Enqueue(neighborNode);
+
+                    currentStep++;
+                    if (currentStep >= steps)
+                    {
+                        break;
+                    }
                 }
             }
         }
