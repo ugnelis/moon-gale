@@ -115,8 +115,8 @@
 	<object class="MixerBusEffectChain" id="{bbd44c4a-cdec-4d80-bbad-6b89cefa5eea}">
 		<relationship name="effects">
 			<destination>{eaa6b5f7-f13c-493a-8245-e3d29c6e664f}</destination>
-			<destination>{dd81a733-db83-4250-967a-c14719646776}</destination>
 			<destination>{2b1a8db6-913f-4957-867c-634899ad9d54}</destination>
+			<destination>{76dc9f46-2c7c-4da7-8db6-e27f13b7b468}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{518cc950-4771-48fe-9d5d-015e9cbbf26b}" />
@@ -141,20 +141,17 @@
 			<destination>{b3e08fdf-b574-4b38-9f88-123cfc1b232d}</destination>
 			<destination>{4cd52132-1a8e-4b38-aa86-1fce9fea02e0}</destination>
 			<destination>{416d726d-477d-4b97-8b31-de50a42bb4ab}</destination>
+			<destination>{52cee98f-50b7-4af2-9816-79ce38dd5990}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bbb1fdd8-dabb-4824-b44f-263cb96386b6}" />
 	<object class="MixerBusFader" id="{eaa6b5f7-f13c-493a-8245-e3d29c6e664f}" />
-	<object class="SpatialiserEffect" id="{dd81a733-db83-4250-967a-c14719646776}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
-	</object>
 	<object class="GainEffect" id="{2b1a8db6-913f-4957-867c-634899ad9d54}">
 		<property name="gain">
 			<value>10</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{76dc9f46-2c7c-4da7-8db6-e27f13b7b468}" />
 	<object class="GainEffect" id="{b3e08fdf-b574-4b38-9f88-123cfc1b232d}">
 		<property name="gain">
 			<value>10</value>
@@ -164,6 +161,28 @@
 	<object class="SFXReverbEffect" id="{416d726d-477d-4b97-8b31-de50a42bb4ab}">
 		<property name="decayTime">
 			<value>170</value>
+		</property>
+	</object>
+	<object class="DelayEffect" id="{52cee98f-50b7-4af2-9816-79ce38dd5990}">
+		<property name="delay">
+			<value>64</value>
+		</property>
+		<property name="feedback">
+			<value>0</value>
+		</property>
+		<property name="dryLevel">
+			<value>-78</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{2e6e636d-b94d-4bfc-97dc-ea6cf157cbab}</destination>
+		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{2e6e636d-b94d-4bfc-97dc-ea6cf157cbab}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>delay</value>
+		</property>
+		<property name="amount">
+			<value>33</value>
 		</property>
 	</object>
 </objects>

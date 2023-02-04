@@ -5,7 +5,7 @@
 			<value>Roots_Destroyed</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2eb9f1f2-1bbf-4d52-abb2-556651391737}</destination>
@@ -119,7 +119,6 @@
 	<object class="MixerBusEffectChain" id="{1170f81b-41a9-4404-bd7b-54c142b7595d}">
 		<relationship name="effects">
 			<destination>{42dcd5db-8fcf-47c8-8db5-a3d5d86f48fe}</destination>
-			<destination>{e5780130-ad54-4aad-bf29-94714c8390f9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{76876f24-7724-4925-b267-747ff7887e21}" />
@@ -147,10 +146,18 @@
 	<object class="MixerBusEffectChain" id="{6ee46c6d-ab08-48d0-a971-2a0e98813fc5}">
 		<relationship name="effects">
 			<destination>{879e0693-ef8d-4b18-a80c-66221fd8f78f}</destination>
+			<destination>{a92bcd39-aa06-4c08-8ced-e0e6a0bcc195}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{643fe254-3777-49a8-906e-1ca2b7be7d30}" />
 	<object class="MixerBusFader" id="{42dcd5db-8fcf-47c8-8db5-a3d5d86f48fe}" />
-	<object class="SpatialiserEffect" id="{e5780130-ad54-4aad-bf29-94714c8390f9}" />
 	<object class="MixerBusFader" id="{879e0693-ef8d-4b18-a80c-66221fd8f78f}" />
+	<object class="SFXReverbEffect" id="{a92bcd39-aa06-4c08-8ced-e0e6a0bcc195}">
+		<property name="decayTime">
+			<value>170</value>
+		</property>
+		<property name="wetLevel">
+			<value>-14.5</value>
+		</property>
+	</object>
 </objects>
