@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoonGale.Runtime.Player
 {
@@ -12,18 +13,20 @@ namespace MoonGale.Runtime.Player
         private PlayerSettings playerSettings;
 
         [SerializeField]
+        private Transform lookPivot;
+
+        [SerializeField]
         private Camera mainCamera;
 
-        public Vector3 AbsoluteMoveDirection { get; set; }
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onMovementStarted;
 
-        public bool IsMoveInputActive { get; set; }
+        [SerializeField]
+        private UnityEvent onMovementStopped;
 
-        // ReSharper disable once ConvertToAutoProperty
-        public float CurrentMoveSpeed
-        {
-            get => currentMoveSpeed;
-            set => currentMoveSpeed = value;
-        }
+        private Vector3 absoluteMoveDirection;
+        private bool isMoveInputActive;
 
         [NaughtyAttributes.ShowNonSerializedField]
         private float currentMoveSpeed;
@@ -39,7 +42,7 @@ namespace MoonGale.Runtime.Player
 
             var mainCameraTransform = mainCamera.transform;
             var playerPosition = transform.position;
-            var relativeMotion = GetRelativeMotion(mainCameraTransform, AbsoluteMoveDirection);
+            var relativeMotion = GetRelativeMotion(mainCameraTransform, absoluteMoveDirection);
             Gizmos.DrawRay(playerPosition, relativeMotion);
         }
 
@@ -52,17 +55,37 @@ namespace MoonGale.Runtime.Player
             }
         }
 
+        private void OnDisable()
+        {
+            currentMoveSpeed = 0f;
+        }
+
         private void FixedUpdate()
         {
             UpdateCurrentSpeed();
             UpdateMovement();
+            UpdateLookDirection();
+        }
+
+        public void StartMovement(Vector3 newAbsoluteMoveDirection)
+        {
+            absoluteMoveDirection = newAbsoluteMoveDirection;
+            isMoveInputActive = true;
+            onMovementStarted?.Invoke();
+        }
+
+        public void StopMovement()
+        {
+            absoluteMoveDirection = Vector3.zero;
+            isMoveInputActive = false;
+            onMovementStopped?.Invoke();
         }
 
         private void UpdateCurrentSpeed()
         {
-            var newMoveSpeed = IsMoveInputActive
-                ? CurrentMoveSpeed + playerSettings.MoveAcceleration * Time.deltaTime
-                : CurrentMoveSpeed - playerSettings.StopAcceleration * Time.deltaTime;
+            var newMoveSpeed = isMoveInputActive
+                ? currentMoveSpeed + playerSettings.MoveAcceleration * Time.deltaTime
+                : currentMoveSpeed - playerSettings.StopAcceleration * Time.deltaTime;
 
             var clampedMoveSpeed = Mathf.Clamp(
                 newMoveSpeed,
@@ -70,31 +93,47 @@ namespace MoonGale.Runtime.Player
                 max: playerSettings.MaxMoveSpeed
             );
 
-            CurrentMoveSpeed = clampedMoveSpeed;
+            currentMoveSpeed = clampedMoveSpeed;
         }
 
         private void UpdateMovement()
         {
-            if (CurrentMoveSpeed <= 0)
+            if (currentMoveSpeed <= 0)
             {
                 return;
             }
 
             var mainCameraTransform = mainCamera.transform;
-            var relativeMotion = GetRelativeMotion(mainCameraTransform, AbsoluteMoveDirection);
+            var relativeMotion = GetRelativeMotion(mainCameraTransform, absoluteMoveDirection);
 
             characterController.Move(relativeMotion);
         }
 
+        private void UpdateLookDirection()
+        {
+            if (absoluteMoveDirection == Vector3.zero)
+            {
+                return;
+            }
+
+            var mainCameraTransform = mainCamera.transform;
+            var moveDirection = GetRelativeMoveDirection(mainCameraTransform, absoluteMoveDirection);
+            lookPivot.forward = moveDirection;
+        }
+
         private Vector3 GetRelativeMotion(Transform forwardTransform, Vector3 absoluteDirection)
+        {
+            return GetRelativeMoveDirection(forwardTransform, absoluteDirection) * currentMoveSpeed;
+        }
+
+        private static Vector3 GetRelativeMoveDirection(Transform forwardTransform, Vector3 absoluteDirection)
         {
             var direction = forwardTransform.forward;
             var relativeProjectedDirection = Vector3.ProjectOnPlane(direction, Vector3.up);
             var relativeDirection = relativeProjectedDirection.normalized;
             var relativeRotation = Quaternion.LookRotation(relativeDirection);
-            var relativeMotion = relativeRotation * absoluteDirection * CurrentMoveSpeed;
 
-            return relativeMotion;
+            return relativeRotation * absoluteDirection;
         }
     }
 }

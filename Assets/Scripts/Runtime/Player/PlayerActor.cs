@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace MoonGale.Runtime.Player
@@ -20,16 +19,6 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private InputActionReference attackInputActionReference;
 
-        [Header("Events")]
-        [SerializeField]
-        private UnityEvent onMovementInputStarted;
-
-        [SerializeField]
-        private UnityEvent onMovementInputStopped;
-
-        [SerializeField]
-        private UnityEvent onAttackInputStarted;
-
         private void OnEnable()
         {
             moveInputActionReference.action.performed += OnMoveInputActionPerformed;
@@ -43,28 +32,24 @@ namespace MoonGale.Runtime.Player
             moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
             attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
 
-            movementController.AbsoluteMoveDirection = Vector3.zero;
-            movementController.CurrentMoveSpeed = 0f;
+            movementController.StopMovement();
         }
 
         private void OnMoveInputActionPerformed(InputAction.CallbackContext context)
         {
             var axis = context.ReadValue<Vector2>();
-            movementController.AbsoluteMoveDirection = new Vector3(axis.x, 0f, axis.y);
-            movementController.IsMoveInputActive = true;
-            onMovementInputStarted?.Invoke();
+            var absoluteMoveDirection = new Vector3(axis.x, 0f, axis.y);
+            movementController.StartMovement(absoluteMoveDirection);
         }
 
         private void OnMoveInputActionCanceled(InputAction.CallbackContext context)
         {
-            movementController.IsMoveInputActive = false;
-            onMovementInputStopped.Invoke();
+            movementController.StopMovement();
         }
 
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)
         {
             attackController.Attack();
-            onAttackInputStarted?.Invoke();
         }
     }
 }
