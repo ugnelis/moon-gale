@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{17a5a424-e51a-4065-96db-c3d980fd6abb}">
 		<property name="name">
-			<value>Amb_Cave</value>
+			<value>Amb_Netural_Cave</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
