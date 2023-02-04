@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MoonGale.Core;
 using MoonGale.Runtime.Levels.Nodes;
-using MoonGale.Runtime.Player;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -21,23 +19,9 @@ namespace MoonGale.Runtime.Levels
         private Transform nodeParent;
 
         [SerializeField]
-        private int steps = 1;
+        private int tilesPerTick = 5;
 
-        private void OnEnable()
-        {
-            GameManager.AddListener<NodeAttackedMessage>(OnNodeAttackedMessage);
-        }
-
-        private void OnDisable()
-        {
-            GameManager.RemoveListener<NodeAttackedMessage>(OnNodeAttackedMessage);
-        }
-
-        private void OnNodeAttackedMessage(NodeAttackedMessage message)
-        {
-            var node = message.Node;
-            ReplaceNode(node, levelSettings.AirNodePrefab);
-        }
+        private int currentTilesCount;
 
 #if UNITY_EDITOR
         // ReSharper disable once UnusedMember.Local
@@ -61,6 +45,7 @@ namespace MoonGale.Runtime.Levels
             }
 
             // Connect nodes
+            InitializeNodes(nodes);
             ConnectNeighbors(nodes);
             graph.AddNodes(nodes);
 
@@ -68,8 +53,17 @@ namespace MoonGale.Runtime.Levels
         }
 #endif
 
+        private void InitializeNodes(IEnumerable<Node> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                node.OwnerLevel = this;
+            }
+        }
+
         private void ConnectNeighbors(IReadOnlyList<Node> nodes)
         {
+            // ReSharper disable once ForCanBeConvertedToForeach
             for (var i = 0; i < nodes.Count; i++)
             {
                 ConnectNeighbors(nodes, nodes[i]);
@@ -79,8 +73,9 @@ namespace MoonGale.Runtime.Levels
         private void ConnectNeighbors(IReadOnlyList<Node> nodes, Node node)
         {
             var currentPosition = node.Position;
-            var queryRadius = levelSettings.QueryRadius;
+            var queryRadius = levelSettings.GetQueryRadius(node);
 
+            // ReSharper disable once ForCanBeConvertedToForeach
             for (var j = 0; j < nodes.Count; j++)
             {
                 var neighbor = nodes[j];
@@ -96,6 +91,24 @@ namespace MoonGale.Runtime.Levels
                 {
                     node.AddNeighbor(neighbor);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Replace given <paramref name="node"/> with an appropriate counterpart.
+        /// </summary>
+        public void ReplaceNode(Node node)
+        {
+            var nodeObject = node.NodeObject;
+            if (nodeObject is RootNodeObject)
+            {
+                ReplaceNode(node, levelSettings.AirNodePrefab);
+                return;
+            }
+
+            if (nodeObject is AirNodeObject)
+            {
+                ReplaceNode(node, levelSettings.RootNodePrefab);
             }
         }
 
@@ -115,6 +128,7 @@ namespace MoonGale.Runtime.Levels
                 Quaternion.identity,
                 nodeParent
             );
+            newNode.OwnerLevel = this;
             newNode.SetNeighbors(neighbors);
 
             graph.ReplaceNode(oldNode, newNode);
@@ -125,18 +139,33 @@ namespace MoonGale.Runtime.Levels
         [Button("Propagate")]
         private void PropagateOneStepEditor()
         {
+            if (Application.isPlaying == false)
+            {
+                Debug.LogWarning("Only works in play-mode");
+                return;
+            }
+
+            currentTilesCount = 0;
+
+            var rootNodes = new List<Node>();
             for (var i = 0; i < graph.Nodes.Count(); i++)
             {
                 var node = graph.Nodes.ElementAt(i);
                 if (node.NodeObject is RootNodeObject)
                 {
-                    PerformBreadthFirstSearch(node, steps);
+                    rootNodes.Add(node);
                 }
+            }
+
+            var shuffledRootNodes = Shuffle(rootNodes).ToList();
+            for (var i = 0; i < shuffledRootNodes.Count; i++)
+            {
+                PerformBreadthFirstSearch(shuffledRootNodes.ElementAt(i));
             }
         }
 #endif
 
-        private void PerformBreadthFirstSearch(Node root, int steps = 1)
+        private void PerformBreadthFirstSearch(Node root)
         {
             if (root.NodeObject is not RootNodeObject)
             {
@@ -146,28 +175,33 @@ namespace MoonGale.Runtime.Levels
             var queue = new Queue<Node>();
             queue.Enqueue(root);
 
-            var currentStep = 0;
-
-            while (queue.Count > 0 && currentStep < steps)
+            while (queue.Count > 0 && currentTilesCount < tilesPerTick)
             {
                 var node = queue.Dequeue();
 
                 for (var i = 0; i < node.Neighbors.Count(); i++)
                 {
                     var neighborNode = node.Neighbors.ElementAt(i);
+                    if (neighborNode.NodeObject is not AirNodeObject)
+                    {
+                        continue;
+                    }
 
-                    if (neighborNode.NodeObject is not AirNodeObject) continue;
-
-                    ReplaceNode(neighborNode, levelSettings.RootNodePrefab);
+                    neighborNode.DestroyNode();
                     queue.Enqueue(neighborNode);
 
-                    currentStep++;
-                    if (currentStep >= steps)
+                    currentTilesCount++;
+                    if (currentTilesCount >= tilesPerTick)
                     {
                         break;
                     }
                 }
             }
+        }
+
+        private static IEnumerable<Node> Shuffle(IEnumerable<Node> nodes)
+        {
+            return nodes.OrderBy(_ => Random.value);
         }
     }
 }

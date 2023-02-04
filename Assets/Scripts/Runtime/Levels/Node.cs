@@ -16,6 +16,9 @@ namespace MoonGale.Runtime.Levels
         private NodeObject nodeObject;
 
         [SerializeField]
+        private Level ownerLevel;
+
+        [SerializeField]
         private NodeGraph owner;
 
         [SerializeField]
@@ -43,11 +46,19 @@ namespace MoonGale.Runtime.Levels
             }
         }
 
+        public Level OwnerLevel
+        {
+            get => ownerLevel;
+            set => ownerLevel = value;
+        }
+
         public NodeGraph Owner
         {
             get => owner;
             set => owner = value;
         }
+
+        private bool isQuitting;
 
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
@@ -68,16 +79,31 @@ namespace MoonGale.Runtime.Levels
             DrawNodeConnections(color);
         }
 
+        private void OnEnable()
+        {
+            Application.quitting += OnQuitting;
+        }
+
+        private void OnDisable()
+        {
+            Application.quitting -= OnQuitting;
+        }
+
+        private void OnQuitting()
+        {
+            isQuitting = true;
+        }
+
         private void DrawNodeRadius()
         {
             var position = transform.position;
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(position, levelSettings.QueryRadius);
+            Gizmos.DrawWireSphere(position, levelSettings.GetQueryRadius(this));
 
             var color = Color.yellow;
             color.a = 0.1f;
             Gizmos.color = color;
-            Gizmos.DrawSphere(position, levelSettings.QueryRadius);
+            Gizmos.DrawSphere(position, levelSettings.GetQueryRadius(this));
         }
 
         private void DrawNodeSize()
@@ -85,7 +111,7 @@ namespace MoonGale.Runtime.Levels
             var position = transform.position;
 
             Gizmos.color = nodeSizeColor;
-            Gizmos.DrawWireCube(position, levelSettings.BlockSize * Vector3.one);
+            Gizmos.DrawWireCube(position, levelSettings.GetBlockSize(this) * Vector3.one);
 
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(position, 0.25f);
@@ -104,12 +130,20 @@ namespace MoonGale.Runtime.Levels
 
         private void OnDestroy()
         {
-            if (owner == false)
+            if (isQuitting)
             {
                 return;
             }
 
-            owner.RemoveNode(this);
+            if (ownerLevel && Application.isPlaying)
+            {
+                ownerLevel.ReplaceNode(this);
+            }
+
+            if (owner)
+            {
+                owner.RemoveNode(this);
+            }
         }
 
         public void AddNeighbor(Node node)
@@ -147,6 +181,11 @@ namespace MoonGale.Runtime.Levels
         public void ClearNeighbors()
         {
             neighbors.Clear();
+        }
+
+        public void DestroyNode()
+        {
+            Destroy(gameObject);
         }
     }
 }
