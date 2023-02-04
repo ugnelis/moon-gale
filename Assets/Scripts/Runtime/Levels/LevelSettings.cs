@@ -21,10 +21,23 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private LayerMask nodeLayerMask;
 
+        [Header("Prefab")]
+        [Min(0f)]
+        [SerializeField]
+        private Node airNodePrefab;
+
+        [Min(0f)]
+        [SerializeField]
+        private Node rootNodePrefab;
+
         public float QueryRadius => queryRadius;
 
         public float BlockSize => blockSize;
 
         public LayerMask NodeLayerMask => nodeLayerMask;
+
+        public Node AirNodePrefab => airNodePrefab;
+
+        public Node RootNodePrefab => rootNodePrefab;
     }
 }

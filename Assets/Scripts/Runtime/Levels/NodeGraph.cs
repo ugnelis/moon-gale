@@ -14,9 +14,14 @@ namespace MoonGale.Runtime.Levels
         {
             foreach (var newNode in newNodes)
             {
-                newNode.Owner = this;
-                nodes.Add(newNode);
+                AddNode(newNode);
             }
+        }
+
+        public void AddNode(Node newNode)
+        {
+            newNode.Owner = this;
+            nodes.Add(newNode);
         }
 
         public void RemoveNode(Node node)
