@@ -126,6 +126,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b845f4dd43461a9a02e12d827b0b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3172806507579439045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4239530881983779060}
+  - component: {fileID: 7385963472002554479}
+  m_Layer: 0
+  m_Name: IntensitySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4239530881983779060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172806507579439045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5454664048035183429}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7385963472002554479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172806507579439045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23daac36143649f0af374bdb5caa3622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 28bb494a1a2c93d4c81e94d6e4420263, type: 2}
 --- !u!1 &4713673002853162776
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +338,7 @@ Transform:
   - {fileID: 4541907083811340464}
   - {fileID: 8848584475792721088}
   - {fileID: 4928217495595224145}
+  - {fileID: 4239530881983779060}
   m_Father: {fileID: 8783124766959175406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -346,6 +392,7 @@ MonoBehaviour:
   inputManagerSystem: {fileID: 8783124767785746550}
   sceneSystem: {fileID: 9220059646660000287}
   scoreSystem: {fileID: 3248427926781671804}
+  intensitySystem: {fileID: 7385963472002554479}
   controllerParentTransform: {fileID: 9177332152614552389}
   systemsParentTransform: {fileID: 5454664048035183429}
 --- !u!1 &8783124767785746548

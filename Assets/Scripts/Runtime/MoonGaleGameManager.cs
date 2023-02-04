@@ -16,7 +16,10 @@ namespace MoonGale.Runtime
         [SerializeField]
         private ScoreSystem scoreSystem;
 
-        [Header("Controllers")]
+        [SerializeField]
+        private IntensitySystem intensitySystem;
+
+        [Header("Management")]
         [SerializeField]
         private Transform controllerParentTransform;
 
@@ -33,6 +36,7 @@ namespace MoonGale.Runtime
             AddSystem<InputManagerSystem, IInputManagerSystem>(inputManagerSystem);
             AddSystem<SceneSystem, ISceneSystem>(sceneSystem);
             AddSystem<ScoreSystem, IScoreSystem>(scoreSystem);
+            AddSystem<IntensitySystem, IIntensitySystem>(intensitySystem);
 
             controllerParentTransform.gameObject.SetActive(true);
             systemsParentTransform.gameObject.SetActive(true);
