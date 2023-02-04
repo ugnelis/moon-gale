@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainLevelSettings
   m_EditorClassIdentifier: 
   map: {fileID: 2800000, guid: e4b3ae50ae66e1d47b54d082cb23c56f, type: 3}
-  blockWidth: 1
-  blockHeight: 1
+  blockWidth: 5
+  blockHeight: 5
   solidBlockPrefab: {fileID: 0}
   airBlockPrefab: {fileID: 0}

@@ -18,11 +18,11 @@ namespace MoonGale.Runtime.Levels
         [Header("Block Sizes")]
         [Min(1)]
         [SerializeField]
-        private int blockWidth = 4;
+        private int blockWidth = 5;
 
         [Min(1)]
         [SerializeField]
-        private int blockHeight = 4;
+        private int blockHeight = 5;
 
         [Header("Prefabs")]
         [SerializeField]

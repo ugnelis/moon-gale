@@ -2,7 +2,7 @@
 
 namespace MoonGale.Runtime.Levels
 {
-    internal sealed class LevelArea : MonoBehaviour
+    internal sealed class LevelActor : MonoBehaviour
     {
         [Header("General")]
         [SerializeField]

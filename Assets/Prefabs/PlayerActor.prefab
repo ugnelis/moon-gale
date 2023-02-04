@@ -576,10 +576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 6018831066777822257}
+  playerSettings: {fileID: 11400000, guid: 7a7b0089a1b8a31428151453ea2bf0b8, type: 2}
   mainCamera: {fileID: 6018831065905993468}
-  maxMoveSpeed: 0.1
-  moveAcceleration: 1
-  stopAcceleration: 0.8
   moveInputActionReference: {fileID: -1680190386980627800, guid: 630be9b88e972a54f9414ebdea9e7bc7,
     type: 3}
   attackInputActionReference: {fileID: 1120369429361536294, guid: 630be9b88e972a54f9414ebdea9e7bc7,
