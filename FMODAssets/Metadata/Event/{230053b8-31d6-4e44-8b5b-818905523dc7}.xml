@@ -5,7 +5,7 @@
 			<value>Player_Dying</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2eb9f1f2-1bbf-4d52-abb2-556651391737}</destination>
@@ -133,7 +133,6 @@
 	<object class="MixerBusEffectChain" id="{417e8284-75d2-4f81-acb7-be0f1c199e77}">
 		<relationship name="effects">
 			<destination>{b6c42510-178e-405c-b681-a7a2f8abb176}</destination>
-			<destination>{3d486fa9-bc4e-4d73-80f4-b3b59ce0695f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6ab6b7c0-71e0-4988-9f16-c4d62672d5ea}" />
@@ -145,6 +144,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{f477b1c5-cd84-4b7a-b34a-eb057caccf78}" />
 	<object class="MixerBusFader" id="{b6c42510-178e-405c-b681-a7a2f8abb176}" />
-	<object class="SpatialiserEffect" id="{3d486fa9-bc4e-4d73-80f4-b3b59ce0695f}" />
 	<object class="MixerBusFader" id="{0326dd56-e648-4d71-9210-00d5cd865894}" />
 </objects>
