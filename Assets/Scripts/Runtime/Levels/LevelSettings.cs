@@ -16,8 +16,13 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private Texture2D map;
 
+        [Min(0f)]
         [SerializeField]
-        private Vector3 blockSize = new(5f, 5f, 5f);
+        private float queryRadius = 10f;
+
+        [Min(0f)]
+        [SerializeField]
+        private float blockSize = 5f;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -25,7 +30,9 @@ namespace MoonGale.Runtime.Levels
 
         public Texture2D Map => map;
 
-        public Vector3 BlockSize => blockSize;
+        public float QueryRadius => queryRadius;
+
+        public float BlockSize => blockSize;
 
         public SolidBlockLevelElement SolidBlockPrefab => solidBlockPrefab;
     }

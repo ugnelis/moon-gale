@@ -42,7 +42,40 @@ namespace MoonGale.Runtime.Levels
             nodeObject.Owner = this;
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
+        {
+            DrawNodeRadius();
+        }
+
+        private void OnDrawGizmos()
+        {
+            DrawNodeSize();
+            DrawNodeConnections();
+        }
+
+        private void DrawNodeRadius()
+        {
+            var position = transform.position;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(position, levelSettings.QueryRadius);
+
+            var color = Color.yellow;
+            color.a = 0.1f;
+            Gizmos.color = color;
+            Gizmos.DrawSphere(position, levelSettings.QueryRadius);
+        }
+
+        private void DrawNodeSize()
+        {
+            Gizmos.color = Color.green;
+
+            var position = transform.position;
+            Gizmos.DrawWireCube(position, levelSettings.BlockSize * Vector3.one);
+            Gizmos.DrawSphere(position, 0.1f);
+        }
+
+        private void DrawNodeConnections()
         {
             Gizmos.color = Color.white;
 
@@ -52,15 +85,7 @@ namespace MoonGale.Runtime.Levels
                 Gizmos.DrawLine(position, neighbor.Position);
             }
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
-
-            var position = transform.position;
-            Gizmos.DrawWireCube(position, levelSettings.BlockSize);
-            Gizmos.DrawSphere(position, 0.1f);
-        }
+#endif
 
         public void AddNeighbor(Node node)
         {
