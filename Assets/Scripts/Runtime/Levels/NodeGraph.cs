@@ -28,8 +28,9 @@ namespace MoonGale.Runtime.Levels
         {
             newNode.Owner = this;
 
-            foreach (var otherNode in nodes)
+            for (var i = 0; i < nodes.Count; i++)
             {
+                var otherNode = nodes[i];
                 otherNode.ReplaceNeighbor(oldNode, newNode);
             }
 

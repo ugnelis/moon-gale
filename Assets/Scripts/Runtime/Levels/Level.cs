@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MoonGale.Core;
 using MoonGale.Runtime.Levels.Nodes;
 using MoonGale.Runtime.Player;
@@ -121,22 +122,13 @@ namespace MoonGale.Runtime.Levels
         [Button("Propagate 1 step")]
         private void PropagateOneStepEditor()
         {
-            // var childCount = nodeParent.childCount;
-            // var rootNodes = new List<Node>();
-
-            var rootNodes = new List<Node>();
-
-            foreach (var node in graph.Nodes)
+            for (var i = 0; i < graph.Nodes.Count(); i++)
             {
+                var node = graph.Nodes.ElementAt(i);
                 if (node.NodeObject is RootNodeObject)
                 {
-                    rootNodes.Add(node);
+                    PerformBreadthFirstSearch(node);
                 }
-            }
-
-            foreach (var node in rootNodes)
-            {
-                PerformBreadthFirstSearch(node);
             }
         }
 #endif
@@ -155,8 +147,10 @@ namespace MoonGale.Runtime.Levels
             {
                 var node = queue.Dequeue();
 
-                foreach (var neighborNode in node.Neighbors)
+                for (var i = 0; i < node.Neighbors.Count(); i++)
                 {
+                    var neighborNode = node.Neighbors.ElementAt(i);
+
                     if (neighborNode.NodeObject is not AirNodeObject) continue;
 
                     ReplaceNode(neighborNode, levelSettings.RootNodePrefab);
