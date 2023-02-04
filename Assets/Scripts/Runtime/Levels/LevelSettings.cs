@@ -1,4 +1,5 @@
-﻿using MoonGale.Runtime.Utilities;
+﻿using MoonGale.Runtime.Levels.Nodes;
+using MoonGale.Runtime.Utilities;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
@@ -10,6 +11,14 @@ namespace MoonGale.Runtime.Levels
     internal sealed class LevelSettings : ScriptableObject
     {
         [Header("General")]
+        [Min(0f)]
+        [SerializeField]
+        private float destinationNodeQueryRadius = 10f;
+
+        [Min(0f)]
+        [SerializeField]
+        private float destinationNodeBlockSize = 20f;
+
         [Min(0f)]
         [SerializeField]
         private float queryRadius = 10f;
@@ -30,9 +39,25 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private Node rootNodePrefab;
 
-        public float QueryRadius => queryRadius;
+        public float GetQueryRadius(Node node)
+        {
+            if (node.NodeObject is DestinationNodeObject)
+            {
+                return destinationNodeQueryRadius;
+            }
 
-        public float BlockSize => blockSize;
+            return queryRadius;
+        }
+
+        public float GetBlockSize(Node node)
+        {
+            if (node.NodeObject is DestinationNodeObject)
+            {
+                return destinationNodeBlockSize;
+            }
+
+            return blockSize;
+        }
 
         public LayerMask NodeLayerMask => nodeLayerMask;
 

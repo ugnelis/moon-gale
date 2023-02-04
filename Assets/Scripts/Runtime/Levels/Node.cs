@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -99,12 +98,12 @@ namespace MoonGale.Runtime.Levels
         {
             var position = transform.position;
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(position, levelSettings.QueryRadius);
+            Gizmos.DrawWireSphere(position, levelSettings.GetQueryRadius(this));
 
             var color = Color.yellow;
             color.a = 0.1f;
             Gizmos.color = color;
-            Gizmos.DrawSphere(position, levelSettings.QueryRadius);
+            Gizmos.DrawSphere(position, levelSettings.GetQueryRadius(this));
         }
 
         private void DrawNodeSize()
@@ -112,7 +111,7 @@ namespace MoonGale.Runtime.Levels
             var position = transform.position;
 
             Gizmos.color = nodeSizeColor;
-            Gizmos.DrawWireCube(position, levelSettings.BlockSize * Vector3.one);
+            Gizmos.DrawWireCube(position, levelSettings.GetBlockSize(this) * Vector3.one);
 
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(position, 0.25f);

@@ -73,7 +73,7 @@ namespace MoonGale.Runtime.Levels
         private void ConnectNeighbors(IReadOnlyList<Node> nodes, Node node)
         {
             var currentPosition = node.Position;
-            var queryRadius = levelSettings.QueryRadius;
+            var queryRadius = levelSettings.GetQueryRadius(node);
 
             // ReSharper disable once ForCanBeConvertedToForeach
             for (var j = 0; j < nodes.Count; j++)
