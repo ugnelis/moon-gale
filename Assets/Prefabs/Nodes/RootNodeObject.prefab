@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 330091363491068385}
-  - component: {fileID: 2149220943266611567}
+  - component: {fileID: 6595627249095830130}
   m_Layer: 6
   m_Name: RootNodeObject
   m_TagString: Untagged
@@ -144,7 +144,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2149220943266611567
+--- !u!114 &6595627249095830130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7028793198516504235}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bebd18ae65c8450ba981e44f997142c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 68403caf49494ab1ad80b786f40fb878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 7722149090198685099}
   - component: {fileID: 8156505067217652829}
   - component: {fileID: 8869556454686877454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,5 +255,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

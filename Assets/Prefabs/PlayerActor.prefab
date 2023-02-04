@@ -569,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6018831066777822263}
   - component: {fileID: 6018831066777822257}
+  - component: {fileID: 1294370405}
   - component: {fileID: 6018831066777822262}
   - component: {fileID: 2539360689541506595}
   m_Layer: 0
@@ -615,6 +616,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1294370405
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018831066777822256}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &6018831066777822262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,7 +768,7 @@ GameObject:
   - component: {fileID: 1653801463765961775}
   - component: {fileID: 723214157760807194}
   - component: {fileID: 6088540868322099965}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +784,7 @@ Transform:
   m_GameObject: {fileID: 8094644523796952496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 2, y: 0.5, z: 1}
+  m_LocalScale: {x: 2, y: 4.33685, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5041811553469256535}
@@ -849,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSettings: {fileID: 11400000, guid: 7a7b0089a1b8a31428151453ea2bf0b8, type: 2}
+  attackCollider: {fileID: 723214157760807194}
   onAttackStarted:
     m_PersistentCalls:
       m_Calls:

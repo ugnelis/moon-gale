@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using MoonGale.Runtime.Levels.Nodes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,13 +19,42 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private UnityEvent onAttackStopped;
 
+        private readonly List<SourceRootNodeObject> attackCandidates = new();
         private float nextAttackTimeSeconds;
         private bool isAttacking;
 
         private void OnDisable()
         {
+            attackCandidates.Clear();
             nextAttackTimeSeconds = 0f;
             isAttacking = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var sourceRootNodeObject = other.GetComponentInParent<SourceRootNodeObject>();
+            if (sourceRootNodeObject == false)
+            {
+                return;
+            }
+
+            if (attackCandidates.Contains(sourceRootNodeObject))
+            {
+                return;
+            }
+
+            attackCandidates.Add(sourceRootNodeObject);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            var sourceRootNodeObject = other.GetComponentInParent<SourceRootNodeObject>();
+            if (sourceRootNodeObject == false)
+            {
+                return;
+            }
+
+            attackCandidates.Remove(sourceRootNodeObject);
         }
 
         public void Attack()
@@ -45,6 +76,7 @@ namespace MoonGale.Runtime.Player
 
             yield return new WaitForSeconds(playerSettings.AttackDurationSeconds);
 
+            attackCandidates.Clear();
             isAttacking = false;
             onAttackStopped.Invoke();
         }
