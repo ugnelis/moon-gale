@@ -44,7 +44,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.48584908, g: 1, b: 0.6497954, a: 1}
+  m_Color: {r: 0.28641567, g: 0.589, b: 0.38342744, a: 1}
   m_Intensity: 0.82
   m_Range: 1.83
   m_SpotAngle: 30
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 1623613546199703524}
   - component: {fileID: 7994038197344877310}
   - component: {fileID: 4502495022774499130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CheckNearbyRoots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,10 +820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0.03
-  m_FrequencyGain: 0.03
+  m_AmplitudeGain: 0.05
+  m_FrequencyGain: 3
   mNoiseOffsets: {x: 57.417267, y: -82.67032, z: 782.6703}
 --- !u!1 &6018831066777822256
 GameObject:
@@ -864,6 +864,7 @@ Transform:
   - {fileID: 850871064}
   - {fileID: 7347896456783999595}
   - {fileID: 1623613546199703524}
+  - {fileID: 8022374568005058318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1275,9 +1276,68 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 245957213242049415}
+        m_TargetAssemblyTypeName: MoonGale.CameraShake, Assembly-CSharp
+        m_MethodName: ShakeCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onAttackStopped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &8488496149771629214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8022374568005058318}
+  - component: {fileID: 245957213242049415}
+  m_Layer: 0
+  m_Name: CameraShake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8022374568005058318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488496149771629214}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6018831066777822263}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &245957213242049415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488496149771629214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8b8b56ab9c91344b1b6837fa4609fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 6018831065905993442}
+  intensity: 1
+  time: 0.15
 --- !u!1 &8593300841427154694
 GameObject:
   m_ObjectHideFlags: 0

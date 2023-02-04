@@ -16,7 +16,6 @@ namespace MoonGale.Runtime.Utilities
 
         private void OnDisable()
         {
-            Debug.Log("BOOM");
             GameObject effect = Instantiate(prefab, this.transform.position, Quaternion.identity);
             effect.GetComponent<VisualEffect>().Play();
             Destroy(effect, 6f);
