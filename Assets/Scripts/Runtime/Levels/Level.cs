@@ -21,7 +21,10 @@ namespace MoonGale.Runtime.Levels
         private Transform nodeParent;
 
         [SerializeField]
-        private int steps = 1;
+        private int tilesPerTick = 5;
+
+        private int currentTilesCount = 0;
+
 
         private void OnEnable()
         {
@@ -125,18 +128,28 @@ namespace MoonGale.Runtime.Levels
         [Button("Propagate")]
         private void PropagateOneStepEditor()
         {
+            currentTilesCount = 0;
+
+            var rootNodes = new List<Node>();
             for (var i = 0; i < graph.Nodes.Count(); i++)
             {
                 var node = graph.Nodes.ElementAt(i);
                 if (node.NodeObject is RootNodeObject)
                 {
-                    PerformBreadthFirstSearch(node, steps);
+                    rootNodes.Add(node);
                 }
+            }
+
+            var shuffledRootNodes = Shuffle(rootNodes);
+
+            for (var i = 0; i < shuffledRootNodes.Count(); i++)
+            {
+                PerformBreadthFirstSearch(shuffledRootNodes.ElementAt(i));
             }
         }
 #endif
 
-        private void PerformBreadthFirstSearch(Node root, int steps = 1)
+        private void PerformBreadthFirstSearch(Node root)
         {
             if (root.NodeObject is not RootNodeObject)
             {
@@ -146,9 +159,7 @@ namespace MoonGale.Runtime.Levels
             var queue = new Queue<Node>();
             queue.Enqueue(root);
 
-            var currentStep = 0;
-
-            while (queue.Count > 0 && currentStep < steps)
+            while (queue.Count > 0 && currentTilesCount < tilesPerTick)
             {
                 var node = queue.Dequeue();
 
@@ -161,13 +172,18 @@ namespace MoonGale.Runtime.Levels
                     ReplaceNode(neighborNode, levelSettings.RootNodePrefab);
                     queue.Enqueue(neighborNode);
 
-                    currentStep++;
-                    if (currentStep >= steps)
+                    currentTilesCount++;
+                    if (currentTilesCount >= tilesPerTick)
                     {
                         break;
                     }
                 }
             }
+        }
+
+        private static IEnumerable<Node> Shuffle(IEnumerable<Node> nodes)
+        {
+            return nodes.OrderBy(node => UnityEngine.Random.value);
         }
     }
 }
