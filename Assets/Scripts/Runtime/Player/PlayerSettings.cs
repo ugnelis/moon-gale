@@ -27,10 +27,12 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float attackDurationSeconds = 0.3f;
 
-        [Header("Attacks")]
         [Min(0f)]
         [SerializeField]
         private float attackCooldownSeconds = 0.3f;
+
+        [SerializeField]
+        private LayerMask attackLayerMask;
 
         public float MaxMoveSpeed => maxMoveSpeed;
 
@@ -41,5 +43,7 @@ namespace MoonGale.Runtime.Player
         public float AttackDurationSeconds => attackDurationSeconds;
 
         public float AttackCooldownSeconds => attackCooldownSeconds;
+
+        public LayerMask AttackLayerMask => attackLayerMask;
     }
 }

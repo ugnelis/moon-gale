@@ -6,6 +6,7 @@ namespace MoonGale.Runtime.Player
 {
     internal sealed class AttackController : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField]
         private PlayerSettings playerSettings;
 
