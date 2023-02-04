@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3c8e216e-e8c1-4d12-bd72-c5eaf6ed30cf}">
+		<property name="assetPath">
+			<value>P_Footstep_metalic_clank_03.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.49632653061224491</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d364516c-9544-4bff-9723-029b56adf620}</destination>
+		</relationship>
+	</object>
+</objects>
