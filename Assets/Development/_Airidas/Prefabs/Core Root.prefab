@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 7177241476658319130}
   - component: {fileID: 1694575707710590772}
   m_Layer: 0
-  m_Name: CoreRoot
+  m_Name: CoreRootObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
