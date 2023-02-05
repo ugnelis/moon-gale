@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   rootNodePrefab: {fileID: 1224765470740857645, guid: 23989e53dc6cf6b4287d96a5b80e7ea7,
     type: 3}
-  rootSpawnIntervalSeconds: 1
+  rootSpawnIntervalSeconds: 2
   rootIntensityLevelCurve:
     serializedVersion: 2
     m_Curve:
