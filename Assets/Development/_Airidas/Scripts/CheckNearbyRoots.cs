@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace MoonGale
+namespace MoonGale.Development._Airidas.Scripts
 {
     public class CheckNearbyRoots : MonoBehaviour
     {

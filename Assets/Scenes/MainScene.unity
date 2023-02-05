@@ -230,41 +230,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.1115623
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11.896763
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.3000193
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.79865676
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.32913005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.46580213
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018831065905993469, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.19196133
-      objectReference: {fileID: 0}
     - target: {fileID: 6018831066777822256, guid: a5e07852814b48449a6b2ff7e0ca1998,
         type: 3}
       propertyPath: m_Name
@@ -324,51 +289,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -5.1390414
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 2.88626
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: -10.595953
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.x
-      value: -1.3400058
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
-      value: 2.88626
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
-      value: -10.008305
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
-      value: -0.39214277
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: 2.88626
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810486078412098068, guid: a5e07852814b48449a6b2ff7e0ca1998,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
-      value: -13.048494
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5e07852814b48449a6b2ff7e0ca1998, type: 3}

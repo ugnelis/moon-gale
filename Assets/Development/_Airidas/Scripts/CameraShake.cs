@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
-namespace MoonGale
+namespace MoonGale.Development._Airidas.Scripts
 {
     public class CameraShake : MonoBehaviour
     {
