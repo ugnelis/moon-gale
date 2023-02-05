@@ -44,7 +44,6 @@ namespace MoonGale.Runtime.Player
 
         public void Dash()
         {
-            Debug.Log("alio");
             if (isDashing || nextDashTimeSeconds > Time.time)
             {
                 return;

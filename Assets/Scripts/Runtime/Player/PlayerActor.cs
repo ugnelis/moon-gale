@@ -1,4 +1,4 @@
-﻿using MoonGale.Core;
+using MoonGale.Core;
 using MoonGale.Runtime.Systems;
 using NaughtyAttributes;
 using UnityEngine;
@@ -10,6 +10,8 @@ namespace MoonGale.Runtime.Player
     internal sealed class PlayerActor : MonoBehaviour
     {
         [Header("General")]
+        [SerializeField] PlayerSettings settings;
+
         [SerializeField]
         private MovementController movementController;
 
@@ -18,6 +20,9 @@ namespace MoonGale.Runtime.Player
 
         [SerializeField]
         private AttackController attackController;
+
+        [SerializeField]
+        private AttackController strongAttackController;
 
         [SerializeField]
         private DebuffController debuffController;
@@ -32,6 +37,9 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private InputActionReference attackInputActionReference;
 
+        [SerializeField]
+        private InputActionReference strongAttackInputActionReference;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onPlayerDeath;
@@ -41,6 +49,8 @@ namespace MoonGale.Runtime.Player
         private void Awake()
         {
             scoreSystem = GameManager.GetSystem<IScoreSystem>();
+            strongAttackController.AttackDurationSeconds = settings.StrongAttackDurationSeconds;
+            attackController.AttackDurationSeconds = settings.AttackDurationSeconds;
         }
 
         private void Start()
@@ -62,12 +72,15 @@ namespace MoonGale.Runtime.Player
             moveInputActionReference.action.canceled += OnMoveInputActionCanceled;
             attackInputActionReference.action.performed += OnAttackInputActionPerformed;
             debuffController.OnDebuffDurationExceeded += OnDebuffDurationExceeded;
+
+            strongAttackInputActionReference.action.performed += OnStrongAttackInputActionPerformed;
         }
 
         private void OnPlayerDeath(PlayerDeathMessage message)
         {
             movementController.enabled = false;
             attackController.enabled = false;
+            strongAttackController.enabled = false;
             debuffController.enabled = false;
             dashController.enabled = false;
             scoreSystem.StopTimer();
@@ -83,6 +96,8 @@ namespace MoonGale.Runtime.Player
             dashInputActionReference.action.performed -= OnDashInputActionPerformed;
             attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
             debuffController.OnDebuffDurationExceeded -= OnDebuffDurationExceeded;
+
+            strongAttackInputActionReference.action.performed -= OnStrongAttackInputActionPerformed;
 
             movementController.StopMovement();
         }
@@ -106,7 +121,14 @@ namespace MoonGale.Runtime.Player
 
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)
         {
-            attackController.Attack();
+            if(!attackController.IsAttacking)
+                attackController.Attack();
+        }
+
+        private void OnStrongAttackInputActionPerformed(InputAction.CallbackContext context)
+        {
+            if(!attackController.IsAttacking)
+                strongAttackController.Attack();
         }
 
         private void OnDebuffDurationExceeded()

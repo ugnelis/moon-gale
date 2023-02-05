@@ -1,4 +1,4 @@
-﻿using MoonGale.Runtime.Utilities;
+using MoonGale.Runtime.Utilities;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Player
@@ -20,6 +20,11 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float moveAcceleration = 2f;
 
+        [Tooltip("How fast the player acceleration stops on releasing input")]
+        [Min(0f)]
+        [SerializeField]
+        private float stopAcceleration = 1f;
+
         [Header("Dash")]
         [Tooltip(
             "Duration of the dash (player is blocked from doing another). This also impacts " +
@@ -32,17 +37,12 @@ namespace MoonGale.Runtime.Player
         [Tooltip("Cooldown until the player can perform the next dash")]
         [Min(0f)]
         [SerializeField]
-        private float dashCooldownSeconds = 0.3f;
+        private float dashCooldownSeconds = 1.5f;
 
         [Tooltip("Speed used to dash")]
         [Min(0f)]
         [SerializeField]
         private float dashSpeed = 0.35f;
-
-        [Tooltip("How fast the player acceleration stops on releasing input")]
-        [Min(0f)]
-        [SerializeField]
-        private float stopAcceleration = 1f;
 
         [Header("Animation")]
         [Tooltip("Speed used to translate pivots (lerping)")]
@@ -63,6 +63,15 @@ namespace MoonGale.Runtime.Player
         [Min(0f)]
         [SerializeField]
         private float attackCooldownSeconds = 0.3f;
+
+        [Min(0f)]
+        [SerializeField]
+        private float strongAttackDurationSeconds = 0.3f;
+
+        [Tooltip("Cooldown until the player can perform the next attack")]
+        [Min(0f)]
+        [SerializeField]
+        private float strongAttackCooldownSeconds = 0.3f;
 
         [Header("Debuffs")]
         [Tooltip(
@@ -113,5 +122,9 @@ namespace MoonGale.Runtime.Player
         public float PivotLookSpeed => pivotLookSpeed;
 
         public float MinDebuffMoveSpeedMultiplier => minDebuffMoveSpeedMultiplier;
+
+        public float StrongAttackDurationSeconds => strongAttackDurationSeconds;
+
+        public float StrongAttackCooldownSeconds => strongAttackCooldownSeconds;
     }
 }
