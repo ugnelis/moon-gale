@@ -609,7 +609,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1, z: 2.5}
+  m_Size: {x: 2.25, y: 1, z: 3.5}
   m_Center: {x: 0, y: 0, z: -0.72}
 --- !u!114 &1476663222
 MonoBehaviour:
@@ -4999,6 +4999,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169331, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645073789082169331, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645073789082169331, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645073789082169331, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5049,8 +5064,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
+        type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -11.403999
+      value: -13.18
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
@@ -5060,12 +5080,12 @@ PrefabInstance:
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: -17.788
+      value: -17.460001
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.x
-      value: -8.0199995
+      value: -7.54
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
@@ -5075,12 +5095,12 @@ PrefabInstance:
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
-      value: -14.200001
+      value: -11.4800005
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
-      value: -6.7479997
+      value: -5.42
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
@@ -5090,7 +5110,7 @@ PrefabInstance:
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
-      value: -19.864
+      value: -20.92
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169342, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
