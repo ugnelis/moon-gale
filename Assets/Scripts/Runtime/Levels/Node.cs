@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MoonGale.Runtime.Systems;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
@@ -130,7 +131,7 @@ namespace MoonGale.Runtime.Levels
 
         private void OnDestroy()
         {
-            if (isQuitting)
+            if (isQuitting || SceneSystem.IsSceneLoading)
             {
                 return;
             }

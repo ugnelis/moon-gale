@@ -17,18 +17,39 @@ namespace MoonGale.Runtime.Systems
 
         private int currentSceneBuildIndex;
 
+        public static bool IsSceneLoading { get; private set; }
+
+        private void OnEnable()
+        {
+            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+        }
+
         public void LoadMainScene()
         {
+            IsSceneLoading = true;
             SceneManager.LoadScene(mainSceneBuildIndex);
+
             currentSceneBuildIndex = mainSceneBuildIndex;
             PublishMainSceneLoadedMessage();
         }
 
         public void LoadMenuScene()
         {
+            IsSceneLoading = true;
             SceneManager.LoadScene(menuSceneBuildIndex);
+
             currentSceneBuildIndex = menuSceneBuildIndex;
             PublishMenuSceneLoadedMessage();
+        }
+
+        private static void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
+        {
+            IsSceneLoading = false;
         }
 
         private static void PublishMainSceneLoadedMessage()

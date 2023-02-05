@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4ded777b2248f7bb37b63b3e738600, type: 3}
   m_Name: IntensitySystemSettings
   m_EditorClassIdentifier: 
-  spawnRateIncreaseIntervalSeconds: 10
+  spawnRateIncreaseIntervalSeconds: 30
   minSpawnRate: 1
   spawnRateIncreaseAmount: 1
