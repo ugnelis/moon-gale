@@ -1,5 +1,7 @@
-﻿using MoonGale.Runtime.Levels.Nodes;
+﻿using DG.Tweening;
+using MoonGale.Runtime.Levels.Nodes;
 using MoonGale.Runtime.Utilities;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
@@ -32,7 +34,7 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private Node rootNodePrefab;
 
-        [Header("Root Spawn Rates")]
+        [Header("Root Spawning")]
         [Tooltip("How often to spawn roots")]
         [Min(0f)]
         [SerializeField]
@@ -45,6 +47,20 @@ namespace MoonGale.Runtime.Levels
         [Min(0f)]
         [SerializeField]
         private AnimationCurve rootIntensityLevelCurve;
+
+        [Tooltip("Scale which is randomized for roots")]
+        [MinMaxSlider(0f, 10f)]
+        [SerializeField]
+        private Vector2 rootScaleRange = new(1.5f, 3f);
+
+        [Tooltip("How fast does the root scale up")]
+        [Range(0f, 10f)]
+        [SerializeField]
+        private float rootScaleDurationSeconds = 2f;
+
+        [Tooltip("Root scale animation")]
+        [SerializeField]
+        private Ease rootScaleEaseAnimation = Ease.OutBounce;
 
         [Header("Debug")]
         [Tooltip("Size of the destination node debug visuals")]
@@ -84,5 +100,11 @@ namespace MoonGale.Runtime.Levels
         public float RootSpawnIntervalSeconds => rootSpawnIntervalSeconds;
 
         public AnimationCurve RootIntensityLevelCurve => rootIntensityLevelCurve;
+
+        public float RootScale => Random.Range(rootScaleRange.x, rootScaleRange.y);
+
+        public float RootScaleDurationSeconds => rootScaleDurationSeconds;
+
+        public Ease RootScaleEaseAnimation => rootScaleEaseAnimation;
     }
 }

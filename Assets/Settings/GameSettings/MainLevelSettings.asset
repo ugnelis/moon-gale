@@ -13,12 +13,7 @@ MonoBehaviour:
   m_Name: MainLevelSettings
   m_EditorClassIdentifier: 
   destinationNodeQueryRadius: 12
-  destinationNodeBlockSize: 10
   queryRadius: 7
-  blockSize: 5
-  nodeLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   airNodePrefab: {fileID: 1224765470740857645, guid: ca94bfbe687de324ca24ddefb488d718,
     type: 3}
   rootNodePrefab: {fileID: 1224765470740857645, guid: 23989e53dc6cf6b4287d96a5b80e7ea7,
@@ -48,3 +43,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  rootScaleRange: {x: 1.5, y: 3}
+  rootScaleDurationSeconds: 2
+  rootScaleEaseAnimation: 24
+  destinationNodeBlockSize: 10
+  blockSize: 5

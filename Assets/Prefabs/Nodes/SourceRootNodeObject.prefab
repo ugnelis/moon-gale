@@ -153,6 +153,7 @@ MonoBehaviour:
   onDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  levelSettings: {fileID: 11400000, guid: 73c1482631537af499b5cfa8ae994670, type: 2}
 --- !u!1001 &2826568204876400587
 PrefabInstance:
   m_ObjectHideFlags: 0
