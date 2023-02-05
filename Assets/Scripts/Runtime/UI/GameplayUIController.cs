@@ -132,6 +132,7 @@ namespace MoonGale.Runtime.UI
                 button.onClick.RemoveListener(OnRestartButtonClicked);
             }
 
+            Time.timeScale = 1f;
             isGameOver = false;
             isPaused = false;
         }
@@ -170,7 +171,6 @@ namespace MoonGale.Runtime.UI
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(gameOverFocusButton.gameObject);
 
-            Time.timeScale = 1f;
             var survivedTime = GetSurvivedTimeText();
             gameOverSurvivedTimeText.text = survivedTime;
 
@@ -187,6 +187,7 @@ namespace MoonGale.Runtime.UI
                 }
             }
 
+            Time.timeScale = 1f;
             isGameOver = true;
         }
 
