@@ -211,6 +211,7 @@
 			<destination>{160448b9-2693-4631-a603-8d0c576e79ae}</destination>
 			<destination>{325f8a09-fac6-4348-815d-b9d4f09942b4}</destination>
 			<destination>{c62efaa2-eaab-4fd0-9aa5-6eef2617c782}</destination>
+			<destination>{343c2d40-a8eb-45ba-8c0e-bd6bc413d25d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a3a51514-fb5a-4e83-b130-453c8d8becd7}" />
@@ -290,6 +291,14 @@
 			<destination>{cd452e60-c5db-4700-8789-e9d459103a8c}</destination>
 		</relationship>
 	</object>
+	<object class="PitchShifterEffect" id="{343c2d40-a8eb-45ba-8c0e-bd6bc413d25d}">
+		<property name="pitch">
+			<value>1.01999998</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{b363b05d-e062-4695-b9c1-f2b1a5f0d184}</destination>
+		</relationship>
+	</object>
 	<object class="LFOModulator" id="{c79e00eb-ffd8-4c18-9e98-4010e10a61b5}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>frequencyA</value>
@@ -349,6 +358,14 @@
 		</property>
 		<property name="amount">
 			<value>19</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{b363b05d-e062-4695-b9c1-f2b1a5f0d184}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>10.5</value>
 		</property>
 	</object>
 </objects>
