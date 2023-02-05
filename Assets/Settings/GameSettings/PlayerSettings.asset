@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 0.2
   moveAcceleration: 2
-  dashAcceleration: 4
-  dashDurationSeconds: 2
   stopAcceleration: 1
+  dashDurationSeconds: 0.8
+  dashCooldownSeconds: 0.3
+  dashSpeed: 0.35
   pivotLookSpeed: 10
   attackDurationSeconds: 0.1
   attackCooldownSeconds: 0.3
