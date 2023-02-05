@@ -34,6 +34,8 @@ namespace MoonGale.Runtime.Player
 
         public float MovementSpeedMultiplier { get; set; }
 
+        public Vector3 AbsoluteMoveDirection => absoluteMoveDirection;
+
         private void OnDrawGizmos()
         {
             if (mainCamera == false)
