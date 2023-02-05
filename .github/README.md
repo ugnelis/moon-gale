@@ -10,10 +10,11 @@ Green is the color of HOPE. It shines through the dark, elevating the soul. A bl
 
 Now come and entangle yourself in a curse.
 
-## Downloads
+## Links
 
 - [Latest GitHub Release Build](https://github.com/ugnelis/moon-gale/releases/latest)
 - [Global Game Jam 20230 Page](https://globalgamejam.org/2023/games/rooted-warden-3)
+- [YouTube Video](https://youtu.be/4cgaqG9QtX4)
 
 ## Controls
 
