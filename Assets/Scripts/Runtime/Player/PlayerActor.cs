@@ -42,16 +42,34 @@ namespace MoonGale.Runtime.Player
             scoreSystem.StartTimer();
         }
 
+        private void Update()
+        {
+            movementController.MovementSpeedMultiplier = debuffController.DebuffMoveSpeedMultiplier;
+        }
+
         private void OnEnable()
         {
+            GameManager.AddListener<PlayerDeathMessage>(OnPlayerDeath);
+
             moveInputActionReference.action.performed += OnMoveInputActionPerformed;
             moveInputActionReference.action.canceled += OnMoveInputActionCanceled;
             attackInputActionReference.action.performed += OnAttackInputActionPerformed;
             debuffController.OnDebuffDurationExceeded += OnDebuffDurationExceeded;
         }
 
+        private void OnPlayerDeath(PlayerDeathMessage message)
+        {
+            movementController.enabled = false;
+            attackController.enabled = false;
+            debuffController.enabled = false;
+            scoreSystem.StopTimer();
+            onPlayerDeath.Invoke();
+        }
+
         private void OnDisable()
         {
+            GameManager.RemoveListener<PlayerDeathMessage>(OnPlayerDeath);
+
             moveInputActionReference.action.performed -= OnMoveInputActionPerformed;
             moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
             attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
@@ -83,13 +101,8 @@ namespace MoonGale.Runtime.Player
         }
 
         [Button("Kill Player")]
-        private void GameOver()
+        private static void GameOver()
         {
-            movementController.enabled = false;
-            attackController.enabled = false;
-            debuffController.enabled = false;
-            scoreSystem.StopTimer();
-            onPlayerDeath.Invoke();
             GameManager.Publish(new PlayerDeathMessage());
         }
     }

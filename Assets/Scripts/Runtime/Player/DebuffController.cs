@@ -21,6 +21,18 @@ namespace MoonGale.Runtime.Player
 
         public Action OnDebuffDurationExceeded;
 
+        public float DebuffMoveSpeedMultiplier
+        {
+            get
+            {
+                var maxDuration = playerSettings.MaxDebuffDurationSeconds;
+                var duration = totalDebuffDuration;
+                var ratio = duration / maxDuration;
+
+                return Mathf.Lerp(1f, playerSettings.MinDebuffMoveSpeedMultiplier, ratio);
+            }
+        }
+
         private float DebuffVignetteIntensity
         {
             get

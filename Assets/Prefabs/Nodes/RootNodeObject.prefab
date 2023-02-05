@@ -287,6 +287,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   levelSettings: {fileID: 11400000, guid: 73c1482631537af499b5cfa8ae994670, type: 2}
+  vfxTransform: {fileID: 6511583478769258221}
 --- !u!1 &7816756537074288068
 GameObject:
   m_ObjectHideFlags: 0

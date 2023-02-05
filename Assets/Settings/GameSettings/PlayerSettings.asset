@@ -18,9 +18,7 @@ MonoBehaviour:
   pivotLookSpeed: 10
   attackDurationSeconds: 0.1
   attackCooldownSeconds: 0.3
-  attackLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   maxDebuffDurationSeconds: 3
   maxDebuffVignette: 1
+  minDebuffMoveSpeedMultiplier: 0.5
   minDebuffPostExposure: -3

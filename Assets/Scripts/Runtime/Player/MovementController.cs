@@ -32,6 +32,8 @@ namespace MoonGale.Runtime.Player
         [NaughtyAttributes.ShowNonSerializedField]
         private float currentMoveSpeed;
 
+        public float MovementSpeedMultiplier { get; set; }
+
         private void OnDrawGizmos()
         {
             if (mainCamera == false)
@@ -87,6 +89,8 @@ namespace MoonGale.Runtime.Player
             var newMoveSpeed = isMoveInputActive
                 ? currentMoveSpeed + playerSettings.MoveAcceleration * Time.deltaTime
                 : currentMoveSpeed - playerSettings.StopAcceleration * Time.deltaTime;
+
+            newMoveSpeed *= MovementSpeedMultiplier;
 
             var clampedMoveSpeed = Mathf.Clamp(
                 newMoveSpeed,

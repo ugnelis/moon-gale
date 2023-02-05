@@ -59,6 +59,11 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float maxDebuffVignette = 1f;
 
+        [Tooltip("Minimum multiplier when slowing the player (less = slower player over time)")]
+        [Range(0f, 1f)]
+        [SerializeField]
+        private float minDebuffMoveSpeedMultiplier = 0.5f;
+
         [Tooltip("Minimum value of post exposure on debuff strength")]
         [Range(-5f, 5f)]
         [SerializeField]
@@ -81,5 +86,7 @@ namespace MoonGale.Runtime.Player
         public float MinDebuffPostExposure => minDebuffPostExposure;
 
         public float PivotLookSpeed => pivotLookSpeed;
+
+        public float MinDebuffMoveSpeedMultiplier => minDebuffMoveSpeedMultiplier;
     }
 }
