@@ -166,9 +166,10 @@ namespace MoonGale.Runtime.Levels
                 return;
             }
 
-            if (NodeObject is DestinationNodeObject && node.NodeObject is RootNodeObject)
+            if (NodeObject is DestinationNodeObject destinationNodeObject && node.NodeObject is RootNodeObject)
             {
                 ownerLevel.SignalDestinationReached();
+                destinationNodeObject.Visit();
             }
         }
 
