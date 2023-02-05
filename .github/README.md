@@ -24,7 +24,7 @@ Keyboard controls:
 - Shift - dash
 - Space - attack
 - E - strong attack
-- ESC pause
+- ESC - pause
 
 Gamepad controls, tested on Xbox controller (UI requires mouse):
 
