@@ -381,7 +381,11 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{0cd948b7-ba10-4b92-8aef-d7e535dcaed4}" />
-	<object class="GainEffect" id="{0545d027-b46b-4d35-9652-5ee38303e18f}" />
+	<object class="GainEffect" id="{0545d027-b46b-4d35-9652-5ee38303e18f}">
+		<property name="gain">
+			<value>-6.5</value>
+		</property>
+	</object>
 	<object class="DelayEffect" id="{247d2e2e-4d03-43b0-875b-9ee4687d9fa1}">
 		<property name="delay">
 			<value>16</value>
