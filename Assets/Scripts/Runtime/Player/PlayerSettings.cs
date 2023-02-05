@@ -10,44 +10,56 @@ namespace MoonGale.Runtime.Player
     internal sealed class PlayerSettings : ScriptableObject
     {
         [Header("Movement")]
+        [Tooltip("How fast the player moves")]
         [Min(0f)]
         [SerializeField]
-        private float maxMoveSpeed = 0.1f;
+        private float maxMoveSpeed = 0.2f;
 
+        [Tooltip("How fast the player accelerates")]
         [Min(0f)]
         [SerializeField]
         private float moveAcceleration = 2f;
 
+        [Tooltip("How fast the player acceleration stops on releasing input")]
         [Min(0f)]
         [SerializeField]
         private float stopAcceleration = 1f;
 
         [Header("Animation")]
+        [Tooltip("Speed used to translate pivots (lerping)")]
         [Min(0f)]
         [SerializeField]
         private float pivotLookSpeed = 10f;
 
         [Header("Attacks")]
+        [Tooltip(
+            "Duration of the attack (player is blocked from doing another). This also impacts " +
+            "events"
+        )]
         [Min(0f)]
         [SerializeField]
         private float attackDurationSeconds = 0.3f;
 
+        [Tooltip("Cooldown until the player can perform the next attack")]
         [Min(0f)]
         [SerializeField]
         private float attackCooldownSeconds = 0.3f;
 
-        [SerializeField]
-        private LayerMask attackLayerMask;
-
         [Header("Debuffs")]
+        [Tooltip(
+            "How much time must pass for the player to receive the max penalty for being " +
+            "debuffed (e.g., die from roots)"
+        )]
         [Min(0f)]
         [SerializeField]
         private float maxDebuffDurationSeconds = 3f;
 
+        [Tooltip("Maximum power of the Vignette effect based on debuff strength")]
         [Range(0f, 1f)]
         [SerializeField]
         private float maxDebuffVignette = 1f;
 
+        [Tooltip("Minimum value of post exposure on debuff strength")]
         [Range(-5f, 5f)]
         [SerializeField]
         private float minDebuffPostExposure = -1f;
@@ -61,8 +73,6 @@ namespace MoonGale.Runtime.Player
         public float AttackDurationSeconds => attackDurationSeconds;
 
         public float AttackCooldownSeconds => attackCooldownSeconds;
-
-        public LayerMask AttackLayerMask => attackLayerMask;
 
         public float MaxDebuffDurationSeconds => maxDebuffDurationSeconds;
 

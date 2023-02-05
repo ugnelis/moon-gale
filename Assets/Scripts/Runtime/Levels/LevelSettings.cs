@@ -10,34 +10,52 @@ namespace MoonGale.Runtime.Levels
     )]
     internal sealed class LevelSettings : ScriptableObject
     {
-        [Header("General")]
+        [Header("Neighbors")]
+        [Tooltip("Radius used to find neighbor nodes on destination nodes (override)")]
         [Min(0f)]
         [SerializeField]
-        private float destinationNodeQueryRadius = 10f;
+        private float destinationNodeQueryRadius = 12f;
 
-        [Min(0f)]
-        [SerializeField]
-        private float destinationNodeBlockSize = 20f;
-
+        [Tooltip("Radius used to find neighbor nodes on all nodes (default)")]
         [Min(0f)]
         [SerializeField]
         private float queryRadius = 10f;
 
-        [Min(0f)]
-        [SerializeField]
-        private float blockSize = 5f;
-
-        [SerializeField]
-        private LayerMask nodeLayerMask;
-
-        [Header("Prefab")]
+        [Header("Prefabs")]
+        [Tooltip("Prefab used to spawn air tiles")]
         [Min(0f)]
         [SerializeField]
         private Node airNodePrefab;
 
+        [Tooltip("Prefab used to spawn roots")]
         [Min(0f)]
         [SerializeField]
         private Node rootNodePrefab;
+
+        [Header("Root Spawn Rates")]
+        [Tooltip("How often to spawn roots")]
+        [Min(0f)]
+        [SerializeField]
+        private float rootSpawnIntervalSeconds = 1f;
+
+        [Tooltip(
+            "Curve which determines the amount of roots spawned each tick. The x axis denotes " +
+            "intensity level, the y axis denotes the amount of roots spawned at that level"
+        )]
+        [Min(0f)]
+        [SerializeField]
+        private AnimationCurve rootIntensityLevelCurve;
+
+        [Header("Debug")]
+        [Tooltip("Size of the destination node debug visuals")]
+        [Min(0f)]
+        [SerializeField]
+        private float destinationNodeBlockSize = 20f;
+
+        [Tooltip("Size of grid tile (mostly used for debug visuals)")]
+        [Min(0f)]
+        [SerializeField]
+        private float blockSize = 5f;
 
         public float GetQueryRadius(Node node)
         {
@@ -59,10 +77,12 @@ namespace MoonGale.Runtime.Levels
             return blockSize;
         }
 
-        public LayerMask NodeLayerMask => nodeLayerMask;
-
         public Node AirNodePrefab => airNodePrefab;
 
         public Node RootNodePrefab => rootNodePrefab;
+
+        public float RootSpawnIntervalSeconds => rootSpawnIntervalSeconds;
+
+        public AnimationCurve RootIntensityLevelCurve => rootIntensityLevelCurve;
     }
 }

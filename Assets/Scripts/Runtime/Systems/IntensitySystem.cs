@@ -52,12 +52,12 @@ namespace MoonGale.Runtime.Systems
         private void UpdateSpawnRate()
         {
             var survivedTimeSeconds = scoreSystem.SurvivedTimeSeconds;
-            var multiplier = (int) (survivedTimeSeconds / settings.SpawnRateIncreaseIntervalSeconds) + 1;
+            var multiplier = (int) (survivedTimeSeconds / settings.IntensityIncreaseIntervalSeconds) + 1;
 
             var oldIntensity = IntensityLevel;
-            var newIntensity = multiplier * settings.SpawnRateIncreaseAmount;
+            var newIntensity = multiplier * settings.IntensityMultiplier;
 
-            IntensityLevel = Math.Max(settings.MinSpawnRate, newIntensity);
+            IntensityLevel = Math.Max(settings.MinIntensity, newIntensity);
 
             if (oldIntensity != newIntensity)
             {

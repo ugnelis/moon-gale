@@ -9,22 +9,25 @@ namespace MoonGale.Runtime.Systems
     )]
     internal sealed class IntensitySystemSettings : ScriptableObject
     {
+        [Tooltip("How often does intensity increase?")]
         [Min(0)]
         [SerializeField]
-        private int spawnRateIncreaseIntervalSeconds = 30;
+        private int intensityIncreaseIntervalSeconds = 20;
 
+        [Tooltip("Starting/min intensity")]
         [Min(0)]
         [SerializeField]
-        private int minSpawnRate = 1;
+        private int minIntensity = 1;
 
+        [Tooltip("By how much does the intensity increase (multiplier)?")]
         [Min(0)]
         [SerializeField]
-        private int spawnRateIncreaseAmount = 1;
+        private int intensityMultiplier = 1;
 
-        public int SpawnRateIncreaseIntervalSeconds => spawnRateIncreaseIntervalSeconds;
+        public int IntensityIncreaseIntervalSeconds => intensityIncreaseIntervalSeconds;
 
-        public int MinSpawnRate => minSpawnRate;
+        public int MinIntensity => minIntensity;
 
-        public int SpawnRateIncreaseAmount => spawnRateIncreaseAmount;
+        public int IntensityMultiplier => intensityMultiplier;
     }
 }

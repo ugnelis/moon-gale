@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MoonGale.Runtime.Levels.Nodes;
 using MoonGale.Runtime.Systems;
 using UnityEngine;
 
@@ -155,6 +156,20 @@ namespace MoonGale.Runtime.Levels
             }
 
             neighbors.Add(node);
+            OnNewNeighbor(node);
+        }
+
+        private void OnNewNeighbor(Node node)
+        {
+            if (ownerLevel == false)
+            {
+                return;
+            }
+
+            if (NodeObject is DestinationNodeObject && node.NodeObject is RootNodeObject)
+            {
+                ownerLevel.SignalDestinationReached();
+            }
         }
 
         public void RemoveNeighbor(Node node)
@@ -172,11 +187,15 @@ namespace MoonGale.Runtime.Levels
             }
 
             neighbors[index] = newNode;
+            OnNewNeighbor(newNode);
         }
 
         public void SetNeighbors(IEnumerable<Node> newNeighbors)
         {
-            neighbors.AddRange(newNeighbors);
+            foreach (var newNeighbor in newNeighbors)
+            {
+                AddNeighbor(newNeighbor);
+            }
         }
 
         public void ClearNeighbors()

@@ -23,3 +23,28 @@ MonoBehaviour:
     type: 3}
   rootNodePrefab: {fileID: 1224765470740857645, guid: 23989e53dc6cf6b4287d96a5b80e7ea7,
     type: 3}
+  rootSpawnIntervalSeconds: 1
+  rootIntensityLevelCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 14.461349
+      value: 123.36508
+      inSlope: 19.52291
+      outSlope: 19.52291
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.042620126
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

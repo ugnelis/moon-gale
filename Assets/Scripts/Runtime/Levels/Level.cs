@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MoonGale.Core;
 using MoonGale.Runtime.Levels.Nodes;
+using MoonGale.Runtime.Player;
+using MoonGale.Runtime.Systems;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace MoonGale.Runtime.Levels
 {
@@ -18,10 +23,48 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private Transform nodeParent;
 
+        [Header("Events")]
         [SerializeField]
-        private int tilesPerTick = 5;
+        private UnityEvent onDestinationReached;
 
+        private IIntensitySystem intensitySystem;
         private int currentTilesCount;
+
+        private int TilesPerTick
+        {
+            get
+            {
+                var intensityLevel = intensitySystem.IntensityLevel;
+                var tilesPerTick = (int) levelSettings.RootIntensityLevelCurve.Evaluate(intensityLevel);
+
+                return tilesPerTick;
+            }
+        }
+
+        private float nextSpawnTimeSeconds;
+        private bool isPlayerDead;
+
+        private void Awake()
+        {
+            intensitySystem = GameManager.GetSystem<IIntensitySystem>();
+        }
+
+        private void Update()
+        {
+            if (isPlayerDead)
+            {
+                return;
+            }
+
+            if (Time.time <= nextSpawnTimeSeconds)
+            {
+                return;
+            }
+
+            Debug.Log("Spawn" + nextSpawnTimeSeconds + " < " + Time.time);
+            PropagateOneStep();
+            UpdateSpawnTime();
+        }
 
 #if UNITY_EDITOR
         // ReSharper disable once UnusedMember.Local
@@ -59,6 +102,13 @@ namespace MoonGale.Runtime.Levels
             {
                 node.OwnerLevel = this;
             }
+        }
+
+        public void SignalDestinationReached()
+        {
+            onDestinationReached?.Invoke();
+            GameManager.Publish(new PlayerDeathMessage());
+            isPlayerDead = true;
         }
 
         private void ConnectNeighbors(IReadOnlyList<Node> nodes)
@@ -134,16 +184,26 @@ namespace MoonGale.Runtime.Levels
             graph.ReplaceNode(oldNode, newNode);
         }
 
-#if UNITY_EDITOR
-        // ReSharper disable once UnusedMember.Local
+        private void UpdateSpawnTime()
+        {
+            nextSpawnTimeSeconds = Time.time + levelSettings.RootSpawnIntervalSeconds;
+        }
+
         [Button("Propagate")]
-        private void PropagateOneStepEditor()
+        private void PropagateOneStep()
         {
             if (Application.isPlaying == false)
             {
                 Debug.LogWarning("Only works in play-mode");
                 return;
             }
+
+            Debug.Log(
+                $"Propagating Root Nodes by one step. " +
+                $"Intensity Level: {intensitySystem.IntensityLevel} " +
+                $"Spawn Count: {TilesPerTick}",
+                this
+            );
 
             currentTilesCount = 0;
 
@@ -163,7 +223,6 @@ namespace MoonGale.Runtime.Levels
                 PerformBreadthFirstSearch(shuffledRootNodes.ElementAt(i));
             }
         }
-#endif
 
         private void PerformBreadthFirstSearch(Node root)
         {
@@ -175,7 +234,7 @@ namespace MoonGale.Runtime.Levels
             var queue = new Queue<Node>();
             queue.Enqueue(root);
 
-            while (queue.Count > 0 && currentTilesCount < tilesPerTick)
+            while (queue.Count > 0 && currentTilesCount < TilesPerTick)
             {
                 var node = queue.Dequeue();
 
@@ -191,7 +250,7 @@ namespace MoonGale.Runtime.Levels
                     queue.Enqueue(neighborNode);
 
                     currentTilesCount++;
-                    if (currentTilesCount >= tilesPerTick)
+                    if (currentTilesCount >= TilesPerTick)
                     {
                         break;
                     }
