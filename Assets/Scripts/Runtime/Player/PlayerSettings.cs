@@ -20,6 +20,16 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float moveAcceleration = 2f;
 
+        [Tooltip("How fast the player accelerates on dash")]
+        [Min(0f)]
+        [SerializeField]
+        private float dashAcceleration = 4f;
+
+        [Tooltip("How much time takes dash movement")]
+        [Min(0f)]
+        [SerializeField]
+        private float dashDurationSeconds = 2f;
+
         [Tooltip("How fast the player acceleration stops on releasing input")]
         [Min(0f)]
         [SerializeField]
@@ -72,6 +82,10 @@ namespace MoonGale.Runtime.Player
         public float MaxMoveSpeed => maxMoveSpeed;
 
         public float MoveAcceleration => moveAcceleration;
+
+        public float DashAcceleration => dashAcceleration;
+
+        public float DashDurationSeconds => dashDurationSeconds;
 
         public float StopAcceleration => stopAcceleration;
 
