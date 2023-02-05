@@ -11,6 +11,7 @@ namespace MoonGale
         {
             if (other.gameObject.layer.Equals(6))
             {
+                Debug.Log("AAA");
                 other.gameObject.GetComponentInChildren<VisualEffect>().Play();
                 other.gameObject.GetComponent<Animator>().Play("Blob_GettingActive");
             }
