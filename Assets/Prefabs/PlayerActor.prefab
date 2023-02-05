@@ -495,11 +495,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1340313127
-      Data2: 1273892324
-      Data3: 1169544583
-      Data4: -188474577
-    Path: event:/Player_Attack
+      Data1: -1527215657
+      Data2: 1130843228
+      Data3: -902808192
+      Data4: -953423827
+    Path: event:/Player_Attack_Strong
   Event: 
   PlayEvent: 0
   StopEvent: 2
@@ -1648,8 +1648,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6018831065905993465}
-  m_LocalRotation: {x: 0.5413323, y: -0.31011096, z: 0.22422718, w: 0.74867404}
-  m_LocalPosition: {x: 7, y: 30, z: -7}
+  m_LocalRotation: {x: 0.32913005, y: 0.46580213, z: -0.19196133, w: 0.79865676}
+  m_LocalPosition: {x: 3.1084375, y: 11.896763, z: 8.77002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5050,47 +5050,47 @@ PrefabInstance:
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -2.664
+      value: -11.403999
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 1
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: 0.492
+      value: -17.788
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.x
-      value: 0.72
+      value: -8.0199995
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
-      value: 1
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
-      value: 4.0800004
+      value: -14.200001
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
-      value: 1.992
+      value: -6.7479997
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: 1
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169340, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
-      value: -1.5840001
+      value: -19.864
       objectReference: {fileID: 0}
     - target: {fileID: 3645073789082169342, guid: f5c3d931cb71cf74f9e5de8f68661f9d,
         type: 3}
@@ -5126,47 +5126,47 @@ PrefabInstance:
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -2.6190414
+      value: -11.359041
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 1.13626
+      value: 2.88626
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: 3.2140474
+      value: -15.065953
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.x
-      value: 1.1799942
+      value: -7.5600057
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
-      value: 1.13626
+      value: 2.88626
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
-      value: 3.8016963
+      value: -14.478304
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
-      value: 2.1278572
+      value: -6.6121426
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: 1.13626
+      value: 2.88626
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601618, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
-      value: 0.7615062
+      value: -17.518494
       objectReference: {fileID: 0}
     - target: {fileID: 2284485395990601629, guid: 52ec2a421b4c01a43a9effdfa1243965,
         type: 3}
