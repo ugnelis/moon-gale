@@ -10,9 +10,12 @@ Green is the color of HOPE. It shines through the dark, elevating the soul. A bl
 
 Now come and entangle yourself in a curse.
 
-Download the game [here](https://github.com/ugnelis/moon-gale/releases/latest).
+## Downloads
 
-## Requirements
+- [GitHub Latest Release Build](https://github.com/ugnelis/moon-gale/releases/latest)
+- [Global Game Jam Page](https://globalgamejam.org/2023/games/rooted-warden-3)
+
+## Development
 
 - [Unity 2021.3.18f1](https://unity.com/download#how-get-started)
 - [FMOD Studio 2.02.11](https://www.fmod.com/download) (optional)
