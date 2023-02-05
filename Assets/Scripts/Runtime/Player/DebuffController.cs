@@ -101,12 +101,16 @@ namespace MoonGale.Runtime.Player
 
         private void OnTriggerStay(Collider other)
         {
+            if (enabled == false)
+            {
+                return;
+            }
+
             if (isOverlappedLastFrame == false)
             {
                 onStartDebuff?.Invoke();
             }
 
-            // This whole logic
             isOverlappingNode = true;
         }
 

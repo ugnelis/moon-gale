@@ -287,6 +287,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   levelSettings: {fileID: 11400000, guid: 73c1482631537af499b5cfa8ae994670, type: 2}
+  bodyTransform: {fileID: 8003520391810972365}
   vfxTransform: {fileID: 6511583478769258221}
 --- !u!1 &7816756537074288068
 GameObject:
@@ -318,7 +319,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6735434263282471615}
   m_Father: {fileID: 330091363491068385}
@@ -515,3 +516,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1977309311039573417, guid: d7afa0975afb62f4685f3f26b8d615c8, type: 3}
   isSpawnOnDisable: 1
+  destroyDelaySeconds: 6

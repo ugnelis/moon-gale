@@ -1,3 +1,4 @@
+using MoonGale.Runtime.Systems;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -10,6 +11,10 @@ namespace MoonGale.Runtime.Utilities
 
         [SerializeField]
         private bool isSpawnOnDisable = true;
+
+        [Min(0f)]
+        [SerializeField]
+        private float destroyDelaySeconds = 6f;
 
         private bool isQuitting;
 
@@ -35,14 +40,19 @@ namespace MoonGale.Runtime.Utilities
 
         private void Spawn()
         {
-            if (isQuitting)
+            if (isQuitting || SceneSystem.IsSceneLoading)
             {
                 return;
             }
 
-            GameObject effect = Instantiate(prefab, this.transform.position, Quaternion.identity);
-            effect.GetComponent<VisualEffect>().Play();
-            Destroy(effect, 6f);
+            var effect = Instantiate(prefab, transform.position, Quaternion.identity);
+            var vfx = effect.GetComponent<VisualEffect>();
+            if (vfx)
+            {
+                vfx.Play();
+            }
+
+            Destroy(effect, destroyDelaySeconds);
         }
     }
 }

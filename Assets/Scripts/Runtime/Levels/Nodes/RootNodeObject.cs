@@ -10,11 +10,14 @@ namespace MoonGale.Runtime.Levels.Nodes
         private LevelSettings levelSettings;
 
         [SerializeField]
+        private Transform bodyTransform;
+
+        [SerializeField]
         private Transform vfxTransform;
 
         private void Start()
         {
-            transform.localScale = Vector3.zero;
+            bodyTransform.localScale = Vector3.zero;
             GrowRoot();
         }
 
@@ -24,12 +27,13 @@ namespace MoonGale.Runtime.Levels.Nodes
 
             if (vfxTransform)
             {
-                var vfxPosition = vfxTransform.position;
-                vfxPosition.y = targetScale / 2f;
-                vfxTransform.position = vfxPosition;
+                var vfxScale = vfxTransform.localScale;
+                vfxScale.x = targetScale;
+                vfxScale.z = targetScale;
+                vfxTransform.localScale = vfxScale;
             }
 
-            transform
+            bodyTransform
                 .DOScale(targetScale, levelSettings.RootScaleDurationSeconds)
                 .SetEase(levelSettings.RootScaleEaseAnimation);
         }
