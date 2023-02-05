@@ -1563,50 +1563,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 215022957392294044, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215022957392294044, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215022957392294044, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215022957392294044, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 753456401806925152, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
         type: 3}
       propertyPath: m_Name
       value: MainMenuUIController
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001063459886169968, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001063459886169968, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001063459886169968, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001063459886169968, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515420931989066854, guid: 98e9e77e4fa34d54eb8791e94a93a79a,
         type: 3}
