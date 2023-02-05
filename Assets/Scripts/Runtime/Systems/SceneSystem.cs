@@ -1,4 +1,7 @@
-﻿using MoonGale.Core;
+﻿using System;
+using System.Collections;
+using MoonGale.Core;
+using MoonGale.Runtime.UI;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +10,7 @@ namespace MoonGale.Runtime.Systems
 {
     internal sealed class SceneSystem : MonoBehaviour, ISystem, ISceneSystem
     {
+        [Header("Scenes")]
         [Scene]
         [SerializeField]
         private int menuSceneBuildIndex;
@@ -15,40 +19,68 @@ namespace MoonGale.Runtime.Systems
         [SerializeField]
         private int mainSceneBuildIndex;
 
-        private int currentSceneBuildIndex;
+        [Header("Transitions")]
+        [SerializeField]
+        private FadeCanvasUIController fadeCanvas;
 
-        public static bool IsSceneLoading { get; private set; }
-
-        private void OnEnable()
+        public static bool IsSceneLoading
         {
-            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+            get => isSceneLoading;
+            private set
+            {
+                var oldValue = isSceneLoading;
+                var newValue = value;
+
+                isSceneLoading = value;
+
+                if (oldValue == newValue)
+                {
+                    return;
+                }
+
+                if (value)
+                {
+                    GameManager.Publish(new SceneLoadStartedMessage());
+                }
+                else
+                {
+                    GameManager.Publish(new SceneLoadStoppedMessage());
+                }
+            }
         }
 
-        private void OnDisable()
-        {
-            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
-        }
+        private static bool isSceneLoading;
 
         public void LoadMainScene()
         {
-            IsSceneLoading = true;
-            SceneManager.LoadScene(mainSceneBuildIndex);
-
-            currentSceneBuildIndex = mainSceneBuildIndex;
-            PublishMainSceneLoadedMessage();
+            StartLoadScene(mainSceneBuildIndex, PublishMainSceneLoadedMessage);
         }
 
         public void LoadMenuScene()
         {
-            IsSceneLoading = true;
-            SceneManager.LoadScene(menuSceneBuildIndex);
-
-            currentSceneBuildIndex = menuSceneBuildIndex;
-            PublishMenuSceneLoadedMessage();
+            StartLoadScene(menuSceneBuildIndex, PublishMenuSceneLoadedMessage);
         }
 
-        private static void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
+        private void StartLoadScene(int index, Action onLoaded)
         {
+            StartCoroutine(LoadSceneRoutine(index, onLoaded));
+        }
+
+        private IEnumerator LoadSceneRoutine(int index, Action onLoaded)
+        {
+            if (IsSceneLoading)
+            {
+                yield break;
+            }
+
+            IsSceneLoading = true;
+
+            yield return fadeCanvas.ShowCanvas();
+            yield return SceneManager.LoadSceneAsync(index);
+            yield return fadeCanvas.HideCanvas();
+
+            onLoaded?.Invoke();
+
             IsSceneLoading = false;
         }
 

@@ -1,6 +1,8 @@
-﻿using MoonGale.Core;
+﻿using System;
+using MoonGale.Core;
 using MoonGale.Runtime.Systems;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MoonGale.Runtime
 {
@@ -40,6 +42,10 @@ namespace MoonGale.Runtime
 
             controllerParentTransform.gameObject.SetActive(true);
             systemsParentTransform.gameObject.SetActive(true);
+
+            var seed = DateTime.Now.Millisecond;
+            Random.InitState(seed);
+            Debug.Log($"Initialized game (random seed {seed})");
         }
     }
 }
