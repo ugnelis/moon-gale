@@ -67,21 +67,6 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 1224765470740857645}
-    - target: {fileID: 6595627249095830130, guid: 21b78d366cfd7c84bae16a269fd4022a,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6595627249095830130, guid: 21b78d366cfd7c84bae16a269fd4022a,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6595627249095830130, guid: 21b78d366cfd7c84bae16a269fd4022a,
-        type: 3}
-      propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7028793198516504235, guid: 21b78d366cfd7c84bae16a269fd4022a,
         type: 3}
       propertyPath: m_Name
@@ -126,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 5393563426338247527, guid: 96e564bc9395b324ca05d0410736640b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 5393563426338247527, guid: 96e564bc9395b324ca05d0410736640b,
         type: 3}
