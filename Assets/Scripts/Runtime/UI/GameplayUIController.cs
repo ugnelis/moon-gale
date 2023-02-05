@@ -132,9 +132,8 @@ namespace MoonGale.Runtime.UI
                 button.onClick.RemoveListener(OnRestartButtonClicked);
             }
 
-            Time.timeScale = 1f;
+            Resume();
             isGameOver = false;
-            isPaused = false;
         }
 
         private void OnPausePerformed(InputAction.CallbackContext context)
@@ -148,17 +147,27 @@ namespace MoonGale.Runtime.UI
             {
                 EventSystem.current.SetSelectedGameObject(pauseFocusButton.gameObject);
                 DeactivateCanvasGroup(pauseCanvasGroup);
-                Time.timeScale = 1f;
-                isPaused = false;
+                Resume();
                 onGameResumed?.Invoke();
             }
             else
             {
                 ActiveCanvasGroup(pauseCanvasGroup);
-                Time.timeScale = 0f;
-                isPaused = true;
+                Pause();
                 onGamePaused?.Invoke();
             }
+        }
+
+        private void Resume()
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
+
+        private void Pause()
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
         }
 
         private void OnPlayerDeathMessage(PlayerDeathMessage message)
@@ -187,8 +196,7 @@ namespace MoonGale.Runtime.UI
                 }
             }
 
-            Time.timeScale = 1f;
-            isGameOver = true;
+            Resume();
         }
 
         private void OnMainMenuButtonClicked()

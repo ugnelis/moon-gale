@@ -43,6 +43,7 @@ namespace MoonGale.Runtime.UI
             yield return canvasGroup
                 .DOFade(to, fadeDurationSeconds)
                 .OnComplete(onComplete.Invoke)
+                .SetUpdate(true)
                 .WaitForCompletion();
         }
     }
