@@ -926,7 +926,9 @@ MonoBehaviour:
   levelSettings: {fileID: 11400000, guid: 73c1482631537af499b5cfa8ae994670, type: 2}
   graph: {fileID: 1308589043915556971}
   nodeParent: {fileID: 7372784734335727305}
-  tilesPerTick: 5
+  onDestinationReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1308589043915556971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105104,7 +105106,7 @@ PrefabInstance:
     - target: {fileID: 2663565131295589165, guid: 94da6a3114f662d41b0c5890ece567f4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2663565131295589165, guid: 94da6a3114f662d41b0c5890ece567f4,
         type: 3}

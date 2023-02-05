@@ -61,7 +61,6 @@ namespace MoonGale.Runtime.Levels
                 return;
             }
 
-            Debug.Log("Spawn" + nextSpawnTimeSeconds + " < " + Time.time);
             PropagateOneStep();
             UpdateSpawnTime();
         }
@@ -199,8 +198,8 @@ namespace MoonGale.Runtime.Levels
             }
 
             Debug.Log(
-                $"Propagating Root Nodes by one step. " +
-                $"Intensity Level: {intensitySystem.IntensityLevel} " +
+                $"Spawning Root Nodes. " +
+                $"Intensity Level: {intensitySystem.IntensityLevel}, " +
                 $"Spawn Count: {TilesPerTick}",
                 this
             );
