@@ -14,6 +14,9 @@ namespace MoonGale.Runtime.Player
         private MovementController movementController;
 
         [SerializeField]
+        private DashController dashController;
+
+        [SerializeField]
         private AttackController attackController;
 
         [SerializeField]
@@ -22,6 +25,9 @@ namespace MoonGale.Runtime.Player
         [Header("Inputs")]
         [SerializeField]
         private InputActionReference moveInputActionReference;
+
+        [SerializeField]
+        private InputActionReference dashInputActionReference;
 
         [SerializeField]
         private InputActionReference attackInputActionReference;
@@ -52,6 +58,7 @@ namespace MoonGale.Runtime.Player
             GameManager.AddListener<PlayerDeathMessage>(OnPlayerDeath);
 
             moveInputActionReference.action.performed += OnMoveInputActionPerformed;
+            dashInputActionReference.action.performed += OnDashInputActionPerformed;
             moveInputActionReference.action.canceled += OnMoveInputActionCanceled;
             attackInputActionReference.action.performed += OnAttackInputActionPerformed;
             debuffController.OnDebuffDurationExceeded += OnDebuffDurationExceeded;
@@ -62,6 +69,7 @@ namespace MoonGale.Runtime.Player
             movementController.enabled = false;
             attackController.enabled = false;
             debuffController.enabled = false;
+            dashController.enabled = false;
             scoreSystem.StopTimer();
             onPlayerDeath.Invoke();
         }
@@ -72,6 +80,7 @@ namespace MoonGale.Runtime.Player
 
             moveInputActionReference.action.performed -= OnMoveInputActionPerformed;
             moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
+            dashInputActionReference.action.performed -= OnDashInputActionPerformed;
             attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
             debuffController.OnDebuffDurationExceeded -= OnDebuffDurationExceeded;
 
@@ -88,6 +97,11 @@ namespace MoonGale.Runtime.Player
         private void OnMoveInputActionCanceled(InputAction.CallbackContext context)
         {
             movementController.StopMovement();
+        }
+
+        private void OnDashInputActionPerformed(InputAction.CallbackContext context)
+        {
+            dashController.Dash();
         }
 
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)

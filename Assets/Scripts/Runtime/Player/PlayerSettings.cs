@@ -20,15 +20,24 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float moveAcceleration = 2f;
 
-        [Tooltip("How fast the player accelerates on dash")]
+        [Header("Dash")]
+        [Tooltip(
+            "Duration of the dash (player is blocked from doing another). This also impacts " +
+            "events"
+        )]
         [Min(0f)]
         [SerializeField]
-        private float dashAcceleration = 4f;
+        private float dashDurationSeconds = 0.3f;
 
-        [Tooltip("How much time takes dash movement")]
+        [Tooltip("Cooldown until the player can perform the next dash")]
         [Min(0f)]
         [SerializeField]
-        private float dashDurationSeconds = 2f;
+        private float dashCooldownSeconds = 0.3f;
+
+        [Tooltip("Speed used to dash")]
+        [Min(0f)]
+        [SerializeField]
+        private float dashSpeed = 0.35f;
 
         [Tooltip("How fast the player acceleration stops on releasing input")]
         [Min(0f)]
@@ -83,9 +92,11 @@ namespace MoonGale.Runtime.Player
 
         public float MoveAcceleration => moveAcceleration;
 
-        public float DashAcceleration => dashAcceleration;
-
         public float DashDurationSeconds => dashDurationSeconds;
+
+        public float DashCooldownSeconds => dashCooldownSeconds;
+
+        public float DashSpeed => dashSpeed;
 
         public float StopAcceleration => stopAcceleration;
 
