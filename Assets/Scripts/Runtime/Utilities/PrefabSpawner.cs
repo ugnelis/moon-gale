@@ -45,7 +45,7 @@ namespace MoonGale.Runtime.Utilities
                 return;
             }
 
-            var effect = Instantiate(prefab, transform.position, Quaternion.identity);
+            var effect = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 0.55f, transform.position.z), Quaternion.identity);
             var vfx = effect.GetComponent<VisualEffect>();
             if (vfx)
             {

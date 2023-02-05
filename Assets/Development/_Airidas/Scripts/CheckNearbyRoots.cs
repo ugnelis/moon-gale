@@ -7,7 +7,7 @@ namespace MoonGale.Development._Airidas.Scripts
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer.Equals(6))
+            if (other.gameObject.layer.Equals(6) || other.gameObject.name.Equals("CoreRootObj"))
             {
                 other.gameObject.GetComponentInChildren<VisualEffect>().Play();
                 other.gameObject.GetComponent<Animator>().Play("Blob_GettingActive");
@@ -16,7 +16,7 @@ namespace MoonGale.Development._Airidas.Scripts
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.layer.Equals(6))
+            if (other.gameObject.layer.Equals(6) || other.gameObject.name.Equals("CoreRootObj"))
             {
                 other.gameObject.GetComponentInChildren<VisualEffect>().Stop();
                 other.gameObject.GetComponent<Animator>().Play("Blob_GettingInactive");
