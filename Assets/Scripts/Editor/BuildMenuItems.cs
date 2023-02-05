@@ -12,7 +12,9 @@ namespace MoonGale.Editor
             var buildSettings = new BuildSettings(BuildTarget.StandaloneWindows64)
             {
                 IsAppendVersionToBuildName = true,
-                IsAutoRunPlayer = true
+                IsAutoRunPlayer = true,
+                BuildName = Application.productName,
+                BuildNameDelimiter = " "
             };
 
             var buildReport = PlayerBuilder.Build(buildSettings);
@@ -26,7 +28,9 @@ namespace MoonGale.Editor
             {
                 IsAppendVersionToBuildName = true,
                 IsAppendVersionToArchiveName = true,
-                IsArchivePlayer = true
+                IsArchivePlayer = true,
+                BuildName = Application.productName,
+                BuildNameDelimiter = " "
             };
 
             var buildReport = PlayerBuilder.Build(buildSettings);

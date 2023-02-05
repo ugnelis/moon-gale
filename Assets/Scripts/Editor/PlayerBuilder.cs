@@ -166,7 +166,7 @@ namespace MoonGale.Editor
                 parts.Add(settings.BuildDateTimeString);
             }
 
-            var archiveFileName = $"{string.Join("-", parts)}.{BuildArchiveExtension}";
+            var archiveFileName = $"{string.Join(settings.BuildNameDelimiter, parts)}.{BuildArchiveExtension}";
             var archiveDirectory = settings.ArchiveDirectory;
 
             if (string.IsNullOrWhiteSpace(archiveDirectory) == false)
