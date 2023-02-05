@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using MoonGale.Core;
 using MoonGale.Runtime.Levels;
@@ -24,6 +24,17 @@ namespace MoonGale.Runtime.Player
         private readonly List<Node> attackCandidates = new();
         private float nextAttackTimeSeconds;
         private bool isAttacking;
+
+        public float AttackDurationSeconds
+        {
+            get;
+            set;
+        }
+
+        public bool IsAttacking
+        {
+            get { return isAttacking; }
+        }
 
         private void OnDisable()
         {
@@ -78,12 +89,13 @@ namespace MoonGale.Runtime.Player
 
             foreach (var node in attackCandidates)
             {
-                node.DestroyNode();
+                if (node)
+                    node.DestroyNode();
             }
 
             attackCandidates.Clear();
 
-            yield return new WaitForSeconds(playerSettings.AttackDurationSeconds);
+            yield return new WaitForSeconds(AttackDurationSeconds);
 
             isAttacking = false;
             onAttackStopped.Invoke();

@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 0.2
   moveAcceleration: 2
+  dashAcceleration: 4
+  dashDurationSeconds: 2
   stopAcceleration: 1
   pivotLookSpeed: 10
   attackDurationSeconds: 0.1
   attackCooldownSeconds: 0.3
+  strongAttackDurationSeconds: 1
+  strongAttackCooldownSeconds: 1
   maxDebuffDurationSeconds: 3
   maxDebuffVignette: 1
   minDebuffMoveSpeedMultiplier: 0.5
