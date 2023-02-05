@@ -12,8 +12,26 @@ Now come and entangle yourself in a curse.
 
 ## Downloads
 
-- [GitHub Latest Release Build](https://github.com/ugnelis/moon-gale/releases/latest)
-- [Global Game Jam Page](https://globalgamejam.org/2023/games/rooted-warden-3)
+- [Latest GitHub Release Build](https://github.com/ugnelis/moon-gale/releases/latest)
+- [Global Game Jam 20230 Page](https://globalgamejam.org/2023/games/rooted-warden-3)
+
+## Controls
+
+Keyboard controls:
+
+- WASD - movement
+- Shift - dash
+- Space - attack
+- E - strong attack
+- ESC pause
+
+Gamepad controls, tested on Xbox controller (UI requires mouse):
+
+- Left thumb-stick - movement
+- Y - dash
+- A - attack
+- B - strong attack
+- Select - pause
 
 ## Development
 
