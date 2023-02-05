@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b7461aa319427ca6b88d2afb13e2fe, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 0.2
+  maxMoveSpeed: 0.25
   moveAcceleration: 2
   stopAcceleration: 1
-  dashDurationSeconds: 0.8
-  dashCooldownSeconds: 0.3
-  dashSpeed: 0.35
-  pivotLookSpeed: 10
+  dashDurationSeconds: 0.3
+  dashCooldownSeconds: 0.5
+  dashSpeed: 0.6
+  pivotLookSpeed: 20
   attackDurationSeconds: 0.1
   attackCooldownSeconds: 0.3
-  strongAttackDurationSeconds: 1
+  strongAttackDurationSeconds: 4
   strongAttackCooldownSeconds: 1
   maxDebuffDurationSeconds: 3
   maxDebuffVignette: 1
