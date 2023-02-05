@@ -43,7 +43,7 @@ namespace MoonGale.Runtime
             controllerParentTransform.gameObject.SetActive(true);
             systemsParentTransform.gameObject.SetActive(true);
 
-            var seed = DateTime.Now.Millisecond;
+            var seed = (int) DateTime.Now.Ticks;
             Random.InitState(seed);
             Debug.Log($"Initialized game (random seed {seed})");
         }
