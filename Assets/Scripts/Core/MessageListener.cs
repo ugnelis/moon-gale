@@ -6,7 +6,7 @@ namespace MoonGale.Core
 {
     internal sealed class MessageListener<TMessage> : MessageListener where TMessage : IMessage
     {
-        private readonly ICollection<Action<TMessage>> listeners = new List<Action<TMessage>>();
+        private readonly IList<Action<TMessage>> listeners = new List<Action<TMessage>>();
 
         public int ListenerCount => listeners.Count;
 
@@ -22,8 +22,9 @@ namespace MoonGale.Core
 
         public void Publish(TMessage message)
         {
-            foreach (var listener in listeners)
+            for (var index = listeners.Count - 1; index >= 0; index--)
             {
+                var listener = listeners[index];
                 try
                 {
                     listener.Invoke(message);

@@ -107,7 +107,7 @@ namespace MoonGale.Runtime.Levels
         public void SignalDestinationReached()
         {
             onDestinationReached?.Invoke();
-            GameManager.Publish(new PlayerDeathMessage());
+            PlayerActor.Kill();
             isPlayerDead = true;
         }
 

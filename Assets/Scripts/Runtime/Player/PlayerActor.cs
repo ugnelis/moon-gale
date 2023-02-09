@@ -1,3 +1,4 @@
+using Cinemachine;
 using MoonGale.Core;
 using MoonGale.Runtime.Systems;
 using NaughtyAttributes;
@@ -11,7 +12,11 @@ namespace MoonGale.Runtime.Player
     {
         [Header("General")]
         [SerializeField]
-        PlayerSettings settings;
+        private PlayerSettings settings;
+
+        [Header("Controllers")]
+        [SerializeField]
+        private CinemachineVirtualCamera cinemachineCamera;
 
         [SerializeField]
         private MovementController movementController;
@@ -46,6 +51,8 @@ namespace MoonGale.Runtime.Player
         private UnityEvent onPlayerDeath;
 
         private IScoreSystem scoreSystem;
+
+        public bool IsDashing => dashController.IsDashing;
 
         private void Awake()
         {
@@ -98,6 +105,10 @@ namespace MoonGale.Runtime.Player
 
         private void OnPlayerDeath(PlayerDeathMessage message)
         {
+            cinemachineCamera.Follow = null;
+            cinemachineCamera.LookAt = null;
+            cinemachineCamera.gameObject.transform.parent = null;
+
             movementController.enabled = false;
             attackController.enabled = false;
             strongAttackController.enabled = false;
@@ -144,7 +155,7 @@ namespace MoonGale.Runtime.Player
 
         private void OnDebuffDurationExceeded()
         {
-            GameOver();
+            Kill();
         }
 
         private static void OnStrongAttacked(float nextAttackTime)
@@ -163,7 +174,7 @@ namespace MoonGale.Runtime.Player
         }
 
         [Button("Kill Player")]
-        private static void GameOver()
+        public static void Kill()
         {
             GameManager.Publish(new PlayerDeathMessage());
         }

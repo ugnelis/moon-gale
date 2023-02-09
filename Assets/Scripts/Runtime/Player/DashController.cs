@@ -28,15 +28,16 @@ namespace MoonGale.Runtime.Player
         private UnityEvent onDashStopped;
 
         private float nextDashTimeSeconds;
-        private bool isDashing;
         private Vector3 absoluteMoveDirection;
 
         public event Action<float> OnDashed;
 
+        public bool IsDashing { get; private set; }
+
         private void OnDisable()
         {
             nextDashTimeSeconds = 0f;
-            isDashing = false;
+            IsDashing = false;
         }
 
         private void FixedUpdate()
@@ -46,7 +47,7 @@ namespace MoonGale.Runtime.Player
 
         public void Dash()
         {
-            if (isDashing || nextDashTimeSeconds > Time.time)
+            if (IsDashing || nextDashTimeSeconds > Time.time)
             {
                 return;
             }
@@ -58,7 +59,7 @@ namespace MoonGale.Runtime.Player
 
         private void UpdateMovement()
         {
-            if (isDashing == false)
+            if (IsDashing == false)
             {
                 return;
             }
@@ -87,14 +88,14 @@ namespace MoonGale.Runtime.Player
         private IEnumerator DashRoutine()
         {
             nextDashTimeSeconds = Time.time + playerSettings.DashCooldownSeconds;
-            isDashing = true;
+            IsDashing = true;
 
             onDashStarted.Invoke();
             OnDashed?.Invoke(nextDashTimeSeconds);
 
             yield return new WaitForSeconds(playerSettings.DashDurationSeconds);
 
-            isDashing = false;
+            IsDashing = false;
             onDashStopped.Invoke();
         }
     }
