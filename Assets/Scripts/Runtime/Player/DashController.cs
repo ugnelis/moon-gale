@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +31,7 @@ namespace MoonGale.Runtime.Player
         private bool isDashing;
         private Vector3 absoluteMoveDirection;
 
+        public event Action<float> OnDashed;
 
         private void OnDisable()
         {
@@ -88,6 +90,7 @@ namespace MoonGale.Runtime.Player
             isDashing = true;
 
             onDashStarted.Invoke();
+            OnDashed?.Invoke(nextDashTimeSeconds);
 
             yield return new WaitForSeconds(playerSettings.DashDurationSeconds);
 

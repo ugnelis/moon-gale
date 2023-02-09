@@ -1,8 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using MoonGale.Core;
 using MoonGale.Runtime.Levels;
-using MoonGale.Runtime.Levels.Nodes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,37 +8,24 @@ namespace MoonGale.Runtime.Player
 {
     internal sealed class AttackController : MonoBehaviour
     {
-        [Header("General")]
-        [SerializeField]
-        private PlayerSettings playerSettings;
-
         [Header("Events")]
         [SerializeField]
         private UnityEvent onAttackStarted;
 
-        [SerializeField]
-        private UnityEvent onAttackStopped;
+        public event Action<float> OnAttacked;
 
         private readonly List<Node> attackCandidates = new();
         private float nextAttackTimeSeconds;
-        private bool isAttacking;
 
-        public float AttackDurationSeconds
-        {
-            get;
-            set;
-        }
+        public float AttackCooldownSeconds { get; set; }
 
-        public bool IsAttacking
-        {
-            get { return isAttacking; }
-        }
+        public bool IsAttacking { get; private set; }
 
         private void OnDisable()
         {
             attackCandidates.Clear();
             nextAttackTimeSeconds = 0f;
-            isAttacking = false;
+            IsAttacking = false;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -72,20 +57,16 @@ namespace MoonGale.Runtime.Player
 
         public void Attack()
         {
-            if (isAttacking || nextAttackTimeSeconds > Time.time)
+            if (IsAttacking || Time.time < nextAttackTimeSeconds)
             {
                 return;
             }
 
-            StartCoroutine(AttackRoutine());
-        }
-
-        private IEnumerator AttackRoutine()
-        {
-            nextAttackTimeSeconds = Time.time + playerSettings.AttackCooldownSeconds;
-            isAttacking = true;
+            nextAttackTimeSeconds = Time.time + AttackCooldownSeconds;
+            IsAttacking = true;
 
             onAttackStarted.Invoke();
+            OnAttacked?.Invoke(nextAttackTimeSeconds);
 
             foreach (var node in attackCandidates)
             {
@@ -94,11 +75,7 @@ namespace MoonGale.Runtime.Player
             }
 
             attackCandidates.Clear();
-
-            yield return new WaitForSeconds(AttackDurationSeconds);
-
-            isAttacking = false;
-            onAttackStopped.Invoke();
+            IsAttacking = false;
         }
     }
 }

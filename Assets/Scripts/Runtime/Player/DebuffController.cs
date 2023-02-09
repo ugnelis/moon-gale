@@ -19,7 +19,7 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private UnityEvent onStartDebuff;
 
-        public Action OnDebuffDurationExceeded;
+        public event Action OnDebuffDurationExceeded;
 
         public float DebuffMoveSpeedMultiplier
         {
