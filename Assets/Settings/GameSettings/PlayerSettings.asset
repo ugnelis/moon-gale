@@ -25,3 +25,4 @@ MonoBehaviour:
   maxDebuffVignette: 1
   minDebuffMoveSpeedMultiplier: 0.1
   minDebuffPostExposure: -3
+  holeMaxHoverDurationSeconds: 0.2

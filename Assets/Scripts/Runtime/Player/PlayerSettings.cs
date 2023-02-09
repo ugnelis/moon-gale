@@ -70,6 +70,7 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private float maxDebuffDurationSeconds = 3f;
 
+        [Space]
         [Tooltip("Maximum power of the Vignette effect based on debuff strength")]
         [Range(0f, 1f)]
         [SerializeField]
@@ -84,6 +85,10 @@ namespace MoonGale.Runtime.Player
         [Range(-5f, 5f)]
         [SerializeField]
         private float minDebuffPostExposure = -1f;
+
+        [Header("Holes")]
+        [SerializeField]
+        private float holeMaxHoverDurationSeconds = 0.4f;
 
         public float MaxMoveSpeed => maxMoveSpeed;
 
@@ -110,5 +115,7 @@ namespace MoonGale.Runtime.Player
         public float MinDebuffMoveSpeedMultiplier => minDebuffMoveSpeedMultiplier;
 
         public float StrongAttackCooldownSeconds => strongAttackCooldownSeconds;
+
+        public float HoleMaxHoverDurationSeconds => holeMaxHoverDurationSeconds;
     }
 }
