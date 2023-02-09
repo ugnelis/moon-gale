@@ -1,13 +1,19 @@
 ﻿using System.Collections.Generic;
 using MoonGale.Core;
+using MoonGale.Runtime.Levels;
 using MoonGale.Runtime.Levels.Nodes;
 using UnityEngine;
 
-namespace MoonGale.Runtime.Levels
+namespace MoonGale.Runtime.Indicators
 {
     internal sealed class DangerSensor : MonoBehaviour
     {
+        [SerializeField]
+        private Transform pivotTransform;
+
         private readonly List<Node> enteredNodes = new();
+
+        public Transform PivotTransform => pivotTransform;
 
         private void FixedUpdate()
         {
@@ -64,12 +70,12 @@ namespace MoonGale.Runtime.Levels
 
         private void OnDangerStarted()
         {
-            GameManager.Publish(new DangerStartedMessage(transform));
+            GameManager.Publish(new IndicatorTriggeredMessage(this));
         }
 
         private void OnDangerStopped()
         {
-            GameManager.Publish(new DangerStoppedMessage(transform));
+            GameManager.Publish(new IndicatorClearedMessage(this));
         }
     }
 }

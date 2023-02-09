@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace MoonGale.Runtime.Levels
 {
+    [SelectionBase]
     internal sealed class Level : MonoBehaviour
     {
         [Header("General")]
