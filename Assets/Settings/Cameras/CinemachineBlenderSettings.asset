@@ -28,7 +28,7 @@ MonoBehaviour:
     m_To: GameOverCameraPosition
     m_Blend:
       m_Style: 7
-      m_Time: 7
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve:
