@@ -48,3 +48,5 @@ MonoBehaviour:
   rootScaleEaseAnimation: 24
   destinationNodeBlockSize: 10
   blockSize: 5
+  isDrawNodeSize: 0
+  isDrawNodeRadius: 0

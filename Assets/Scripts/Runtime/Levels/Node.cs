@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace MoonGale.Runtime.Levels
 {
+    [SelectionBase]
     [ExecuteInEditMode] // Need to execute OnDestroy.
     internal sealed class Node : MonoBehaviour
     {
@@ -65,7 +66,7 @@ namespace MoonGale.Runtime.Levels
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            if (Application.isPlaying == false)
+            if (Application.isPlaying == false && levelSettings.IsDrawNodeRadius)
             {
                 DrawNodeRadius();
             }
@@ -75,7 +76,11 @@ namespace MoonGale.Runtime.Levels
 
         private void OnDrawGizmos()
         {
-            DrawNodeSize();
+            if (levelSettings.IsDrawNodeSize)
+            {
+                DrawNodeSize();
+            }
+
             var color = Color.white;
             color.a = 0.5f;
             DrawNodeConnections(color);

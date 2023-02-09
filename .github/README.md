@@ -13,7 +13,7 @@ Now come and entangle yourself in a curse.
 ## Links
 
 - [Latest GitHub Release Build](https://github.com/ugnelis/moon-gale/releases/latest)
-- [Global Game Jam 20230 Page](https://globalgamejam.org/2023/games/rooted-warden-3)
+- [Global Game Jam 2023 Page](https://globalgamejam.org/2023/games/rooted-warden-3)
 - [YouTube Video](https://youtu.be/4cgaqG9QtX4)
 
 ## Controls

@@ -73,6 +73,15 @@ namespace MoonGale.Runtime.Levels
         [SerializeField]
         private float blockSize = 5f;
 
+        [Tooltip("Should node neighbor query range be shown in the inspector")]
+        [SerializeField]
+        private bool isDrawNodeRadius;
+
+        [Space]
+        [Tooltip("Should node neighbor query range be shown in the inspector")]
+        [SerializeField]
+        private bool isDrawNodeSize = true;
+
         public float GetQueryRadius(Node node)
         {
             if (node.NodeObject is DestinationNodeObject)
@@ -106,5 +115,9 @@ namespace MoonGale.Runtime.Levels
         public float RootScaleDurationSeconds => rootScaleDurationSeconds;
 
         public Ease RootScaleEaseAnimation => rootScaleEaseAnimation;
+
+        public bool IsDrawNodeRadius => isDrawNodeRadius;
+
+        public bool IsDrawNodeSize => isDrawNodeSize;
     }
 }
