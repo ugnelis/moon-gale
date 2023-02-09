@@ -1875,6 +1875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!4 &1117871259160360270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2851665510732524557, guid: 9b9822d227d763942b3316f03915e3c8,
@@ -2126,20 +2127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
---- !u!114 &1501946425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2288711349030149526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 508f1cd24b965684f9ea3a4ad2abc88d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.4
-  range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &5801985945891761374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2321,7 +2309,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6123321628829718735}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &586862585
+--- !u!114 &427009387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2335,6 +2323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!1001 &6286485287731613455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2421,7 +2410,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6286485287731613455}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &912514869
+--- !u!114 &644137480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2435,6 +2424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!1001 &7201478796737077380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2640,6 +2630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478796774973890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2839,6 +2830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &2186258728337120143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9054465564962196227, guid: ae69ca6dfc61eac468ceab9fa319e044,
@@ -3590,6 +3582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478797044998177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4154,6 +4147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &7524462186882480534 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 836693926867797286, guid: 2f7db5e4a9df2a745af9e29b8d90737e,
@@ -4455,6 +4449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!1001 &7201478797197357649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5264,6 +5259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!4 &2186258727899488552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9054465564962196227, guid: ae69ca6dfc61eac468ceab9fa319e044,
@@ -6005,6 +6001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478797450448806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6106,7 +6103,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478797450448806}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1503157075
+--- !u!114 &1893114795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6120,6 +6117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 1.5
+  lerpSpeed: 20
 --- !u!1001 &7201478797458626265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6349,6 +6347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &2186258727681203514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9054465564962196227, guid: ae69ca6dfc61eac468ceab9fa319e044,
@@ -6740,6 +6739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478797577607226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7211,7 +7211,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478797587626696}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1997712065
+--- !u!114 &1421816868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7225,6 +7225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478797588879287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7415,6 +7416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!1001 &7201478797615816237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7829,6 +7831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &7240226562663030509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae5f75cedff853c4589ef4b96c02796f,
@@ -7936,7 +7939,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478797678710817}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2039252252
+--- !u!114 &1719310825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7950,6 +7953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!1001 &7201478797709625297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8216,7 +8220,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478797739571130}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1552216776
+--- !u!114 &551180019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8230,6 +8234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!1001 &7201478797762559735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9065,6 +9070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!1001 &7201478797944319548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9245,7 +9251,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478797964207113}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1566539349
+--- !u!114 &1489673093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9259,6 +9265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 1.5
+  lerpSpeed: 20
 --- !u!4 &4261634369482444749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,
@@ -9354,6 +9361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &951176154284712326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7981376225987927722, guid: ce4db3722ac13db4d8902014bce59e2f,
@@ -10265,7 +10273,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478798070458341}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1247683748
+--- !u!114 &470781636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10279,6 +10287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!4 &4261634369855032353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,
@@ -10389,6 +10398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &4261634369847285841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,
@@ -10924,6 +10934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!4 &4261634369897747582 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,
@@ -11205,6 +11216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!1001 &7201478798271096784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11485,6 +11497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 1.8
+  lerpSpeed: 20
 --- !u!1001 &7201478798283831885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11600,6 +11613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798310750112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12229,6 +12243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!4 &4261634370182036003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,
@@ -12339,6 +12354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &4261634370198641758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,
@@ -12470,7 +12486,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478798473345656}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1382621542
+--- !u!114 &670122609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12484,6 +12500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.4
+  lerpSpeed: 20
 --- !u!4 &7240226561813634451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae5f75cedff853c4589ef4b96c02796f,
@@ -12700,6 +12717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798507695346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12810,6 +12828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!1001 &7201478798510713569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13091,7 +13110,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478798542861276}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1021135160
+--- !u!114 &774584918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13105,6 +13124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.8
+  lerpSpeed: 20
 --- !u!1001 &7201478798545798558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13765,6 +13785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798633005481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14136,7 +14157,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478798672920926}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2032151952
+--- !u!114 &389907774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14150,6 +14171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798675028550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14685,6 +14707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798700744572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15216,7 +15239,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478798762037497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &513367657
+--- !u!114 &361106111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15230,6 +15253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798762169159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15735,6 +15759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 0.8
+  lerpSpeed: 20
 --- !u!1001 &7201478798792757167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15845,6 +15870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!1001 &7201478798796149408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16100,7 +16126,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7201478798832721775}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1713322608
+--- !u!114 &953382874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16114,6 +16140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   range: 2.3
+  lerpSpeed: 20
 --- !u!4 &4261634370300769451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6400907196534696900, guid: d85fdd3edffbea44bb9dbaef4fe66dfd,

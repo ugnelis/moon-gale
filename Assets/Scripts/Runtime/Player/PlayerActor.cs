@@ -50,8 +50,6 @@ namespace MoonGale.Runtime.Player
         private void Awake()
         {
             scoreSystem = GameManager.GetSystem<IScoreSystem>();
-            strongAttackController.AttackDurationSeconds = settings.StrongAttackDurationSeconds;
-            attackController.AttackDurationSeconds = settings.AttackDurationSeconds;
         }
 
         private void Start()
@@ -128,14 +126,20 @@ namespace MoonGale.Runtime.Player
 
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)
         {
-            if (!attackController.IsAttacking)
+            if (strongAttackController.IsAttacking == false)
+            {
+                attackController.AttackCooldownSeconds = settings.AttackCooldownSeconds;
                 attackController.Attack();
+            }
         }
 
         private void OnStrongAttackInputActionPerformed(InputAction.CallbackContext context)
         {
-            if (!attackController.IsAttacking)
+            if (attackController.IsAttacking == false)
+            {
+                strongAttackController.AttackCooldownSeconds = settings.StrongAttackCooldownSeconds;
                 strongAttackController.Attack();
+            }
         }
 
         private void OnDebuffDurationExceeded()

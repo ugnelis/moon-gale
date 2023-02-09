@@ -51,22 +51,10 @@ namespace MoonGale.Runtime.Player
         private float pivotLookSpeed = 10f;
 
         [Header("Attacks")]
-        [Tooltip(
-            "Duration of the attack (player is blocked from doing another). This also impacts " +
-            "events"
-        )]
-        [Min(0f)]
-        [SerializeField]
-        private float attackDurationSeconds = 0.3f;
-
         [Tooltip("Cooldown until the player can perform the next attack")]
         [Min(0f)]
         [SerializeField]
         private float attackCooldownSeconds = 0.3f;
-
-        [Min(0f)]
-        [SerializeField]
-        private float strongAttackDurationSeconds = 0.3f;
 
         [Tooltip("Cooldown until the player can perform the next attack")]
         [Min(0f)]
@@ -109,8 +97,6 @@ namespace MoonGale.Runtime.Player
 
         public float StopAcceleration => stopAcceleration;
 
-        public float AttackDurationSeconds => attackDurationSeconds;
-
         public float AttackCooldownSeconds => attackCooldownSeconds;
 
         public float MaxDebuffDurationSeconds => maxDebuffDurationSeconds;
@@ -122,8 +108,6 @@ namespace MoonGale.Runtime.Player
         public float PivotLookSpeed => pivotLookSpeed;
 
         public float MinDebuffMoveSpeedMultiplier => minDebuffMoveSpeedMultiplier;
-
-        public float StrongAttackDurationSeconds => strongAttackDurationSeconds;
 
         public float StrongAttackCooldownSeconds => strongAttackCooldownSeconds;
     }
