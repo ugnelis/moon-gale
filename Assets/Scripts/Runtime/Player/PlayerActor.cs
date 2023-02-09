@@ -10,7 +10,8 @@ namespace MoonGale.Runtime.Player
     internal sealed class PlayerActor : MonoBehaviour
     {
         [Header("General")]
-        [SerializeField] PlayerSettings settings;
+        [SerializeField]
+        PlayerSettings settings;
 
         [SerializeField]
         private MovementController movementController;
@@ -71,9 +72,30 @@ namespace MoonGale.Runtime.Player
             dashInputActionReference.action.performed += OnDashInputActionPerformed;
             moveInputActionReference.action.canceled += OnMoveInputActionCanceled;
             attackInputActionReference.action.performed += OnAttackInputActionPerformed;
-            debuffController.OnDebuffDurationExceeded += OnDebuffDurationExceeded;
-
             strongAttackInputActionReference.action.performed += OnStrongAttackInputActionPerformed;
+
+            debuffController.OnDebuffDurationExceeded += OnDebuffDurationExceeded;
+            strongAttackController.OnAttacked += OnStrongAttacked;
+            attackController.OnAttacked += OnWeakAttacked;
+            dashController.OnDashed += OnDashed;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.RemoveListener<PlayerDeathMessage>(OnPlayerDeath);
+
+            moveInputActionReference.action.performed -= OnMoveInputActionPerformed;
+            moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
+            dashInputActionReference.action.performed -= OnDashInputActionPerformed;
+            attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
+            strongAttackInputActionReference.action.performed -= OnStrongAttackInputActionPerformed;
+
+            debuffController.OnDebuffDurationExceeded -= OnDebuffDurationExceeded;
+            strongAttackController.OnAttacked -= OnStrongAttacked;
+            attackController.OnAttacked -= OnWeakAttacked;
+            dashController.OnDashed -= OnDashed;
+
+            movementController.StopMovement();
         }
 
         private void OnPlayerDeath(PlayerDeathMessage message)
@@ -85,21 +107,6 @@ namespace MoonGale.Runtime.Player
             dashController.enabled = false;
             scoreSystem.StopTimer();
             onPlayerDeath.Invoke();
-        }
-
-        private void OnDisable()
-        {
-            GameManager.RemoveListener<PlayerDeathMessage>(OnPlayerDeath);
-
-            moveInputActionReference.action.performed -= OnMoveInputActionPerformed;
-            moveInputActionReference.action.canceled -= OnMoveInputActionCanceled;
-            dashInputActionReference.action.performed -= OnDashInputActionPerformed;
-            attackInputActionReference.action.performed -= OnAttackInputActionPerformed;
-            debuffController.OnDebuffDurationExceeded -= OnDebuffDurationExceeded;
-
-            strongAttackInputActionReference.action.performed -= OnStrongAttackInputActionPerformed;
-
-            movementController.StopMovement();
         }
 
         private void OnMoveInputActionPerformed(InputAction.CallbackContext context)
@@ -121,19 +128,34 @@ namespace MoonGale.Runtime.Player
 
         private void OnAttackInputActionPerformed(InputAction.CallbackContext context)
         {
-            if(!attackController.IsAttacking)
+            if (!attackController.IsAttacking)
                 attackController.Attack();
         }
 
         private void OnStrongAttackInputActionPerformed(InputAction.CallbackContext context)
         {
-            if(!attackController.IsAttacking)
+            if (!attackController.IsAttacking)
                 strongAttackController.Attack();
         }
 
         private void OnDebuffDurationExceeded()
         {
             GameOver();
+        }
+
+        private static void OnStrongAttacked(float nextAttackTime)
+        {
+            GameManager.Publish(new PlayerStrongAttackMessage(nextAttackTime));
+        }
+
+        private static void OnWeakAttacked(float nextAttackTime)
+        {
+            GameManager.Publish(new PlayerWeakAttackMessage(nextAttackTime));
+        }
+
+        private static void OnDashed(float nextDashTime)
+        {
+            GameManager.Publish(new PlayerDashMessage(nextDashTime));
         }
 
         [Button("Kill Player")]

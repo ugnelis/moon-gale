@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MoonGale.Core;
@@ -20,6 +21,8 @@ namespace MoonGale.Runtime.Player
 
         [SerializeField]
         private UnityEvent onAttackStopped;
+
+        public event Action<float> OnAttacked;
 
         private readonly List<Node> attackCandidates = new();
         private float nextAttackTimeSeconds;
@@ -86,6 +89,7 @@ namespace MoonGale.Runtime.Player
             isAttacking = true;
 
             onAttackStarted.Invoke();
+            OnAttacked?.Invoke(nextAttackTimeSeconds + AttackDurationSeconds);
 
             foreach (var node in attackCandidates)
             {
