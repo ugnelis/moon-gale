@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1476663221}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &746168829
 MeshFilter:
@@ -200,7 +200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1476663221}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &870831686
 MeshFilter:
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 1121097959}
   - component: {fileID: 1121097960}
   m_Layer: 7
-  m_Name: Audio
+  m_Name: StrongAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,13 +472,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121097958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.75}
+  m_LocalScale: {x: 3.7, y: 4.3, z: 2.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1476663221}
-  m_RootOrder: 0
+  m_Father: {fileID: 7347896456783999595}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1121097960
 MonoBehaviour:
@@ -502,7 +502,7 @@ MonoBehaviour:
     Path: event:/Player_Attack_Strong
   Event: 
   PlayEvent: 0
-  StopEvent: 2
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -542,7 +542,6 @@ Transform:
   m_LocalScale: {x: 3.7, y: 4.3, z: 2.3}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1121097959}
   - {fileID: 746168827}
   - {fileID: 870831684}
   m_Father: {fileID: 5041811553469256535}
@@ -705,7 +704,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3071454391026438856}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5868642366954331383
 MeshFilter:
@@ -782,7 +781,7 @@ MonoBehaviour:
     Path: event:/Player_Footsteps
   Event: 
   PlayEvent: 0
-  StopEvent: 2
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -937,7 +936,7 @@ MonoBehaviour:
     Path: event:/Player_Dying
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1097,7 +1096,7 @@ MonoBehaviour:
     Path: event:/Player_Death
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1199,6 +1198,8 @@ Transform:
   - {fileID: 8771757350150443411}
   - {fileID: 7116977055189578691}
   - {fileID: 9077663137522021154}
+  - {fileID: 1121097959}
+  - {fileID: 4085417204637352303}
   m_Father: {fileID: 6018831066777822263}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1291,7 +1292,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3071454391026438856}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7356984322678483970
 MeshFilter:
@@ -1497,7 +1498,7 @@ MonoBehaviour:
     Path: event:/Player_Dash
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -2411,7 +2412,6 @@ Transform:
   m_LocalScale: {x: 3.7, y: 4.3, z: 2.3}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4085417204637352303}
   - {fileID: 4123046086372404891}
   - {fileID: 5428488083926258067}
   m_Father: {fileID: 5041811553469256535}
@@ -2601,7 +2601,7 @@ GameObject:
   - component: {fileID: 4085417204637352303}
   - component: {fileID: 1628005620821167708}
   m_Layer: 7
-  m_Name: Audio
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2614,13 +2614,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8593300841427154694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.75}
+  m_LocalScale: {x: 3.7, y: 4.3, z: 2.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3071454391026438856}
-  m_RootOrder: 0
+  m_Father: {fileID: 7347896456783999595}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1628005620821167708
 MonoBehaviour:
@@ -2644,7 +2644,7 @@ MonoBehaviour:
     Path: event:/Player_Attack
   Event: 
   PlayEvent: 0
-  StopEvent: 2
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
