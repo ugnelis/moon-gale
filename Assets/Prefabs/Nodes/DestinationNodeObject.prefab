@@ -60,6 +60,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2969998249472419304}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7744073085496960944}
         m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
         m_MethodName: Stop
         m_Mode: 1
@@ -69,6 +81,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7882667606243343078}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2969998249191655765}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Core_Explode
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2969998250179977398}
@@ -264,6 +300,12 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 8139068751495273874}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2969998249191655765 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6468376621362599111, guid: ef9838dc05b83fb4e8c8aaf09933a49b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8139068751495273874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!2083052967 &2969998249472419304 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6468376621602470010, guid: ef9838dc05b83fb4e8c8aaf09933a49b,
@@ -279,6 +321,18 @@ Transform:
 --- !u!108 &2969998250179977398 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 6468376621179600164, guid: ef9838dc05b83fb4e8c8aaf09933a49b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8139068751495273874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7744073085496960944 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1984889624470632994, guid: ef9838dc05b83fb4e8c8aaf09933a49b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8139068751495273874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7882667606243343078 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2132203203939755892, guid: ef9838dc05b83fb4e8c8aaf09933a49b,
     type: 3}
   m_PrefabInstance: {fileID: 8139068751495273874}
   m_PrefabAsset: {fileID: 0}

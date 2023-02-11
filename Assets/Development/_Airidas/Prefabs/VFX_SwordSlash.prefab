@@ -112,7 +112,7 @@ VisualEffect:
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 4f8742707bfcb3b4a8c99a9e5a0d77eb, type: 3}
   m_InitialEventName: 
-  m_InitialEventNameOverriden: 1
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_ResourceVersion: 1
@@ -123,13 +123,13 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -4.48895, y: 2.88626, z: -11.243431}
+      - m_Value: {x: -2.6270607, y: 1.6600001, z: 3.7498531}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -1.630904, y: 2.88626, z: -10.801338}
+      - m_Value: {x: -0.23472019, y: 1.6600001, z: 5.374839}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -0.91781867, y: 2.88626, z: -13.088498}
+      - m_Value: {x: 1.3902657, y: 1.6600001, z: 3.6144376}
         m_Name: Pos3
         m_Overridden: 1
     m_Vector4f:
