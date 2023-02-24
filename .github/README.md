@@ -12,7 +12,8 @@ Now come and entangle yourself in a curse.
 
 ## Links
 
-- [Latest GitHub Release Build](https://github.com/ugnelis/moon-gale/releases/latest)
+- [Download latest release (Windows)](https://github.com/ugnelis/moon-gale/releases/latest)
+- [Download from itch.io (Windows)](https://shorte.itch.io/rooted-warden)
 - [Global Game Jam 2023 Page](https://globalgamejam.org/2023/games/rooted-warden-3)
 - [YouTube Video](https://youtu.be/4cgaqG9QtX4)
 
