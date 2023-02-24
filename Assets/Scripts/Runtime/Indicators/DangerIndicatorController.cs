@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MoonGale.Core;
 using MoonGale.Runtime.Levels.Nodes;
+using MoonGale.Runtime.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,12 +32,14 @@ namespace MoonGale.Runtime.Indicators
         {
             GameManager.AddListener<IndicatorTriggeredMessage>(OnIndicatorTriggered);
             GameManager.AddListener<IndicatorClearedMessage>(OnIndicatorCleared);
+            GameManager.AddListener<PlayerDeathMessage>(OnGameOver);
         }
 
         private void OnDisable()
         {
             GameManager.RemoveListener<IndicatorTriggeredMessage>(OnIndicatorTriggered);
             GameManager.RemoveListener<IndicatorClearedMessage>(OnIndicatorCleared);
+            GameManager.RemoveListener<PlayerDeathMessage>(OnGameOver);
         }
 
         private void OnIndicatorTriggered(IndicatorTriggeredMessage message)
@@ -60,6 +64,20 @@ namespace MoonGale.Runtime.Indicators
                 return;
             }
 
+            DestroyIndicator(sensor, indicator);
+        }
+
+        private void OnGameOver(PlayerDeathMessage message)
+        {
+            var entries = indicatorsBySensors.ToList();
+            foreach (var (sensor, indicator) in entries)
+            {
+                DestroyIndicator(sensor, indicator);
+            }
+        }
+
+        private void DestroyIndicator(DangerSensor sensor, DangerIndicator indicator)
+        {
             indicatorsBySensors.Remove(sensor);
             indicator.DestroyIndicator();
             onIndicatorCleared.Invoke();
