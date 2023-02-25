@@ -20,6 +20,9 @@ namespace MoonGale.Runtime.Player
         [SerializeField]
         private Camera mainCamera;
 
+        [SerializeField]
+        private Transform lookPivot;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onDashStarted;
@@ -60,6 +63,14 @@ namespace MoonGale.Runtime.Player
         private void UpdateMovement()
         {
             if (IsDashing == false)
+            {
+                return;
+            }
+
+            Vector3 rayOrigin = characterController.bounds.center +
+                                Vector3.up * (characterController.bounds.size.y / 2f - characterController.radius);
+            var dashDistance = characterController.bounds.size.z;
+            if (Physics.Raycast(rayOrigin, lookPivot.forward, dashDistance))
             {
                 return;
             }
