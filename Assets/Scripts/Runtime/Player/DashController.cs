@@ -18,7 +18,7 @@ namespace MoonGale.Runtime.Player
         private PlayerSettings playerSettings;
 
         [SerializeField]
-        private Camera mainCamera;
+        private Transform mainCameraTransform;
 
         [Header("Events")]
         [SerializeField]
@@ -29,6 +29,7 @@ namespace MoonGale.Runtime.Player
 
         private float nextDashTimeSeconds;
         private Vector3 absoluteMoveDirection;
+        private bool hasCollided;
 
         public event Action<float> OnDashed;
 
@@ -57,14 +58,24 @@ namespace MoonGale.Runtime.Player
             StartCoroutine(DashRoutine());
         }
 
+        public void DashCanceled()
+        {
+            hasCollided = true;
+        }
+
         private void UpdateMovement()
         {
             if (IsDashing == false)
             {
+                hasCollided = false;
                 return;
             }
 
-            var mainCameraTransform = mainCamera.transform;
+            if (hasCollided)
+            {
+                return;
+            }
+
             var relativeMotion = GetRelativeMotion(mainCameraTransform, absoluteMoveDirection);
 
             characterController.Move(relativeMotion);

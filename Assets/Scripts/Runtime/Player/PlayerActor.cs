@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using MoonGale.Core;
 using MoonGale.Runtime.Systems;
@@ -74,8 +75,8 @@ namespace MoonGale.Runtime.Player
             GameManager.AddListener<PlayerDeathMessage>(OnPlayerDeath);
 
             moveInputActionReference.action.performed += OnMoveInputActionPerformed;
-            dashInputActionReference.action.performed += OnDashInputActionPerformed;
             moveInputActionReference.action.canceled += OnMoveInputActionCanceled;
+            dashInputActionReference.action.performed += OnDashInputActionPerformed;
             attackInputActionReference.action.performed += OnAttackInputActionPerformed;
             strongAttackInputActionReference.action.performed += OnStrongAttackInputActionPerformed;
 
@@ -101,6 +102,11 @@ namespace MoonGale.Runtime.Player
             dashController.OnDashed -= OnDashed;
 
             movementController.StopMovement();
+        }
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            dashController.DashCanceled();
         }
 
         private void OnPlayerDeath(PlayerDeathMessage message)
