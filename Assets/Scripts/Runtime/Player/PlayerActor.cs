@@ -103,6 +103,11 @@ namespace MoonGale.Runtime.Player
             movementController.StopMovement();
         }
 
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            dashController.DashCanceled();
+        }
+
         private void OnPlayerDeath(PlayerDeathMessage message)
         {
             cinemachineCamera.Follow = null;

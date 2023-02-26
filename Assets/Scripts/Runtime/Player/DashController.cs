@@ -32,6 +32,7 @@ namespace MoonGale.Runtime.Player
 
         private float nextDashTimeSeconds;
         private Vector3 absoluteMoveDirection;
+        private bool hasCollided;
 
         public event Action<float> OnDashed;
 
@@ -60,17 +61,14 @@ namespace MoonGale.Runtime.Player
             StartCoroutine(DashRoutine());
         }
 
+        public void DashCanceled()
+        {
+            hasCollided = true;
+        }
+
         private void UpdateMovement()
         {
-            if (IsDashing == false)
-            {
-                return;
-            }
-
-            Vector3 rayOrigin = characterController.bounds.center +
-                                Vector3.up * (characterController.bounds.size.y / 2f - characterController.radius);
-            var dashDistance = characterController.bounds.size.z;
-            if (Physics.Raycast(rayOrigin, lookPivot.forward, dashDistance))
+            if (IsDashing == false || hasCollided)
             {
                 return;
             }
@@ -107,6 +105,7 @@ namespace MoonGale.Runtime.Player
             yield return new WaitForSeconds(playerSettings.DashDurationSeconds);
 
             IsDashing = false;
+            hasCollided = false;
             onDashStopped.Invoke();
         }
     }
