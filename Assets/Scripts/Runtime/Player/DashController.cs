@@ -18,10 +18,7 @@ namespace MoonGale.Runtime.Player
         private PlayerSettings playerSettings;
 
         [SerializeField]
-        private Camera mainCamera;
-
-        [SerializeField]
-        private Transform lookPivot;
+        private Transform mainCameraTransform;
 
         [Header("Events")]
         [SerializeField]
@@ -68,12 +65,17 @@ namespace MoonGale.Runtime.Player
 
         private void UpdateMovement()
         {
-            if (IsDashing == false || hasCollided)
+            if (IsDashing == false)
+            {
+                hasCollided = false;
+                return;
+            }
+
+            if (hasCollided)
             {
                 return;
             }
 
-            var mainCameraTransform = mainCamera.transform;
             var relativeMotion = GetRelativeMotion(mainCameraTransform, absoluteMoveDirection);
 
             characterController.Move(relativeMotion);
@@ -105,7 +107,6 @@ namespace MoonGale.Runtime.Player
             yield return new WaitForSeconds(playerSettings.DashDurationSeconds);
 
             IsDashing = false;
-            hasCollided = false;
             onDashStopped.Invoke();
         }
     }

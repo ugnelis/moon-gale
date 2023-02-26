@@ -2361,8 +2361,7 @@ MonoBehaviour:
   characterController: {fileID: 6018831066777822257}
   movementController: {fileID: 2539360689541506595}
   playerSettings: {fileID: 11400000, guid: 7a7b0089a1b8a31428151453ea2bf0b8, type: 2}
-  mainCamera: {fileID: 6018831065905993468}
-  lookPivot: {fileID: 5041811553469256535}
+  mainCameraTransform: {fileID: 6018831065905993469}
   onDashStarted:
     m_PersistentCalls:
       m_Calls:
